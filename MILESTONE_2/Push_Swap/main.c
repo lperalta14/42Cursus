@@ -16,6 +16,7 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 
+
 	if(argc < 2)
 		return(0);
 	ft_checkervalids(argv);
@@ -29,7 +30,7 @@ int	main(int argc, char **argv)
 	if (!stack_a)
 		ft_error(NULL, NULL);
 	ft_check_dups(stack_a);
-	//ft_pushswap(stack_a);
+	ft_pushswap(stack_a);
 	ft_free_stack(stack_a);
 	return (0);
 }

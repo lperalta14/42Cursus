@@ -27,10 +27,10 @@ void	ft_push(t_node **dst, t_node **src)
 void	ft_pa(t_node **dst, t_node **src)
 {
 	ft_push(dst, src);
-	write(1, "pa", 2);
+	write(1, "pa\n", 3);
 }
 void	ft_pb(t_node **dst, t_node **src)
 {
 	ft_push(dst, src);
-	write(1, "pb", 2);
+	write(1, "pb\n", 3);
 }

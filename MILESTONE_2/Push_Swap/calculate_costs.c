@@ -15,10 +15,10 @@
 void	ft_calculatecosts(t_stack *a, t_stack *b)
 {
 	t_node *current;
-	int size_a = stack_size(a->stack);
-	int size_b = stack_size(b->stack);
+	int size_a = ft_stacksize(*a->stack);
+	int size_b = ft_stacksize(*b->stack);
 
-	current = b->stack;
+	current = *b->stack;
 	while (current)
 	{
 		// cost_b
@@ -35,4 +35,27 @@ void	ft_calculatecosts(t_stack *a, t_stack *b)
 
 		current = current->next;
 	}
+}
+int	ft_find_lowest_index(t_stack *stack_a)
+{
+	t_node	*current;
+	int		lowest_index;
+	int		lowest_pos;
+	int		pos;
+
+	current = *(stack_a->stack);
+	lowest_index = current->index;
+	lowest_pos = 0;
+	pos = 0;
+	while (current)
+	{
+		if (current->index < lowest_index)
+		{
+			lowest_index = current->index;
+			lowest_pos = pos;
+		}
+		current = current->next;
+		pos++;
+	}
+	return (lowest_pos);
 }

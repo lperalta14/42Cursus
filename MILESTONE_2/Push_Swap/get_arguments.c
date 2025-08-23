@@ -71,10 +71,10 @@ void	ft_getnode(t_stack *stack_a, char **split)
 			ft_error(split, stack_a);
 		ft_add_back_node(stack_a->stack, new_node);
 		stack_a->size++;
-		free(split[j]);
+		//free(split[j]);
 		j++;
 	}
-	free(split);
+	ft_free_split(split);
 }
 
 void	ft_get_arguments(int argc, char **argv, t_stack *stack_a)

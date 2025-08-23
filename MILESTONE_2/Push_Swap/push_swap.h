@@ -61,7 +61,10 @@ void	ft_sort_three(t_stack *stack);
 void	ft_assignposition(t_stack *stack_a, t_stack *stack_b);
 void	ft_targetpositions(t_stack *a, t_stack *b);
 void	ft_move(t_stack *stack_a, t_stack *stack_b, int cost_a, int cost_b);
+t_node	*ft_find_cheapest(t_stack *b);
 void	ft_movercheapest(t_stack *stack_a, t_stack *stack_b);
+void	ft_rotation_a(t_stack *stack_a);
 
 void	ft_calculatecosts(t_stack *a, t_stack *b);
+int		ft_find_lowest_index(t_stack *stack_a);
 #endif

@@ -30,8 +30,8 @@ void	ft_free_split(char **split)
 		free(split[i]);
 		i++;
 	}
-	split = NULL;
 	free(split);
+	split = NULL;
 }
 
 void	ft_error(char **split, t_stack *stack)
