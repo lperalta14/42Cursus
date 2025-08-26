@@ -21,7 +21,6 @@ static t_node	*ft_find_target_node(t_stack *stack_a, t_node *node_b)
 	best_index = LONG_MAX;
 	target_node = NULL;
 	node_a = *(stack_a->stack);
-
 	while (node_a)
 	{
 		if (node_a->index > node_b->index && node_a->index < best_index)

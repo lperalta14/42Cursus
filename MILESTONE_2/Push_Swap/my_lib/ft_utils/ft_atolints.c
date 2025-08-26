@@ -20,20 +20,20 @@ long	ft_atolints(const char *nptr)
 	sign = 1;
 	result = 0;
 	while (ft_isspace(*nptr))
-		nptr++;
+		nptr ++;
 	if (*nptr == 45)
 	{
 		sign = -1;
-		nptr++;
+		nptr ++;
 	}
 	else if (*nptr == 43)
-		nptr++;
+		nptr ++;
 	while ((*nptr) && ft_isdigit(*nptr))
 	{
-		result = result * 10;
-		result = result + (*nptr++ - '0');
+		result *= 10;
+		result += (*nptr++ - '0');
 		if ((result * sign) < INT_MIN || (result * sign) > INT_MAX)
-			return(result);
+			return (result);
 	}
 	result *= sign;
 	return (result);

@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   errors.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lperalta <lperalta@student.42.fr>          #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-08-26 17:09:24 by lperalta          #+#    #+#             */
+/*   Updated: 2025-08-26 17:09:24 by lperalta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -9,7 +20,7 @@ void	ft_free_stack(t_stack *stack)
 	if (!stack)
 		return ;
 	temp = *stack->stack;
-	while(temp)
+	while (temp)
 	{
 		next = temp->next;
 		free(temp);
@@ -19,9 +30,11 @@ void	ft_free_stack(t_stack *stack)
 	stack->stack = NULL;
 	free(stack);
 }
+
 void	ft_free_split(char **split)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	if (!split || split == NULL)
 		return ;

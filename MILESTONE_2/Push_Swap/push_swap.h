@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lperalta <lperalta@student.42.fr>          #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-08-26 17:03:21 by lperalta          #+#    #+#             */
+/*   Updated: 2025-08-26 17:03:21 by lperalta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 # include <stdarg.h>
@@ -17,7 +27,7 @@ typedef struct s_node
 	struct s_node	*next;
 }	t_node;
 
-typedef	struct s_stack
+typedef struct s_stack
 {
 	t_node			**stack;
 	int				size;
@@ -30,6 +40,7 @@ void	ft_getnode(t_stack *stack_a, char **split);
 void	ft_checkervalids(char **args);
 int		ft_valid_digit(char *str);
 void	ft_pushswap(t_stack *stack_a);
+int		ft_is_sorted(t_stack *stack_a);
 void	ft_free_stack(t_stack *stack);
 void	ft_free_split(char **split);
 void	ft_error(char **split, t_stack *stack);

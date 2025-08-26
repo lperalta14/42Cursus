@@ -16,21 +16,21 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 
-
-	if(argc < 2)
-		return(0);
+	if (argc < 2)
+		return (0);
 	ft_checkervalids(argv);
 	stack_a = malloc(sizeof(t_stack));
-	if(!stack_a)
-		return(0);
+	if (!stack_a)
+		return (0);
 	stack_a->stack = ft_calloc(sizeof(t_node *), 1);
-	if(!stack_a->stack)
+	if (!stack_a->stack)
 		ft_error(NULL, stack_a);
 	ft_get_arguments(argc, argv, stack_a);
 	if (!stack_a)
 		ft_error(NULL, NULL);
 	ft_check_dups(stack_a);
-	ft_pushswap(stack_a);
+	if (!ft_is_sorted(stack_a))
+		ft_pushswap(stack_a);
 	ft_free_stack(stack_a);
 	return (0);
 }

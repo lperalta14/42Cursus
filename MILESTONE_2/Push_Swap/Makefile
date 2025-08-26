@@ -9,6 +9,7 @@ moves/movesrot.c moves/push.c moves/rotate.c moves/reverserotate.c moves/swap.c 
 
 # Objects directory
 OBJ_DIR = obj
+#INCLUDE = -I include/ 
 
 # Object files
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)

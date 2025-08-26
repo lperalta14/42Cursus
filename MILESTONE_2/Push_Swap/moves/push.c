@@ -14,10 +14,10 @@
 
 void	ft_push(t_node **dst, t_node **src)
 {
-	t_node *temp;
+	t_node	*temp;
 
 	if (!src || !*src)
-		return;
+		return ;
 	temp = *src;
 	*src = temp->next;
 	temp->next = *dst;
@@ -36,6 +36,7 @@ void	ft_pa(t_stack *stack_a, t_stack *stack_b)
 	stack_a->size ++;
 	stack_b->size --;
 }
+
 void	ft_pb(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	**a;

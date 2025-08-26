@@ -14,14 +14,13 @@
 
 void	ft_reverse_rotate(t_node **stack)
 {
-	t_node *prev;
-	t_node *last;
+	t_node	*prev;
+	t_node	*last;
 
 	if (!stack || !*stack || !(*stack)->next)
-		return;
+		return ;
 	prev = NULL;
 	last = *stack;
-
 	while (last->next)
 	{
 		prev = last;
@@ -31,16 +30,19 @@ void	ft_reverse_rotate(t_node **stack)
 	last->next = *stack;
 	*stack = last;
 }
+
 void	ft_rra(t_node **stack_a)
 {
 	ft_reverse_rotate(stack_a);
 	write(1, "rra\n", 4);
 }
+
 void	ft_rrb(t_node **stack_b)
 {
 	ft_reverse_rotate(stack_b);
 	write(1, "rrb\n", 4);
 }
+
 void	ft_rrr(t_node **stack_a, t_node **stack_b)
 {
 	ft_reverse_rotate(stack_a);

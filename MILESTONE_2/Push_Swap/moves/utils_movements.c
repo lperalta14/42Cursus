@@ -38,10 +38,13 @@ void	ft_pushex3(t_stack *stack_a, t_stack *stack_b)
 
 void	ft_sort_three(t_stack *stack)
 {
-	t_node *first = *(stack->stack);
-	t_node *second = first->next;
-	t_node *third = second->next;
+	t_node	*first;
+	t_node	*second;
+	t_node	*third;
 
+	first = *(stack->stack);
+	second = first->next;
+	third = second->next;
 	if (first->index > second->index && first->index < third->index)
 		ft_sa(stack->stack);
 	else if (first->index > second->index && second->index > third->index)
@@ -59,6 +62,7 @@ void	ft_sort_three(t_stack *stack)
 		ft_ra(stack->stack);
 	}
 }
+
 void	ft_assignposition(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*ptr;
@@ -82,14 +86,13 @@ void	ft_assignposition(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-
 void	ft_movercheapest(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*cheapest;
 
 	cheapest = ft_find_cheapest(stack_b);
 	if (!cheapest)
-		return;
+		return ;
 	ft_move(stack_a, stack_b, cheapest->cost_a, cheapest->cost_b);
 	ft_pa(stack_a, stack_b);
 }

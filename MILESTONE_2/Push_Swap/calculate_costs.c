@@ -17,24 +17,20 @@ void	ft_calculatecosts(t_stack *stack_a, t_stack *stack_b)
 	t_node	*nb;
 
 	nb = *(stack_b->stack);
-
 	while (nb)
 	{
-		// cost_b
-		if (nb->pos <= stack_b->size/ 2)
+		if (nb->pos <= stack_b->size / 2)
 			nb->cost_b = nb->pos;
 		else
 			nb->cost_b = -(stack_b->size - nb->pos);
-
-		// cost_a
 		if (nb->target <= stack_a->size / 2)
 			nb->cost_a = nb->target;
 		else
 			nb->cost_a = -(stack_a->size - nb->target);
-
 		nb = nb->next;
 	}
 }
+
 static long	ft_abs(long n)
 {
 	if (n < 0)
@@ -64,6 +60,7 @@ t_node	*ft_find_cheapest(t_stack *stack_b)
 	}
 	return (cheapest);
 }
+
 int	ft_find_lowest_index(t_stack *stack_a)
 {
 	t_node	*current;
