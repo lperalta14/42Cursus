@@ -12,29 +12,57 @@
 
 #include "push_swap.h"
 
-void	ft_calculatecosts(t_stack *a, t_stack *b)
+void	ft_calculatecosts(t_stack *stack_a, t_stack *stack_b)
 {
-	t_node *current;
-	int size_a = ft_stacksize(*a->stack);
-	int size_b = ft_stacksize(*b->stack);
+	t_node	*nb;
 
-	current = *b->stack;
-	while (current)
+	nb = *(stack_b->stack);
+
+	while (nb)
 	{
 		// cost_b
-		if (current->pos <= size_b / 2)
-			current->cost_b = current->pos;
+		if (nb->pos <= stack_b->size/ 2)
+			nb->cost_b = nb->pos;
 		else
-			current->cost_b = (current->pos - size_b);
+			nb->cost_b = -(stack_b->size - nb->pos);
 
 		// cost_a
-		if (current->target <= size_a / 2)
-			current->cost_a = current->target;
+		if (nb->target <= stack_a->size / 2)
+			nb->cost_a = nb->target;
 		else
-			current->cost_a = (current->target - size_a);
+			nb->cost_a = -(stack_a->size - nb->target);
 
-		current = current->next;
+		nb = nb->next;
 	}
+}
+static long	ft_abs(long n)
+{
+	if (n < 0)
+		return (-n);
+	return (n);
+}
+
+t_node	*ft_find_cheapest(t_stack *stack_b)
+{
+	t_node	*tmp;
+	t_node	*cheapest;
+	long	min_cost;
+	long	total;
+
+	tmp = *(stack_b->stack);
+	cheapest = tmp;
+	min_cost = LONG_MAX;
+	while (tmp)
+	{
+		total = ft_abs(tmp->cost_a) + ft_abs(tmp->cost_b);
+		if (total < min_cost)
+		{
+			min_cost = total;
+			cheapest = tmp;
+		}
+		tmp = tmp->next;
+	}
+	return (cheapest);
 }
 int	ft_find_lowest_index(t_stack *stack_a)
 {

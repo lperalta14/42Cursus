@@ -24,13 +24,27 @@ void	ft_push(t_node **dst, t_node **src)
 	*dst = temp;
 }
 
-void	ft_pa(t_node **dst, t_node **src)
+void	ft_pa(t_stack *stack_a, t_stack *stack_b)
 {
-	ft_push(dst, src);
+	t_node	**a;
+	t_node	**b;
+
+	a = stack_a->stack;
+	b = stack_b->stack;
+	ft_push(a, b);
 	write(1, "pa\n", 3);
+	stack_a->size ++;
+	stack_b->size --;
 }
-void	ft_pb(t_node **dst, t_node **src)
+void	ft_pb(t_stack *stack_a, t_stack *stack_b)
 {
-	ft_push(dst, src);
+	t_node	**a;
+	t_node	**b;
+
+	a = stack_a->stack;
+	b = stack_b->stack;
+	ft_push(b, a);
 	write(1, "pb\n", 3);
+	stack_b->size ++;
+	stack_a->size --;
 }

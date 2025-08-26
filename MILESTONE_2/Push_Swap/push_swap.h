@@ -43,8 +43,8 @@ void	ft_sb(t_node **stack_b);
 void	ft_ss(t_node **stack_a, t_node **stack_b);
 
 void	ft_push(t_node **dst, t_node **src);
-void	ft_pa(t_node **dst, t_node **src);
-void	ft_pb(t_node **dst, t_node **src);
+void	ft_pa(t_stack *stack_a, t_stack *stack_b);
+void	ft_pb(t_stack *stack_a, t_stack *stack_b);
 
 void	ft_rotate(t_node **stack);
 void	ft_ra(t_node **stack_a);

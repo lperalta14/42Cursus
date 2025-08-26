@@ -16,13 +16,13 @@ static void	ft_rotate_both(t_stack *stack_a, t_stack *stack_b, int *cost_a, int 
 {
 	while (*cost_a > 0 && *cost_b > 0)
 	{
-		ft_rr(stack_a->stack, stack_b->stack); // rotación doble hacia arriba
+		ft_rr(stack_a->stack, stack_b->stack);
 		(*cost_a)--;
 		(*cost_b)--;
 	}
 	while (*cost_a < 0 && *cost_b < 0)
 	{
-		ft_rrr(stack_a->stack, stack_b->stack); // rotación doble hacia abajo
+		ft_rrr(stack_a->stack, stack_b->stack);
 		(*cost_a)++;
 		(*cost_b)++;
 	}
@@ -61,7 +61,6 @@ void	ft_move(t_stack *stack_a, t_stack *stack_b, int cost_a, int cost_b)
 	ft_rotate_both(stack_a, stack_b, &cost_a, &cost_b);
 	ft_rotate_a(stack_a, &cost_a);
 	ft_rotate_b(stack_b, &cost_b);
-	ft_pa(stack_a->stack, stack_b->stack);
 }
 void	ft_rotation_a(t_stack *stack_a)
 {

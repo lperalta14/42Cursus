@@ -25,19 +25,15 @@ void	ft_pushex3(t_stack *stack_a, t_stack *stack_b)
 	{
 		if ((*(stack_a->stack))->index <= size / 2)
 		{
-			ft_pb(stack_b->stack, stack_a->stack);
-			//pushed ++;
+			ft_pb(stack_a, stack_b);
+			pushed ++;
 		}
 		else
 			ft_ra(stack_a->stack);
-		//i++;
-		stack_a->size--;
+		i++;
 	}
-	while (size > 3)
-	{
-		ft_pb(stack_b->stack, stack_a->stack);
-		stack_a->size--;
-	}
+	while (stack_a->size > 3)
+		ft_pb(stack_a, stack_b);
 }
 
 void	ft_sort_three(t_stack *stack)
@@ -85,32 +81,15 @@ void	ft_assignposition(t_stack *stack_a, t_stack *stack_b)
 		ptr = ptr->next;
 	}
 }
-t_node	*ft_find_cheapest(t_stack *b)
-{
-	t_node	*tmp;
-	t_node	*cheapest;
-	int		min_cost;
 
-	tmp = *(b->stack);
-	cheapest = tmp;
-	min_cost = abs(tmp->cost_a) + abs(tmp->cost_b);
-	while (tmp)
-	{
-		if (abs(tmp->cost_a) + abs(tmp->cost_b) < min_cost)
-		{
-			min_cost = abs(tmp->cost_a) + abs(tmp->cost_b);
-			cheapest = tmp;
-		}
-		tmp = tmp->next;
-	}
-	return (cheapest);
-}
 
 void	ft_movercheapest(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*cheapest;
 
 	cheapest = ft_find_cheapest(stack_b);
+	if (!cheapest)
+		return;
 	ft_move(stack_a, stack_b, cheapest->cost_a, cheapest->cost_b);
-	ft_pa(stack_a->stack, stack_b->stack);
+	ft_pa(stack_a, stack_b);
 }

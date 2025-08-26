@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-static t_node	*ft_find_target_node(t_stack *a, t_node *node_b)
+static t_node	*ft_find_target_node(t_stack *stack_a, t_node *node_b)
 {
 	t_node	*node_a;
 	t_node	*target_node;
@@ -20,7 +20,7 @@ static t_node	*ft_find_target_node(t_stack *a, t_node *node_b)
 
 	best_index = LONG_MAX;
 	target_node = NULL;
-	node_a = *(a->stack);
+	node_a = *(stack_a->stack);
 
 	while (node_a)
 	{
@@ -34,7 +34,7 @@ static t_node	*ft_find_target_node(t_stack *a, t_node *node_b)
 	return (target_node);
 }
 
-static t_node	*ft_find_min_node(t_stack *a)
+static t_node	*ft_find_min_node(t_stack *stack_a)
 {
 	t_node	*node_a;
 	t_node	*target_node;
@@ -42,7 +42,7 @@ static t_node	*ft_find_min_node(t_stack *a)
 
 	best_index = LONG_MAX;
 	target_node = NULL;
-	node_a = *(a->stack);
+	node_a = *(stack_a->stack);
 	while (node_a)
 	{
 		if (node_a->index < best_index)
@@ -55,17 +55,17 @@ static t_node	*ft_find_min_node(t_stack *a)
 	return (target_node);
 }
 
-void	ft_targetpositions(t_stack *a, t_stack *b)
+void	ft_targetpositions(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*node_b;
 	t_node	*target_node;
 
-	node_b = *(b->stack);
+	node_b = *(stack_b->stack);
 	while (node_b)
 	{
-		target_node = ft_find_target_node(a, node_b);
+		target_node = ft_find_target_node(stack_a, node_b);
 		if (!target_node)
-			target_node = ft_find_min_node(a);
+			target_node = ft_find_min_node(stack_a);
 		node_b->target = target_node->pos;
 		node_b = node_b->next;
 	}
