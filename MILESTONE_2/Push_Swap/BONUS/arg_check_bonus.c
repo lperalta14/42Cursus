@@ -10,25 +10,26 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "push_swap_bonus.h"
+#include "../my_lib/libft.h"
 
 int	ft_arg_check(int argc, char **argv)
 {
-	t_stack	*stack_a;
+	t_stack	*a;
 
 	if (argc < 2)
 		return (0);
 	ft_checkervalids(argv);
-	stack_a = malloc(sizeof(t_stack));
-	if (!stack_a)
+	a = malloc(sizeof(t_stack));
+	if (!a)
 		return (0);
-	stack_a->stack = ft_calloc(sizeof(t_node *), 1);
-	if (!stack_a->stack)
-		ft_error(NULL, stack_a);
-	ft_get_arguments(argc, argv, stack_a);
-	if (!stack_a)
+	a->stack = ft_calloc(sizeof(t_node *), 1);
+	if (!a->stack)
+		ft_error(NULL, a);
+	ft_get_arguments(argc, argv, a);
+	if (!a)
 		ft_error(NULL, NULL);
-	ft_check_dups(stack_a);
+	ft_check_dups(a);
 	return(0);
 }
 
@@ -51,23 +52,23 @@ int ft_execmv(char *move, t_stack *a, t_stack *b)
     else if (!ft_strcmp(move, "pb\n"))
         ft_pb(a, b);
     else if (!ft_strcmp(move, "sa\n"))
-        ft_sa(a);
+        ft_sa(a->stack);
     else if (!ft_strcmp(move, "sb\n"))
-        ft_sb(b);
+        ft_sb(b->stack);
     else if (!ft_strcmp(move, "ss\n"))
-        ft_ss(a, b);
+        ft_ss(a->stack, b->stack);
     else if (!ft_strcmp(move, "ra\n"))
-        ft_ra(a);
+        ft_ra(a->stack);
     else if (!ft_strcmp(move, "rb\n"))
-        ft_rb(b);
+        ft_rb(b->stack);
     else if (!ft_strcmp(move, "rr\n"))
-        ft_rr(a, b);
+        ft_rr(a->stack, b->stack);
     else if (!ft_strcmp(move, "rra\n"))
-        ft_rra(a);
+        ft_rra(a->stack);
     else if (!ft_strcmp(move, "rrb\n"))
-        ft_rrb(b);
+        ft_rrb(b->stack);
     else if (!ft_strcmp(move, "rrr\n"))
-        ft_rrr(a, b);
+        ft_rrr(a->stack, b->stack);
     else
         return (0); 
     return (1);
@@ -81,13 +82,13 @@ int	main(int argc, char **argv)
 	char	*move;
 
 	ft_arg_check(argc, argv);
+	a = ft_calloc(sizeof(t_stack), 1);
+	if (!a)
+		ft_error(NULL, a);
 	b = ft_calloc(sizeof(t_stack), 1);
 	if (!b)
-		ft_error(NULL, a);
-	b->stack = ft_calloc(sizeof(t_node *), 1);
-	if (!b->stack)
 		ft_error(NULL, b);
-	while (move = get_next_line(0))
+	while (move = (get_next_line(0)))
 	{
 		ft_execmv(move, a, b);
 		free(move);

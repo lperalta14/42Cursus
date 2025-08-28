@@ -86,7 +86,7 @@ void	ft_assignposition(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-void	ft_movercheapest(t_stack *stack_a, t_stack *stack_b)
+void	ft_movecheapest(t_stack *stack_a, t_stack *stack_b)
 {
 	t_node	*cheapest;
 

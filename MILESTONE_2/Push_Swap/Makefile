@@ -5,10 +5,14 @@ NAME = push_swap
 HEADER = push_swap.h
 # Sources
 SRCS = main.c checkers.c errors.c get_arguments.c push_swap.c calculate_costs.c \
-moves/movesrot.c moves/push.c moves/rotate.c moves/reverserotate.c moves/swap.c moves/targets.c moves/utils_movements.c
+moves/movesrot.c moves/push.c moves/rotate.c moves/reverserotate.c moves/swap.c \
+moves/targets.c moves/utils_movements.c
 
 # Bonus
-BONUS_SRCS = 
+BONUS = checker
+
+BONUS_SRCS = BONUS/arg_check_bonus.c BONUS/checkers_bonus.c BONUS/error_bonus.c \
+BONUS/get_arguments_bonus.c
 
 # Objects directory
 OBJ_DIR = obj
@@ -16,6 +20,7 @@ OBJ_DIR = obj
 
 # Object files
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
+BONUS_OBJS = $(BONUS_SRCS:%.c=$(OBJ_DIR)/%.o)
 
 # Libft linked
 LIBFT_DIR = my_lib
@@ -35,7 +40,7 @@ RED=\033[0;31m
 GREEN=\033[0;32m
 YELLOW=\033[1;33m
 BLUE=\033[0;34m
-PINK = \033[0;35m
+PINK=\033[0;35m
 NC=\033[0m  # (reset)
 
 # Rules
@@ -46,14 +51,18 @@ $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LIB) -o $(NAME)
 	@echo "$(GREEN)🫦 sucsexfully! 🫦$(NC)"
 
-$(OBJ_DIR):
-	@mkdir -p $(dir $@)
-	@echo "$(GREEN)📚Created obj directory📚$(NC)"
+bonus: $(LIBFT_LIB) $(BONUS)
+
+$(BONUS): $(BONUS_OBJS) $(OBJS)
+	@echo "$(BLUE)🔗 Linking checker 🔗$(NC)"
+	@$(CC) $(CFLAGS) $(BONUS_OBJS) $(OBJS) $(LIBFT_LIB) -o $(BONUS)
+	@echo "$(GREEN)Checker ready ✅$(NC)"
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
 	@echo "$(PINK)🫦 Cumpiling $< ⌛⌛⌛$(NC)"
 	@$(CC) $(CFLAGS) -c $< -o $@
+
 
 $(LIBFT_LIB):
 	@echo "$(PINK)Cumpilating $(NAME)...🫦$(NC)"
@@ -68,8 +77,8 @@ clean:
 fclean: clean
 	@echo "$(RED) 🧽🫧🧼🫧 Full clean push_swap and libft... 🫧🧼🫧🧽$(NC)"
 	@$(MAKE) -C $(LIBFT_DIR) fclean
-	@$(RM) $(NAME)
+	@$(RM) $(NAME) $(BONUS)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include "my_lib/libft.h"
+#include "push_swap_bonus.h"
+#include "../my_lib/libft.h"
 
 static t_node	*ft_new_node(int num)
 {
@@ -54,7 +54,7 @@ t_node	*ft_lstlast_node(t_node *lst)
 	return (lst);
 }
 
-void	ft_getnode(t_stack *stack_a, char **split)
+void	ft_getnode(t_stack *stack, char **split)
 {
 	int		j;
 	long	num;
@@ -64,21 +64,21 @@ void	ft_getnode(t_stack *stack_a, char **split)
 	while (split[j])
 	{
 		if (!ft_valid_digit(split[j]))
-			ft_error(split, stack_a);
+			ft_error(split, stack);
 		num = ft_atolints(split[j]);
 		if (num > INT_MAX || num < INT_MIN)
-			ft_error(split, stack_a);
+			ft_error(split, stack);
 		new_node = ft_new_node((int)num);
-		if (!stack_a->stack)
-			ft_error(split, stack_a);
-		ft_add_back_node(stack_a->stack, new_node);
-		stack_a->size++;
+		if (!stack->stack)
+			ft_error(split, stack);
+		ft_add_back_node(stack->stack, new_node);
+		stack->size++;
 		j++;
 	}
 	ft_free_split(split);
 }
 
-void	ft_get_arguments(int argc, char **argv, t_stack *stack_a)
+void	ft_get_arguments(int argc, char **argv, t_stack *stack)
 {
 	int		i;
 	char	**split;
@@ -92,11 +92,11 @@ void	ft_get_arguments(int argc, char **argv, t_stack *stack_a)
 		while (ft_isspace(argv[i][j]))
 			j++;
 		if (!argv[i][j])
-			ft_error(NULL, stack_a);
+			ft_error(NULL, stack);
 		split = ft_split(argv[i], ' ');
 		if (!split)
-			ft_error(split, stack_a);
-		ft_getnode(stack_a, split);
+			ft_error(split, stack);
+		ft_getnode(stack, split);
 		i++;
 	}
 }

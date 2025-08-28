@@ -38,7 +38,6 @@ void	ft_free_split(char **split);
 void	ft_error(char **split, t_stack *stack);
 
 void	ft_get_arguments(int argc, char **argv, t_stack *stack_a);
-t_node	*ft_new_node(int num);
 t_node	*ft_lstlast_node(t_node *lst);
 void	ft_getnode(t_stack *stack_a, char **split);
 
@@ -79,7 +78,7 @@ void	ft_rotation_a(t_stack *stack_a);
 void	ft_calculatecosts(t_stack *a, t_stack *b);
 int		ft_find_lowest_index(t_stack *stack_a);
 t_node	*ft_find_cheapest(t_stack *b);
-void	ft_movercheapest(t_stack *stack_a, t_stack *stack_b);
+void	ft_movecheapest(t_stack *stack_a, t_stack *stack_b);
 
 //BONUS
 

@@ -105,7 +105,7 @@ void	ft_pushswap(t_stack *stack_a)
 		ft_assignposition(stack_a, stack_b);
 		ft_targetpositions(stack_a, stack_b);
 		ft_calculatecosts(stack_a, stack_b);
-		ft_movercheapest(stack_a, stack_b);
+		ft_movecheapest(stack_a, stack_b);
 	}
 	ft_rotation_a(stack_a);
 	ft_free_stack(stack_b);

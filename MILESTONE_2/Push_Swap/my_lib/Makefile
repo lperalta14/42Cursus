@@ -19,7 +19,7 @@ ft_lib/ft_toupper.c ft_lib/ft_tolower.c ft_lib/ft_strlcpy.c ft_lib/ft_strlcat.c 
 ft_lib/ft_memchr.c ft_lib/ft_memcmp.c ft_lib/ft_strncmp.c ft_lib/ft_calloc.c ft_lib/ft_strdup.c ft_lib/ft_strjoin.c \
 ft_lib/ft_putendl_fd.c ft_lib/ft_putstr_fd.c ft_lib/ft_putchar_fd.c ft_lib/ft_putnbr_fd.c ft_lib/ft_itoa.c \
 ft_lib/ft_strmapi.c ft_lib/ft_strrchr.c ft_lib/ft_striteri.c ft_lib/ft_strnstr.c ft_lib/ft_substr.c ft_lib/ft_strtrim.c \
-ft_lib/ft_split.c $(PRINTF_SRCS) $(GNL_SRCS) $(UTILS_SRCS) $(BONUS_SRC)
+ft_lib/ft_split.c ft_utils/ft_strcmp.c $(PRINTF_SRCS) $(GNL_SRCS) $(UTILS_SRCS) $(BONUS_SRC)
 
 BONUS_SRC = ft_list/ft_lstnew.c ft_list/ft_lstadd_back.c ft_list/ft_lstadd_front.c ft_list/ft_lstclear.c \
 ft_list/ft_lstdelone.c ft_list/ft_lstlast.c ft_list/ft_lstmap.c ft_list/ft_lstsize.c ft_list/ft_lstiter.c
