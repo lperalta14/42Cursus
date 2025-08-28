@@ -7,6 +7,9 @@ HEADER = push_swap.h
 SRCS = main.c checkers.c errors.c get_arguments.c push_swap.c calculate_costs.c \
 moves/movesrot.c moves/push.c moves/rotate.c moves/reverserotate.c moves/swap.c moves/targets.c moves/utils_movements.c
 
+# Bonus
+BONUS_SRCS = 
+
 # Objects directory
 OBJ_DIR = obj
 #INCLUDE = -I include/ 

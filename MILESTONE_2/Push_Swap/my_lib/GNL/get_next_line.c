@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../libft.h"
 
 char	*ft_read_loop(int fd, char **res, char *buffer)
 {
@@ -59,8 +59,8 @@ char	*ft_extract_line(char *res)
 
 	if (!res || !*res)
 		return (NULL);
-	if (!ft_strchr(res))
-		return (ft_strdup(res));
+	if (!ft_strchr_gnl(res))
+		return (ft_strdup_gnl(res));
 	i = 0;
 	while (res[i] && res[i] != '\n')
 		i++;

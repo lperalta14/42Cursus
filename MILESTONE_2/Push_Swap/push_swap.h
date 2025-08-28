@@ -47,7 +47,6 @@ int		ft_valid_digit(char *str);
 void	ft_check_dups(t_stack *stack);
 int		ft_is_sorted(t_stack *stack_a);
 
-
 //void	ft_swap(t_node **stack);
 void	ft_sa(t_node **stack_a);
 void	ft_sb(t_node **stack_b);
@@ -81,4 +80,7 @@ void	ft_calculatecosts(t_stack *a, t_stack *b);
 int		ft_find_lowest_index(t_stack *stack_a);
 t_node	*ft_find_cheapest(t_stack *b);
 void	ft_movercheapest(t_stack *stack_a, t_stack *stack_b);
+
+//BONUS
+
 #endif

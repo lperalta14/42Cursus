@@ -12,9 +12,15 @@
 
 #ifndef LIBFT_H
 # define LIBFT_H
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
 # include <stddef.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <fcntl.h>
 # include <unistd.h>
 # include <stdarg.h>
 # include <limits.h>
@@ -87,6 +93,18 @@ int		ft_unsigput(unsigned int n);
 int		ft_puthex(unsigned long n, char x);
 int		ft_putptr(unsigned long n);
 int		ft_printf(const char *nbr, ...);
+
+// GNL
+char	*get_next_line(int fd);
+char	*ft_extract_line(char *res);
+char	*ft_save_remainder(char *res);
+
+int		ft_strlen_gnl(const char *s);
+char	*ft_strchr_gnl(char *s);
+char	*ft_strjoin_gnl(char *s1, char *s2);
+char	*ft_substr_gnl(char *s, int len);
+char	*ft_strdup_gnl(const char *s);
+
 // ft_utils
 int		ft_atoi_base(const char *str, int str_base);
 long	ft_atolints(const char *nptr);
