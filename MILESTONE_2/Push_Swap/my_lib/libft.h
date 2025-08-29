@@ -109,6 +109,6 @@ char	*ft_strdup_gnl(const char *s);
 int		ft_atoi_base(const char *str, int str_base);
 long	ft_atolints(const char *nptr);
 void	ft_putnbr(int n);
-int		strcmp(const char *s1, const char *s2);
+int		ft_strcmp(const char *s1, const char *s2);
 
 #endif

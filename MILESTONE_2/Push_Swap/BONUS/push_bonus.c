@@ -26,12 +26,12 @@ static void	ft_push(t_node **dst, t_node **src)
 
 void	ft_pa(t_stack *a, t_stack *b)
 {
-	t_node	**a;
-	t_node	**b;
+	t_node	**stack_a;
+	t_node	**stack_b;
 
-	a = a->stack;
-	b = b->stack;
-	ft_push(a, b);
+	stack_a = a->stack;
+	stack_b = b->stack;
+	ft_push(stack_a, stack_b);
 	write(1, "pa\n", 3);
 	a->size ++;
 	b->size --;
@@ -39,12 +39,12 @@ void	ft_pa(t_stack *a, t_stack *b)
 
 void	ft_pb(t_stack *a, t_stack *b)
 {
-	t_node	**a;
-	t_node	**b;
+	t_node	**stack_a;
+	t_node	**stack_b;
 
-	a = a->stack;
-	b = b->stack;
-	ft_push(b, a);
+	stack_a = a->stack;
+	stack_b = b->stack;
+	ft_push(stack_b, stack_a);
 	write(1, "pb\n", 3);
 	b->size ++;
 	a->size --;
