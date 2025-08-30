@@ -30,7 +30,7 @@ typedef struct s_node
 
 typedef struct s_stack
 {
-	t_node			**stack;
+	t_node			*stack;
 	int				size;
 }	t_stack;
 
