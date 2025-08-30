@@ -47,10 +47,11 @@ void	ft_free_split(char **split)
 	split = NULL;
 }
 
-void	ft_error(char **split, t_stack *stack)
+void	ft_error(char **split, t_stack *a, t_stack *b)
 {
 	write(2, "Error\n", 6);
 	ft_free_split(split);
-	ft_free_stack(stack);
+	ft_free_stack(a);
+	ft_free_stack(b);
 	exit(2);
 }
