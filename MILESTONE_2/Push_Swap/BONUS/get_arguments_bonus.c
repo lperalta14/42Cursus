@@ -64,13 +64,13 @@ void	ft_getnode(t_stack *stack, char **split)
 	while (split[j])
 	{
 		if (!ft_valid_digit(split[j]))
-			ft_error(split, stack);
+			ft_error(split, stack, NULL);
 		num = ft_atolints(split[j]);
 		if (num > INT_MAX || num < INT_MIN)
-			ft_error(split, stack);
+			ft_error(split, stack, NULL);
 		new_node = ft_new_node((int)num);
 		if (!stack->stack)
-			ft_error(split, stack);
+			ft_error(split, stack, NULL);
 		ft_add_back_node(stack->stack, new_node);
 		stack->size++;
 		j++;
@@ -92,10 +92,10 @@ void	ft_get_arguments(int argc, char **argv, t_stack *stack)
 		while (ft_isspace(argv[i][j]))
 			j++;
 		if (!argv[i][j])
-			ft_error(NULL, stack);
+			ft_error(NULL, stack, NULL);
 		split = ft_split(argv[i], ' ');
 		if (!split)
-			ft_error(split, stack);
+			ft_error(split, stack, NULL);
 		ft_getnode(stack, split);
 		i++;
 	}
