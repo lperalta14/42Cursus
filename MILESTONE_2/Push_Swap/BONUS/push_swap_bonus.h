@@ -36,7 +36,7 @@ typedef struct s_stack
 
 void	ft_free_stack(t_stack *stack);
 void	ft_free_split(char **split);
-void	ft_error(char **split, t_stack *stack);
+void	ft_error(char **split, t_stack *a, t_stack *b);
 
 void	ft_get_arguments(int argc, char **argv, t_stack *stack);
 t_node	*ft_lstlast_node(t_node *lst);
