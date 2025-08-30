@@ -27,13 +27,13 @@ void	ft_checkervalids(char **args)
 	while (args[i])
 	{
 		if (ft_strlen(args[i]) < 1)
-			ft_error(NULL, NULL);
+			ft_error(NULL, NULL, NULL);
 		j = 0;
 		while (args[i][j])
 		{
 			if (!ft_isdigit(args[i][j]) && !ft_sign(args[i][j])
 					&& !ft_isspace(args[i][j]))
-				ft_error(NULL, NULL);
+				ft_error(NULL, NULL, NULL);
 			j++;
 		}
 		i++;
@@ -72,7 +72,7 @@ void	ft_check_dups(t_stack *stack)
 		while (dup)
 		{
 			if (dup->value == now->value)
-				ft_error(NULL, stack);
+				ft_error(NULL, stack, NULL);
 			dup = dup->next;
 		}
 		now = now->next;
