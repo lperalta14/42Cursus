@@ -90,11 +90,10 @@ int	main(int argc, char **argv)
 	move = get_next_line(0);
 	while (move)
 	{
-		free(move);
 		if (!ft_execmv(move, a, b))
 			ft_error(NULL, a);
-		move = get_next_line(0);
 		free(move);
+		move = get_next_line(0);
 	}
 	if (ft_is_sorted(a) && b->size == 0)
 		write(1, "OK", 2);
