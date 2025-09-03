@@ -21,11 +21,11 @@ static t_node	*ft_new_node(int num)
 	if (!new)
 		return (NULL);
 	new->value = num;
-	new->index = -1;
-	new->pos = -1;
-	new->target = -1;
-	new->cost_a = 0;
-	new->cost_b = 0;
+	//new->index = -1;
+	//new->pos = -1;
+	//new->target = -1;
+	//new->cost_a = 0;
+	//new->cost_b = 0;
 	new->next = NULL;
 	return (new);
 }
