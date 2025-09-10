@@ -107,3 +107,9 @@ char	*get_next_line(int fd)
 	res = ft_clean_static(res);
 	return (line);
 }
+
+int main(void)
+{
+	get_next_line(0);
+	return (0);
+}

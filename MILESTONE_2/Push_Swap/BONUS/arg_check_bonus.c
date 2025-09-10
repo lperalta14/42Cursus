@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*																			*/
 /*														:::	  ::::::::   */
-/*   arg_check.c										:+:	  :+:	:+:   */
+/*   arg_check_bonus.c										:+:	  :+:	:+:   */
 /*													+:+ +:+		 +:+	 */
 /*   By: lperalta <lperalta@student.42.fr>		  #+#  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
@@ -22,13 +22,13 @@ int	ft_arg_check(int argc, char **argv)
 	ft_checkervalids(argv);
 	a = ft_calloc(sizeof(t_stack), 1);
 	if (!a)
-		ft_error(NULL, NULL);
+		ft_error(NULL, NULL, NULL);
 	b = ft_calloc(sizeof(t_stack), 1);
 	if (!b)
-		ft_error(NULL, a);
+		ft_error(NULL, a, NULL);
 	ft_get_arguments(argc, argv, a);
 	if (!a)
-		ft_error(NULL, b);
+		ft_error(NULL, NULL, b);
 	ft_check_dups(a);
 	return (0);
 }
@@ -37,7 +37,7 @@ int	ft_is_sorted(t_stack *stack_a)
 {
 	t_node	*this;
 
-	this = *(stack_a->stack);
+	this = stack_a->stack;
 	while (this->next)
 	{
 		if (this->value > this->next->value)
@@ -50,9 +50,9 @@ int	ft_is_sorted(t_stack *stack_a)
 int	ft_execmv(char *move, t_stack *a, t_stack *b)
 {
 	if (!ft_strcmp(move, "pa\n"))
-		ft_pa(a, b);
+		ft_pa(*a, *b);
 	else if (!ft_strcmp(move, "pb\n"))
-		ft_pb(a, b);
+		ft_pb(*a, *b);
 	else if (!ft_strcmp(move, "sa\n"))
 		ft_sa(a->stack);
 	else if (!ft_strcmp(move, "sb\n"))
@@ -86,12 +86,12 @@ int	main(int argc, char **argv)
 	ft_arg_check(argc, argv);
 	b = ft_calloc(sizeof(t_stack), 1);
 	if (!b)
-		ft_error(NULL, b);
+		ft_error(NULL, a, NULL);
 	move = get_next_line(0);
 	while (move)
 	{
 		if (!ft_execmv(move, a, b))
-			ft_error(NULL, a);
+			ft_error(NULL, a, b);
 		free(move);
 		move = get_next_line(0);
 	}

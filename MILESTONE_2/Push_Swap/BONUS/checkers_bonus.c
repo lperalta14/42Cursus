@@ -65,7 +65,7 @@ void	ft_check_dups(t_stack *stack)
 	t_node	*now;
 	t_node	*dup;
 
-	now = *stack->stack;
+	now = stack->stack;
 	while (now)
 	{
 		dup = now->next;

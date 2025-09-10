@@ -30,16 +30,16 @@ static t_node	*ft_new_node(int num)
 	return (new);
 }
 
-static void	ft_add_back_node(t_node **stack, t_node *new)
+static void	ft_add_back_node(t_node *stack, t_node *new)
 {
 	t_node	*tmp;
 
-	if (!*stack)
+	if (!stack)
 	{
-		*stack = new;
+		stack = new;
 		return ;
 	}
-	tmp = *stack;
+	tmp = stack;
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = new;

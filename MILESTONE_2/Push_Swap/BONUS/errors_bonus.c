@@ -19,7 +19,7 @@ void	ft_free_stack(t_stack *stack)
 
 	if (!stack)
 		return ;
-	temp = *stack->stack;
+	temp = stack->stack;
 	while (temp)
 	{
 		next = temp->next;

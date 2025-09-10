@@ -47,22 +47,22 @@ int		ft_valid_digit(char *str);
 void	ft_check_dups(t_stack *stack);
 int		ft_is_sorted(t_stack *a);
 //void	ft_swap(t_node **stack);
-void	ft_sa(t_node **a);
-void	ft_sb(t_node **b);
-void	ft_ss(t_node **a, t_node **b);
+void	ft_sa(t_node *a);
+void	ft_sb(t_node *b);
+void	ft_ss(t_node *a, t_node *b);
 
 //void	ft_push(t_node **dst, t_node **src);
-void	ft_pa(t_stack *a, t_stack *b);
-void	ft_pb(t_stack *a, t_stack *b);
+void	ft_pa(t_stack a, t_stack b);
+void	ft_pb(t_stack a, t_stack b);
 
 //void	ft_rotate(t_node **stack);
-void	ft_ra(t_node **a);
-void	ft_rb(t_node **b);
-void	ft_rr(t_node **a, t_node **b);
+void	ft_ra(t_node *a);
+void	ft_rb(t_node *b);
+void	ft_rr(t_node *a, t_node *b);
 
 //void	ft_reverse_rotate(t_node **stack);
-void	ft_rra(t_node **a);
-void	ft_rrb(t_node **b);
-void	ft_rrr(t_node **a, t_node **b);
+void	ft_rra(t_node *a);
+void	ft_rrb(t_node *b);
+void	ft_rrr(t_node *a, t_node *b);
 
 #endif
