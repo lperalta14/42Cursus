@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_replacechar.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lperalta <lperalta@student.42malaga.c      +#+  +:+       +#+        */
+/*   By: lperalta <lperalta@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 16:42:24 by lperalta          #+#    #+#             */
-/*   Updated: 2025/04/22 16:42:43 by lperalta         ###   ########.fr       */
+/*   Created: 2025-09-11 09:33:19 by lperalta          #+#    #+#             */
+/*   Updated: 2025-09-11 09:33:19 by lperalta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "../libft.h"
 
-size_t	ft_strlen(const char *s)
+char	*ft_replacechar(char *s, char a, char b)
 {
-	size_t	i;
+	int		i;
 
 	if (!s)
-		return (0);
+		return (NULL);
 	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	while (s[i])
+	{
+		if (s[i] == a)
+			s[i] = b;
+		i ++;
+	}
+	return(s);
 }

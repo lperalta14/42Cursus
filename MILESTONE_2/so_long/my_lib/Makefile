@@ -22,7 +22,8 @@ ft_lib/ft_strmapi.c ft_lib/ft_strrchr.c ft_lib/ft_striteri.c ft_lib/ft_strnstr.c
 ft_lib/ft_split.c $(PRINTF_SRCS) $(GNL_SRCS) $(UTILS_SRCS) $(BONUS_SRC)
 
 BONUS_SRC = ft_list/ft_lstnew.c ft_list/ft_lstadd_back.c ft_list/ft_lstadd_front.c ft_list/ft_lstclear.c \
-ft_list/ft_lstdelone.c ft_list/ft_lstlast.c ft_list/ft_lstmap.c ft_list/ft_lstsize.c ft_list/ft_lstiter.c
+ft_list/ft_lstdelone.c ft_list/ft_lstlast.c ft_list/ft_lstmap.c ft_list/ft_lstsize.c ft_list/ft_lstiter.c\
+ft_utils/ft_replacechar.c
 
 # Object files
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)

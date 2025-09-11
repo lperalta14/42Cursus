@@ -17,7 +17,7 @@ static void	ft_validchars(char buffer, t_long *game)
 {
 	if (buffer != '1' && buffer != '0' && buffer != '\n' &&
 		buffer != 'P' && buffer != 'E' && buffer != 'C')
-		ft_errors(NULL, "invalid maps. char invalid");
+		ft_errors(NULL, "invalid maps. char invalid\n", 1);
 	if (buffer == '\n')
 		game->map_lines ++;
 }
@@ -32,17 +32,16 @@ static void	ft_readmapsone(t_long *game, int fd)
 	{
 		bytes_read = read(fd, &buffer, 1);
 		if (bytes_read < 0)
-			ft_errors(NULL, "invalid maps. read error");
+			ft_errors(NULL, "invalid maps. read error", 0);
 		ft_validchars(buffer, game);
-		//game->maps_size ++;
 	}
 }
-void	ft_posac(t_long *game, int x, int y, char c)
+void	ft_get_pos(t_long *game, int x, int y, char c)
 {
 	if (c == 'P')
 	{
 		if (game->pcount >= 1)
-			ft_errors(game, "too many characters.");
+			ft_errors(game, "YOU CAN'T HANDLE ONE, WHY MORE?\n", 1);
 		else
 		{
 			game->pcount ++;
@@ -50,15 +49,24 @@ void	ft_posac(t_long *game, int x, int y, char c)
 			game->pos_p.y = y;
 		}
 	}
-	else
+	else if (c == 'E')
 	{
 		if (game->ecount >= 1)
-			ft_errors(game, "too many exits.");
+			ft_errors(game, "ONLY ONE EXIT, DUMMY\n", 1);
 		else
 		{
 			game->ecount ++;
 			game->pos_e.x = x;
 			game->pos_e.y = y;
+		}
+	}
+	else
+	{
+		{
+			game->ccount ++;
+			game->col = x; //realloc
+			game->col[game->ccount - 1].x = x;
+			game->col[game->ccount - 1].y = y;
 		}
 	}
 }
@@ -70,41 +78,56 @@ void	ft_validmaps(char *line, t_long *game, int y)
 	while(line[x])
 	{
 		if (line[x] == 'P')
-			ft_posac(game, x, y, 'P');
+			ft_get_pos(game, x, y, 'P');
 		if (line[x] == 'E')
-			ft_posac(game, x, y, 'E');
+			ft_get_pos(game, x, y, 'E');
 		if (line[x] == 'C')
 			game->ccount ++;
 		x ++;
 	}
-	printf("%d\n, lineas tamaño  %zu\n, linea actual", game->line_size, ft_strlen(line));
 	if (game->line_size != ft_strlen(line))
-		ft_errors(game, "invalid map. diferent size of line.");
+		ft_errors(game, "YUO DON'T KNOW HOW TO MAKE A RECTANGLE?\n", 1);
 }
-
-void	ft_readmaps(t_long *game, int fd, char *file)
+void	ft_mapscreate(t_long *game, int fd)
 {
-	int		y;
 	char	*line;
+	int		y;
 
-	ft_readmapsone(game, fd);
-	close(fd);
-	fd = open(file, O_RDONLY);
-	//bytes_read = read(fd, totalmap, game->maps_size);
 	y = 0;
-	game->map = malloc(sizeof(char *) * (game->map_lines + 1));
-	if (!game->map)
-		ft_errors(game, "alloc memory map failed.");
 	line = get_next_line(fd);
+	ft_replacechar(line, '\n', '\0');
 	game->line_size = ft_strlen(line);
-	printf("%d\n, lineas tamaño", game->line_size);
-	while (line && (y < game->map_lines))
+	while(line && (y <= game->map_lines))
 	{
 		game->map[y] = line;
+		ft_replacechar(line, '\n', '\0');
 		ft_validmaps(line, game, y);
 		line = get_next_line(fd);
 		y++;
 	}
-	printf("%d\n, lineas", game->map_lines);
+	if (game->ccount == 0)
+		ft_errors(game, "DON'T WANNA PLAY WITH ME?\n", 1);
 	game->map[game->map_lines] = NULL;
 }
+
+void	ft_check_extension(char *file)
+{
+	char	*ber;
+
+	ber = ft_strrchr(file, '.');
+	if (ft_strncmp(ber, ".ber", 4))
+		ft_errors(NULL, "WRONG EXTENSION, IDIOT\n", 1);
+}
+
+void	ft_readmaps(t_long *game, int fd, char *file)
+{
+	ft_check_extension(file);
+	ft_readmapsone(game, fd);
+	close(fd);
+	fd = open(file, O_RDONLY);
+	game->map = malloc(sizeof(char *) * (game->map_lines + 1));
+	if (!game->map)
+		ft_errors(game, "NO MEMORY, DUMMY", 0);
+	ft_mapscreate(game, fd);
+}
+

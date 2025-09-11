@@ -11,20 +11,20 @@
 /* ************************************************************************** */
 
 #include "./includes/so_long.h"
-#include "my_lib/libft.h"
+
 int	main(int argc, char **argv)
 {
 	char	*line;
 	int		fd;
-	t_long	game; // quitar * y no reservar memoria
+	t_long	game;
 
 	if (argc != 2)
-		ft_errors(NULL, "too many arguments.");
+		ft_errors(NULL, "ARE YOU IDIOT? ONLY 2 ARGUMENTS\n", 1);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		ft_errors(&game, "open function failed.");
+		ft_errors(NULL, "CAN'T OPEN THIS SHIT!", 0);
 	ft_bzero(&game, (sizeof (t_long) * 1));
 	ft_readmaps(&game, fd, argv[1]);
 	printf("lines: %d\nline_size: %d\n Collectables: %d\n", game.map_lines, game.line_size, game.ccount);
-	//line = get_next_line(fd);
+	free(game.map);
 }

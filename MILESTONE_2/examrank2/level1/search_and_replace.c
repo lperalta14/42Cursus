@@ -13,21 +13,20 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-char	*ft_search(char *s, char *a, char *b)
+char	*ft_replacechar(char *s, char a, char b)
 {
-	char	*str = s;
 	int		i;
 
+	if (!s)
+		return ;
 	i = 0;
-	while(s[i])
+	while (s[i])
 	{
 		if (s[i] == a)
-			str[i] = b;
-		str[i] = s[i];
-		i++;
+			s[i] = b;
+		i ++;
 	}
-	str[i] = 0;
-	return(str);
+	return(s);
 }
 
 int main(int argc, char **argv)
@@ -39,3 +38,18 @@ int main(int argc, char **argv)
 	return (0);
 	
 }
+/*void	ft_replace_char(char *s, char oldc, char newc)
+{
+	int	i;
+
+	if (!s)
+		return ;
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == oldc)
+			s[i] = newc;
+		i++;
+	}
+}*/
+

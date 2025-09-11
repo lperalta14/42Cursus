@@ -12,11 +12,10 @@
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# include<unistd.h>
-# include<stdlib.h>
-# include<stdio.h>
-# include<limits.h>
-# include<fcntl.h>
+# include "../my_lib/libft.h"
+# include <stdio.h>
+# include <limits.h>
+# include <fcntl.h>
 
 typedef struct s_point
 {
@@ -28,7 +27,6 @@ typedef struct s_long
 {
 	void	*mlx;
 	char	**map;
-	int		fd;
 	int		line_size;
 	int		map_lines;
 	int		ccount;
@@ -36,11 +34,13 @@ typedef struct s_long
 	int		ecount;
 	t_point	pos_p;
 	t_point	pos_e;
+	t_point *col;
+	t_point	*wall;
 } t_long;
 
 // Parseo
 void	ft_readmaps(t_long *map, int fd, char *file);
 
 // Errors
-void	ft_errors(t_long *map, char *msg);
+void	ft_errors(t_long *map, char *msg, int mod);
 #endif

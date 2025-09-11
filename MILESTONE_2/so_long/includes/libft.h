@@ -110,5 +110,6 @@ int		ft_atoi_base(const char *str, int str_base);
 long	ft_atolints(const char *nptr);
 void	ft_putnbr(int n);
 int		ft_strcmp(const char *s1, const char *s2);
+char	*ft_replacechar(char *s, char a, char b);
 
 #endif

@@ -20,6 +20,8 @@ static void	ft_freemap(char **map)
 {
 	int	i;
 
+	if (!map)
+		return ;
 	i = 0;
 	while(map[i])
 	{
@@ -29,9 +31,23 @@ static void	ft_freemap(char **map)
 	free(map);
 	map = NULL;
 }
-void	ft_errors(t_long *game, char *msg)
+static void	ft_free_point(char *wall, char *col)
 {
-	ft_freemap(game->map);
-	perror(msg);
-	exit(2);
+	if (wall)
+		free(wall);
+	if (col)
+		free(col);
+}
+
+void	ft_errors(t_long *game, char *msg, int mod)
+{
+	if (game && game->map)
+		ft_freemap(game->map);
+	if (game && (game->wall || game->col))
+		ft_free_point(game->wall, game->col);
+	if(mod)
+		ft_putstr_fd(msg, 2);
+	else
+		perror(msg);
+	exit(1);
 }
