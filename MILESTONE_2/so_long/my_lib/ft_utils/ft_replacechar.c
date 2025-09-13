@@ -25,5 +25,5 @@ char	*ft_replacechar(char *s, char a, char b)
 			s[i] = b;
 		i ++;
 	}
-	return(s);
+	return(s) ;
 }

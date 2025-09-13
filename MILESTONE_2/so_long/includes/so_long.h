@@ -36,7 +36,7 @@ typedef struct s_long
 	t_point	pos_e;
 	t_point *col;
 	t_point	*wall;
-} t_long;
+} t_long ;
 
 // Parseo
 void	ft_readmaps(t_long *map, int fd, char *file);

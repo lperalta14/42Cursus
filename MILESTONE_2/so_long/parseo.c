@@ -20,6 +20,8 @@ static void	ft_validchars(char buffer, t_long *game)
 		ft_errors(NULL, "invalid maps. char invalid\n", 1);
 	if (buffer == '\n')
 		game->map_lines ++;
+	else if (buffer == 'C')
+		game->ccount ++;
 }
 static void	ft_readmapsone(t_long *game, int fd)
 {
@@ -36,7 +38,7 @@ static void	ft_readmapsone(t_long *game, int fd)
 		ft_validchars(buffer, game);
 	}
 }
-void	ft_get_pos(t_long *game, int x, int y, char c)
+void	ft_get_pos2(t_long *game, int x, int y, char c)
 {
 	if (c == 'P')
 	{
@@ -60,11 +62,18 @@ void	ft_get_pos(t_long *game, int x, int y, char c)
 			game->pos_e.y = y;
 		}
 	}
+}
+
+void	ft_get_pos1(t_long *game, int x, int y, char c)
+{
+	if (c == 'P' || c == 'E')
+	{
+		void	ft_get_pos2(t_long *game, int x, int y, char c);
+	}
 	else
 	{
 		{
-			game->ccount ++;
-			game->col = x; //realloc
+			//game->col = x; //realloc
 			game->col[game->ccount - 1].x = x;
 			game->col[game->ccount - 1].y = y;
 		}
@@ -78,11 +87,11 @@ void	ft_validmaps(char *line, t_long *game, int y)
 	while(line[x])
 	{
 		if (line[x] == 'P')
-			ft_get_pos(game, x, y, 'P');
+			ft_get_pos1(game, x, y, 'P');
 		if (line[x] == 'E')
-			ft_get_pos(game, x, y, 'E');
+			ft_get_pos1(game, x, y, 'E');
 		if (line[x] == 'C')
-			game->ccount ++;
+			ft_get_pos1(game, x, y, 'C');
 		x ++;
 	}
 	if (game->line_size != ft_strlen(line))
@@ -115,10 +124,31 @@ void	ft_check_extension(char *file)
 	char	*ber;
 
 	ber = ft_strrchr(file, '.');
-	if (ft_strncmp(ber, ".ber", 4))
+	if (ft_strlen(ber) != 4 || ft_strncmp(ber, ".ber", 4)) //entra en segf cuando la extension es .berto
 		ft_errors(NULL, "WRONG EXTENSION, IDIOT\n", 1);
 }
+void	ft_check_walls(t_long *game)
+{
+	int		y;
+	int		x;
 
+	y = 0;
+	while (game->map[y])
+	{
+		x = 0;
+		while (game->map[y][x])
+		{
+			if (y == 1 && (game->map[y][x] != '1'))
+				ft_errors(game, "MAP IS OPEN, USELESS\n", 1);
+			else if (y == game->map_lines - 1 && (game->map[y][x] != '1'))
+				ft_errors(game, "MAP IS OPEN, USELESS\n", 1);
+			if ((x == 0 || x == game->line_size-1) && (game->map[y][x] != 1))
+				ft_errors(game, "MAP IS OPEN, USELESS\n", 1);
+			x ++;
+		}
+		y ++;
+	}
+}
 void	ft_readmaps(t_long *game, int fd, char *file)
 {
 	ft_check_extension(file);
@@ -129,5 +159,5 @@ void	ft_readmaps(t_long *game, int fd, char *file)
 	if (!game->map)
 		ft_errors(game, "NO MEMORY, DUMMY", 0);
 	ft_mapscreate(game, fd);
+	ft_check_walls(game);
 }
-

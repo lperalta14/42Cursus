@@ -31,7 +31,7 @@ static void	ft_freemap(char **map)
 	free(map);
 	map = NULL;
 }
-static void	ft_free_point(char *wall, char *col)
+static void	ft_free_point(t_point *wall, t_point *col)
 {
 	if (wall)
 		free(wall);
