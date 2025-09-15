@@ -30,12 +30,12 @@ typedef struct s_long
 	int		line_size;
 	int		map_lines;
 	int		ccount;
+	int		cindex;
 	int		pcount;
 	int		ecount;
 	t_point	pos_p;
 	t_point	pos_e;
 	t_point *col;
-	t_point	*wall;
 } t_long ;
 
 // Parseo
@@ -43,4 +43,8 @@ void	ft_readmaps(t_long *map, int fd, char *file);
 
 // Errors
 void	ft_errors(t_long *map, char *msg, int mod);
+
+// Free
+void	ft_freemem(t_long *game);
+
 #endif

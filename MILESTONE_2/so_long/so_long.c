@@ -14,7 +14,6 @@
 
 int	main(int argc, char **argv)
 {
-	char	*line;
 	int		fd;
 	t_long	game;
 
@@ -26,5 +25,6 @@ int	main(int argc, char **argv)
 	ft_bzero(&game, (sizeof (t_long) * 1));
 	ft_readmaps(&game, fd, argv[1]);
 	printf("lines: %d\nline_size: %d\n Collectables: %d\n", game.map_lines, game.line_size, game.ccount);
-	free(game.map);
+	ft_freemem(&game);
+	return(0);
 }
