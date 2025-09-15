@@ -6,20 +6,22 @@
 /*   By: lperalta <lperalta@student.42malaga.c      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 13:57:14 by lperalta          #+#    #+#             */
-/*   Updated: 2025/05/05 14:11:43 by lperalta         ###   ########.fr       */
+/*   Updated: 2025/09/15 16:27:08 by lperalta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-void	ft_putnbr(int n)
+void	ft_putnbr(int n, int fd)
 {
 	char	result;
 
+	if (fd < 0)
+		return ;
 	result = 0;
 	if (n == -2147483648)
 	{
-		write(1, "-2147483648", 11);
+		write(fd, "-2147483648", 11);
 	}
 	if (n < 0)
 	{
@@ -29,4 +31,5 @@ void	ft_putnbr(int n)
 	if (n >= 10)
 		ft_putnbr(n / 10);
 	result = (n % 10) + '0';
+	write(fd, &result, 1);
 }
