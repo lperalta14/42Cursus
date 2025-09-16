@@ -16,7 +16,7 @@
 {
 	free(game);
 }*/
-static void	ft_freemap(char **map)
+void	ft_freemap(char **map)
 {
 	int	i;
 

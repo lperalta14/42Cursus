@@ -39,12 +39,22 @@ typedef struct s_long
 } t_long ;
 
 // Parseo
-void	ft_readmaps(t_long *map, int fd, char *file);
+void	ft_check_extension(char *file);
+void	ft_validchars(char buffer, t_long *game);
+void	ft_validmaps(t_long *game, int y);
+void	ft_check_walls(t_long *game);
+
+// Map
+void	ft_readmapsone(t_long *game, int fd);
+void	ft_get_pos1(t_long *game, int x, int y, char c);
+void	ft_mapscreate(t_long *game, int fd);
+void	ft_check_path(t_long *game);
 
 // Errors
 void	ft_errors(t_long *map, char *msg, int mod);
 
 // Free
 void	ft_freemem(t_long *game);
+void	ft_freemap(char **map);
 
 #endif

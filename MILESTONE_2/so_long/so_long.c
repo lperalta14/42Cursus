@@ -12,6 +12,24 @@
 
 #include "./includes/so_long.h"
 
+static void	ft_readmaps(t_long *game, int fd, char *file)
+{
+	ft_check_extension(file);
+	ft_readmapsone(game, fd);
+	close(fd);
+	fd = open(file, O_RDONLY);
+	game->map = malloc(sizeof(char *) * (game->map_lines + 1));
+	if (!game->map)
+		ft_errors(game,"NO MEMORY, DUMMY", 0);
+	game->map[game->map_lines] = NULL;
+	game->col = malloc((sizeof(t_point) * (game->ccount)));
+	if(!game->col)
+		ft_errors(game,"NO MEMORY, DUMMY", 0);
+	ft_mapscreate(game, fd);
+	ft_check_walls(game);
+	ft_check_path(game);
+}
+
 int	main(int argc, char **argv)
 {
 	int		fd;

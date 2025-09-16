@@ -5,7 +5,7 @@ NAME = so_long
 HEADER = so_long.h
 
 # Sources
-SRCS = parseo.c so_long.c error.c flood_fill.c 
+SRCS = parseo.c so_long.c error.c flood_fill.c map.c
 # Objects directory
 OBJ_DIR = obj
 
