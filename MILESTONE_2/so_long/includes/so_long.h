@@ -38,6 +38,14 @@ typedef struct s_long
 	t_point *col;
 } t_long ;
 
+/*typedef struct mlx_key_data
+{
+	keys_t		key;
+	action_t	action;
+	int32_t		os_key;
+	modifier_key_t	modifier;
+}	mlx_key_data_t;*/
+
 // Parseo
 void	ft_check_extension(char *file);
 void	ft_validchars(char buffer, t_long *game);

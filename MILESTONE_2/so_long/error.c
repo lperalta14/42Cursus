@@ -12,10 +12,6 @@
 
 #include "./includes/so_long.h"
 
-/*static void	ft_freestruct(t_long *game)
-{
-	free(game);
-}*/
 void	ft_freemap(char **map)
 {
 	int	i;
@@ -31,11 +27,6 @@ void	ft_freemap(char **map)
 	free(map);
 	map = NULL;
 }
-/*static void	ft_free_line(char *line)
-{
-	free(line);
-	line = NULL;
-}*/
 
 static void	ft_free_point(t_point *col)
 {
@@ -46,8 +37,6 @@ static void	ft_free_point(t_point *col)
 
 void	ft_errors(t_long *game, char *msg, int mod)
 {
-//	if (line)
-//		ft_free_line(line);
 	if (game && game->map)
 		ft_freemap(game->map);
 	if (game && game->col)
