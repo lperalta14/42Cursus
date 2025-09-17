@@ -30,6 +30,18 @@ static void	ft_readmaps(t_long *game, int fd, char *file)
 	ft_check_path(game);
 }
 
+/*
+        __
+     __/o \_
+     \____  \
+         /   \
+   __   //\   \
+__/o \-//--\   \_/
+\____  ___  \  |
+     ||   \ |\ |
+    _||   _||_||
+*/
+
 int	main(int argc, char **argv)
 {
 	int		fd;
