@@ -13,6 +13,7 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 # include "../my_lib/libft.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 # include <stdio.h>
 # include <limits.h>
 # include <fcntl.h>
@@ -57,6 +58,9 @@ void	ft_readmapsone(t_long *game, int fd);
 void	ft_get_pos1(t_long *game, int x, int y, char c);
 void	ft_mapscreate(t_long *game, int fd);
 void	ft_check_path(t_long *game);
+
+// Win
+void	ft_init_win(t_long *game);
 
 // Errors
 void	ft_errors(t_long *map, char *msg, int mod);

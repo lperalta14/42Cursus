@@ -22,7 +22,7 @@ static void	ft_readmaps(t_long *game, int fd, char *file)
 	if (!game->map)
 		ft_errors(game,"NO MEMORY, DUMMY", 0);
 	game->map[game->map_lines] = NULL;
-	game->col = malloc((sizeof(t_point) * (game->ccount)));
+	game->col = malloc((sizeof(t_point) * game->ccount));
 	if(!game->col)
 		ft_errors(game,"NO MEMORY, DUMMY", 0);
 	ft_mapscreate(game, fd);
@@ -42,7 +42,10 @@ int	main(int argc, char **argv)
 		ft_errors(NULL, "CAN'T OPEN THIS SHIT!", 0);
 	ft_bzero(&game, (sizeof (t_long) * 1));
 	ft_readmaps(&game, fd, argv[1]);
+	ft_init_win(&game);
+	mlx_loop(game.mlx);
 	printf("lines: %d\nline_size: %d\n Collectables: %d\n", game.map_lines, game.line_size, game.ccount);
+	mlx_terminate(game.mlx);
 	ft_freemem(&game);
 	return(0);
 }

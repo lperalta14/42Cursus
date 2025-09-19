@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/lperalta/42-Cursus-git/MILESTONE_2/so_long",
-      "program": "/home/lperalta/42-Cursus-git/MILESTONE_2/so_long/build/Debug/outDebug",
+      "cwd": "/home/lperalta/42-Cursus/MILESTONE_2/so_long",
+      "program": "/home/lperalta/42-Cursus/MILESTONE_2/so_long/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
