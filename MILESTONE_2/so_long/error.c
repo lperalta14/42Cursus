@@ -60,8 +60,8 @@ void	ft_errors(t_long *game, char *msg, int mod)
 {
 	if (game && game->map)
 		ft_freemap(game->map);
-	if (game && game->col)
-		free(game->col);
+	//if (game && game->col)
+	//	free(game->col);
 	if (game && game->textures)
 		ft_free_textures(game->textures);
 	if (game && game->images)
@@ -77,8 +77,8 @@ void	ft_freemem(t_long *game)
 {
 	if (game && game->map)
 		ft_freemap(game->map);
-	if (game && (game->col))
-		free(game->col);
+	//if (game && (game->col))
+	//	free(game->col);
 	if (game && game->textures)
 		ft_free_textures(game->textures);
 	if (game && game->images)

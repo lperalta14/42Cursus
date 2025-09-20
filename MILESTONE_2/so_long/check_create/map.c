@@ -27,7 +27,7 @@ void	ft_readmapsone(t_long *game, int fd)
 		ft_validchars(buffer, game);
 	}
 }
-static void	ft_get_pos2(t_long *game, int x, int y, char c)
+void	ft_get_pos1(t_long *game, int x, int y, char c)
 {
 	if (c == 'P')
 	{
@@ -53,7 +53,7 @@ static void	ft_get_pos2(t_long *game, int x, int y, char c)
 	}
 }
 
-void	ft_get_pos1(t_long *game, int x, int y, char c)
+/*void	ft_get_pos1(t_long *game, int x, int y, char c)
 {
 	if (c == 'P' || c == 'E')
 	{
@@ -67,7 +67,7 @@ void	ft_get_pos1(t_long *game, int x, int y, char c)
 			game->cindex ++;
 		}
 	}
-}
+}*/
 
 void	ft_mapscreate(t_long *game, int fd)
 {

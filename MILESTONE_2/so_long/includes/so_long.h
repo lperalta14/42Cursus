@@ -49,14 +49,14 @@ typedef struct s_long
 	int		line_size;
 	int		map_lines;
 	int		ccount;
-	int		cindex;
+	//int		cindex;
 	int		pcount;
 	int		ecount;
 	t_textures	*textures;
 	t_images	*images;
 	t_point	pos_p;
 	t_point	pos_e;
-	t_point *col;
+	//t_point *col;
 } t_long ;
 
 /*typedef struct mlx_key_data

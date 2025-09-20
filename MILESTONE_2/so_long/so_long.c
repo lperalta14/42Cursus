@@ -44,9 +44,9 @@ static void	ft_readmaps(t_long *game, int fd, char *file)
 	if (!game->map)
 		ft_errors(game,"NO MEMORY, DUMMY", 0);
 	game->map[game->map_lines] = NULL;
-	game->col = malloc((sizeof(t_point) * game->ccount));
-	if(!game->col)
-		ft_errors(game,"NO MEMORY, DUMMY", 0);
+	//game->col = malloc((sizeof(t_point) * game->ccount));
+	//if(!game->col)
+		//ft_errors(game,"NO MEMORY, DUMMY", 0);
 	ft_mapscreate(game, fd);
 	ft_check_walls(game);
 	ft_check_path(game);
