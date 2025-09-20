@@ -26,20 +26,20 @@ typedef struct s_point
 
 typedef struct s_textures
 {
-	mlx_texture_t   *wall;
-	mlx_texture_t   *floor;
-	mlx_texture_t   *player;
-	mlx_texture_t   *exit;
-	mlx_texture_t   *collectible;
+	mlx_texture_t	*wall;
+	mlx_texture_t	*floor;
+	mlx_texture_t	*player;
+	mlx_texture_t	*exit;
+	mlx_texture_t	*collectible;
 }	t_textures;
 
 typedef struct s_images
 {
-	mlx_image_t *wall;
-	mlx_image_t *floor;
-	mlx_image_t *player;
-	mlx_image_t *exit;
-	mlx_image_t *collectible;
+	mlx_image_t	*wall;
+	mlx_image_t	*floor;
+	mlx_image_t	*player;
+	mlx_image_t	*exit;
+	mlx_image_t	*collectible;
 }	t_images;
 
 typedef struct s_long
@@ -81,6 +81,8 @@ void	ft_check_path(t_long *game);
 
 // Win
 void	ft_init_win(t_long *game);
+void	ft_texture_init(t_long *game);
+void	ft_images_init(t_long *game);
 
 // Errors
 void	ft_errors(t_long *map, char *msg, int mod);
@@ -88,5 +90,7 @@ void	ft_errors(t_long *map, char *msg, int mod);
 // Free
 void	ft_freemem(t_long *game);
 void	ft_freemap(char **map);
+void	ft_free_textures(t_textures *textures);
+void	ft_free_images(t_long *game);
 
 #endif

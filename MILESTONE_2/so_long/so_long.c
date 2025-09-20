@@ -23,11 +23,11 @@
 		animaciones, actualizar score.
 	}
 */
-static void	so_long(t_long *game)
+static void	ft_so_long(t_long *game)
 {
 	ft_init_win(game);
 	ft_texture_init(game);
-	//mlx_image_t *
+	ft_images_init(game);
 	//render
 	//hooks(mlx_key_hook , mlx_loop_hook)
 	mlx_loop(game->mlx);
@@ -64,6 +64,7 @@ int	main(int argc, char **argv)
 		ft_errors(NULL, "CAN'T OPEN THIS SHIT!", 0);
 	ft_bzero(&game, (sizeof (t_long) * 1));
 	ft_readmaps(&game, fd, argv[1]);
+	ft_so_long(&game);
 	printf("lines: %d\nline_size: %d\n Collectables: %d\n", game.map_lines, game.line_size, game.ccount);
 	ft_freemem(&game);
 	return(0);
