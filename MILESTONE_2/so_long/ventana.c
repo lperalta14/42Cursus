@@ -26,3 +26,16 @@ void	ft_init_win(t_long *game)
 	if(size_x <= (game->line_size * 64) || size_y <= (game->map_lines * 64))
 		ft_errors(game, "TOO BIG, TOO HARD", 1);
 }
+void	ft_texture_init(t_long *game)
+{
+	game->textures->wall = mlx_load_png("path/imagen.png");
+	game->textures->floor = mlx_load_png("path/imagen.png");
+	game->textures->collectible = mlx_load_png("path/imagen.png");
+	game->textures->exit = mlx_load_png("path/imagen.png");
+	game->textures->player = mlx_load_png("path/imagen.png");
+}
+
+void	ft_images_init(t_long *game)
+{
+	game->images->wall = mlx_texture_to_image(game->mlx, game->textures->wall);
+}

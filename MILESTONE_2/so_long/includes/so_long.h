@@ -24,6 +24,24 @@ typedef struct s_point
 	int y;
 }t_point;
 
+typedef struct s_textures
+{
+	mlx_texture_t   *wall;
+	mlx_texture_t   *floor;
+	mlx_texture_t   *player;
+	mlx_texture_t   *exit;
+	mlx_texture_t   *collectible;
+}	t_textures;
+
+typedef struct s_images
+{
+	mlx_image_t *wall;
+	mlx_image_t *floor;
+	mlx_image_t *player;
+	mlx_image_t *exit;
+	mlx_image_t *collectible;
+}	t_images;
+
 typedef struct s_long
 {
 	void	*mlx;
@@ -34,6 +52,8 @@ typedef struct s_long
 	int		cindex;
 	int		pcount;
 	int		ecount;
+	t_textures	*textures;
+	t_images	*images;
 	t_point	pos_p;
 	t_point	pos_e;
 	t_point *col;
