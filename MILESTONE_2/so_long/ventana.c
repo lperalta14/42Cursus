@@ -26,22 +26,23 @@ void	ft_init_win(t_long *game)
 	if(size_x <= (game->line_size * 64) || size_y <= (game->map_lines * 64))
 		ft_errors(game, "TOO BIG, TOO HARD", 1);
 }
+
 void	ft_texture_init(t_long *game)
 {
-	game->textures->wall = mlx_load_png("path/imagen.png");
-	if (!game->textures->wall)
+	game->textures.wall = mlx_load_png("/home/lperalta/42-Cursus/MILESTONE_2/so_long/wallsA.png");
+	if (!game->textures.wall)
 		ft_errors(game, "WALL TEXTURE IS A MESS", 1);
-	game->textures->floor = mlx_load_png("path/imagen.png");
-	if (!game->textures->floor)
+	game->textures.floor = mlx_load_png("/home/lperalta/42-Cursus/MILESTONE_2/so_long/floor.png");
+	if (!game->textures.floor)
 		ft_errors(game, "FLOOR TEXTURE IS A MESS", 1);
-	game->textures->collectible = mlx_load_png("path/imagen.png");
-	if (!game->textures->collectible)
+	game->textures.collectible = mlx_load_png("/home/lperalta/42-Cursus/MILESTONE_2/so_long/collec.png");
+	if (!game->textures.collectible)
 		ft_errors(game, "COLLECT TEXTURE IS A MESS", 1);
-	game->textures->exit = mlx_load_png("path/imagen.png");
-	if (!game->textures->exit)
+	game->textures.exit = mlx_load_png("/home/lperalta/42-Cursus/MILESTONE_2/so_long/exitB.png");
+	if (!game->textures.exit)
 		ft_errors(game, "EXIT TEXTURE IS A MESS", 1);
-	game->textures->player = mlx_load_png("path/imagen.png");
-	if (!game->textures->player)
+	game->textures.player = mlx_load_png("/home/lperalta/42-Cursus/MILESTONE_2/so_long/player.png");
+	if (!game->textures.player)
 		ft_errors(game, "PLAYER TEXTURE IS A MESS", 1);
 }
 /*void	ft_delete_texture(t_long *game)
@@ -55,23 +56,69 @@ void	ft_texture_init(t_long *game)
 
 void	ft_images_init(t_long *game)
 {
-	game->images->wall = mlx_texture_to_image(game->mlx, game->textures->wall);
-	if(!game->images->wall)
+	game->images.wall = mlx_texture_to_image(game->mlx, game->textures.wall);
+	if(!game->images.wall)
 		ft_errors(game, "WALL IMAGE IS A MESS", 1);
-	game->images->floor = mlx_texture_to_image(game->mlx, game->textures->floor);
-	if(!game->images->floor)
+	mlx_resize_image(game->images.wall, 64, 64);
+	game->images.floor = mlx_texture_to_image(game->mlx, game->textures.floor);
+	if(!game->images.floor)
 		ft_errors(game, "FLOOR IMAGE IS A MESS", 1);
-	game->images->exit = mlx_texture_to_image(game->mlx, game->textures->exit);
-	if(!game->images->exit)
+	game->images.exit = mlx_texture_to_image(game->mlx, game->textures.exit);
+	if(!game->images.exit)
 		ft_errors(game, "EXIT IMAGE IS A MESS", 1);
-	game->images->player = mlx_texture_to_image(game->mlx, game->textures->player);
-	if(!game->images->player)
+	game->images.player = mlx_texture_to_image(game->mlx, game->textures.player);
+	if(!game->images.player)
 		ft_errors(game, "PLAYER IMAGE IS A MESS", 1);
-	game->images->collectible = mlx_texture_to_image(game->mlx, game->textures->collectible);
-	if(!game->images->collectible)
+	mlx_resize_image(game->images.player, 64, 64);
+	game->images.collectible = mlx_texture_to_image(game->mlx, game->textures.collectible);
+	if(!game->images.collectible)
 		ft_errors(game, "COLLECT IMAGE IS A MESS", 1);
 }
+void	ft_ft_render_base(t_long *game)
+{
+	int	y;
+	int	x;
 
+	y = 0;
+	while (y < game->map_lines)
+	{
+		x = 0;
+		while(x < game->line_size)
+		{
+			if (game->map[y][x] == '1')
+				mlx_image_to_window(game->mlx, game->images.wall, (x * 64), (y * 64));
+			else
+				mlx_image_to_window(game->mlx, game->images.floor, (x * 64), (y * 64));
+			x++;
+		}
+		y++;
+	}
+}
+
+void	ft_render_dynamic(t_long *game)
+{
+	{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (y < game->map_lines)
+	{
+		x = 0;
+		while(x < game->line_size)
+		{
+			if (game->map[y][x] == 'P')
+				mlx_image_to_window(game->mlx, game->images.player, (x * 64), (y * 64));
+			else if (game->map[y][x] == 'C')
+				mlx_image_to_window(game->mlx, game->images.collectible, (x * 64), (y * 64));
+			else if (game->map[y][x] == 'E')
+				mlx_image_to_window(game->mlx, game->images.exit, (x * 64), (y * 64));
+			x++;
+		}
+		y++;
+	}
+}
+}
 /*void	ft_delete_images(t_long *game)
 {
 	mlx_delete_image(game->mlx , game->images->wall);

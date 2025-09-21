@@ -28,9 +28,11 @@ static void	ft_so_long(t_long *game)
 	ft_init_win(game);
 	ft_texture_init(game);
 	ft_images_init(game);
-	//render
+	ft_ft_render_base(game);
+	ft_render_dynamic(game);
 	//hooks(mlx_key_hook , mlx_loop_hook)
 	mlx_loop(game->mlx);
+	ft_freemem(game);
 	mlx_terminate(game->mlx);
 }
 
@@ -44,9 +46,6 @@ static void	ft_readmaps(t_long *game, int fd, char *file)
 	if (!game->map)
 		ft_errors(game,"NO MEMORY, DUMMY", 0);
 	game->map[game->map_lines] = NULL;
-	//game->col = malloc((sizeof(t_point) * game->ccount));
-	//if(!game->col)
-		//ft_errors(game,"NO MEMORY, DUMMY", 0);
 	ft_mapscreate(game, fd);
 	ft_check_walls(game);
 	ft_check_path(game);
@@ -66,6 +65,5 @@ int	main(int argc, char **argv)
 	ft_readmaps(&game, fd, argv[1]);
 	ft_so_long(&game);
 	printf("lines: %d\nline_size: %d\n Collectables: %d\n", game.map_lines, game.line_size, game.ccount);
-	ft_freemem(&game);
 	return(0);
 }

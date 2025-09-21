@@ -52,8 +52,8 @@ typedef struct s_long
 	//int		cindex;
 	int		pcount;
 	int		ecount;
-	t_textures	*textures;
-	t_images	*images;
+	t_textures	textures;
+	t_images	images;
 	t_point	pos_p;
 	t_point	pos_e;
 	//t_point *col;
@@ -78,6 +78,8 @@ void	ft_readmapsone(t_long *game, int fd);
 void	ft_get_pos1(t_long *game, int x, int y, char c);
 void	ft_mapscreate(t_long *game, int fd);
 void	ft_check_path(t_long *game);
+void	ft_ft_render_base(t_long *game);
+void	ft_render_dynamic(t_long *game);
 
 // Win
 void	ft_init_win(t_long *game);
