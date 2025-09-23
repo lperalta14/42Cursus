@@ -86,29 +86,59 @@ static void	ft_render_base(t_long *game)
 	}
 }
 
+static void	ft_drawplayc(t_long *game, int *c, int x , int y)
+{
+	if (game->map[y][x] == 'P')
+	{
+		mlx_image_to_window(game->mlx, game->images.player, (x * 64), (y * 64));
+		game->pos_p.x = x;
+		game->pos_p.y = y;
+	}
+	else if (game->map[y][x] == 'C')
+	{
+		game->collec[*c].instance_id = mlx_image_to_window(game->mlx, game->images.collectible, (x * 64), (y * 64));
+		game->collec[*c].x = x;
+		game->collec[*c].y = y;
+		*c -= 1;
+	}
+}
+
 static void	ft_render_dynamic(t_long *game)
 {
-	{
 	int	y;
 	int	x;
+	int	c;
 
+	c = (game->ccount - 1);
 	y = 0;
 	while (y < game->map_lines)
 	{
 		x = 0;
 		while(x < game->line_size)
 		{
-			if (game->map[y][x] == 'P')
+			if (game->map[y][x] == 'P' || game->map[y][x] =='C')
+			{
+				ft_drawplayc(game, &c, x , y);
+			}
+
+			/*if (game->map[y][x] == 'P')
+			{
 				mlx_image_to_window(game->mlx, game->images.player, (x * 64), (y * 64));
+				game->pos_p.x = x;
+				game->pos_p.y = y;
+			}
 			else if (game->map[y][x] == 'C')
-				mlx_image_to_window(game->mlx, game->images.collectible, (x * 64), (y * 64));
+			{
+				game->collec->instance_id = mlx_image_to_window(game->mlx, game->images.collectible, (x * 64), (y * 64));
+				game->collec->x = x;
+				game->collec->y = y;			
+			}*/
 			else if (game->map[y][x] == 'E')
 				mlx_image_to_window(game->mlx, game->images.exit, (x * 64), (y * 64));
 			x++;
 		}
 		y++;
 	}
-}
 }
 
 void	ft_drawmap(t_long *game)

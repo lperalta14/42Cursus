@@ -36,21 +36,21 @@ void	ft_close_hook(void *param)
 	t_long	*game;
 
 	game = (t_long *)param;
-	ft_freemem(game);
+	//ft_freemem(game);
 	mlx_close_window(game->mlx);
 }
 
-void	ft_loop_hook(void *param)
+/*void	ft_loop_hook(void *param)
 {
 	t_long *game = (t_long *)param;
 
 	// ejemplo: actualizar contador de pasos en pantalla
 	// ft_update_score(game);
-}
+}*/
 
 void	ft_init_hooks(t_long *game)
 {
 	mlx_key_hook(game->mlx, &ft_key_hook, game);
-	mlx_loop_hook(game->mlx, &ft_loop_hook, game);
+	//mlx_loop_hook(game->mlx, &ft_loop_hook, game);
 	mlx_close_hook(game->mlx, &ft_close_hook, game);
 }

@@ -82,8 +82,6 @@ void	ft_freemem(t_long *game)
 {
 	if (game && game->map)
 		ft_freemap(game->map);
-	//if (game && (game->col))
-	//	free(game->col);
 	if (game)
 		ft_free_textures(&game->textures);
 	if (game)

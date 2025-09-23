@@ -18,17 +18,12 @@
 # include <limits.h>
 # include <fcntl.h>
 
-/*#define TRUE 1
-#define FALSE 0
-typedef int t_bool;
-
 typedef struct s_collec
 {
 	int		x;
 	int		y;
 	int32_t	instance_id;
-	t_bool	collec;
-}	t_collec;*/
+}	t_collec;
 
 typedef struct s_point
 {
@@ -61,14 +56,16 @@ typedef struct s_long
 	int			line_size;
 	int			map_lines;
 	int			ccount;
-	//int		cindex;
+	int			cindex;
 	int			pcount;
 	int			ecount;
-	//t_collec	*collec;
+	int			move;
+	t_collec	*collec;
 	t_textures	textures;
 	t_images	images;
 	t_point		pos_p;
 	t_point		pos_e;
+	mlx_image_t	*player_inst;
 	//t_point *col;
 } t_long ;
 
@@ -97,7 +94,11 @@ void	ft_init_win(t_long *game);
 void	ft_drawmap(t_long *game);
 
 // Hooks
-void	ft_loop_hook(void *param);
+//void	ft_loop_hook(void *param);
+void	ft_init_hooks(t_long *game);
+
+//Moves
+void	ft_move_player(t_long *game, int dx, int dy);
 
 // Errors
 void	ft_errors(t_long *map, char *msg, int mod);
