@@ -18,6 +18,18 @@
 # include <limits.h>
 # include <fcntl.h>
 
+/*#define TRUE 1
+#define FALSE 0
+typedef int t_bool;
+
+typedef struct s_collec
+{
+	int		x;
+	int		y;
+	int32_t	instance_id;
+	t_bool	collec;
+}	t_collec;*/
+
 typedef struct s_point
 {
 	int	x;
@@ -44,18 +56,19 @@ typedef struct s_images
 
 typedef struct s_long
 {
-	void	*mlx;
-	char	**map;
-	int		line_size;
-	int		map_lines;
-	int		ccount;
+	void		*mlx;
+	char		**map;
+	int			line_size;
+	int			map_lines;
+	int			ccount;
 	//int		cindex;
-	int		pcount;
-	int		ecount;
+	int			pcount;
+	int			ecount;
+	//t_collec	*collec;
 	t_textures	textures;
 	t_images	images;
-	t_point	pos_p;
-	t_point	pos_e;
+	t_point		pos_p;
+	t_point		pos_e;
 	//t_point *col;
 } t_long ;
 
@@ -78,13 +91,13 @@ void	ft_readmapsone(t_long *game, int fd);
 void	ft_get_pos1(t_long *game, int x, int y, char c);
 void	ft_mapscreate(t_long *game, int fd);
 void	ft_check_path(t_long *game);
-void	ft_ft_render_base(t_long *game);
-void	ft_render_dynamic(t_long *game);
 
 // Win
 void	ft_init_win(t_long *game);
-void	ft_texture_init(t_long *game);
-void	ft_images_init(t_long *game);
+void	ft_drawmap(t_long *game);
+
+// Hooks
+void	ft_loop_hook(void *param);
 
 // Errors
 void	ft_errors(t_long *map, char *msg, int mod);

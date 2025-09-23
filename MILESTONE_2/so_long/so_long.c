@@ -26,11 +26,8 @@
 static void	ft_so_long(t_long *game)
 {
 	ft_init_win(game);
-	ft_texture_init(game);
-	ft_images_init(game);
-	ft_ft_render_base(game);
-	ft_render_dynamic(game);
-	//hooks(mlx_key_hook , mlx_loop_hook)
+	ft_drawmap(game);
+	ft_init_hooks(game);
 	mlx_loop(game->mlx);
 	ft_freemem(game);
 	mlx_terminate(game->mlx);
@@ -64,6 +61,6 @@ int	main(int argc, char **argv)
 	ft_bzero(&game, (sizeof (t_long) * 1));
 	ft_readmaps(&game, fd, argv[1]);
 	ft_so_long(&game);
-	printf("lines: %d\nline_size: %d\n Collectables: %d\n", game.map_lines, game.line_size, game.ccount);
+	printf("lines: %d\nline_size: %d\nCollectables: %d\n", game.map_lines, game.line_size, game.ccount);
 	return(0);
 }

@@ -6,7 +6,7 @@ HEADER = so_long.h
 
 # Sources
 SRCS = so_long.c error.c check_create/parseo.c check_create/flood_fill.c check_create/map.c \
-ventana.c
+drawmap.c
 
 # Objects directory
 OBJ_DIR = obj
