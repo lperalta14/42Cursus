@@ -48,16 +48,12 @@ void	ft_free_images(t_long *game)
 {
 	if (game->images.wall)
 		mlx_delete_image(game->mlx , game->images.wall);
-	ft_printf("caca51\n");
 	if (game->images.floor)
-		mlx_delete_image(game->mlx , game->images.floor);
-	ft_printf("caca54\n");
+		mlx_delete_image(game->mlx , game->images.floor);;
 	if (game->images.player)
 		mlx_delete_image(game->mlx , game->images.player);
-	ft_printf("caca57\n");
 	if (game->images.exit)
 		mlx_delete_image(game->mlx , game->images.exit);
-	ft_printf("caca58\n");
 	if (game->images.col)
 		mlx_delete_image(game->mlx , game->images.col);
 }
@@ -86,10 +82,8 @@ void	ft_freemem(t_long *game)
 {
 	if (game && game->map)
 		ft_freemap(game->map);
-	ft_printf("caca85\n");
 	if (game)
 		ft_free_textures(&game->textures);
-	ft_printf("caca87\n");
 	if (game)
 		ft_free_images(game);
 }

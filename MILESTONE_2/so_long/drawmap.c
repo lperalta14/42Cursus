@@ -101,7 +101,6 @@ static void	ft_drawplayc(t_long *game, int *c, int x , int y)
 									(x * 64), (y * 64));
 		game->collec[*c].x = x;
 		game->collec[*c].y = y;
-		ft_printf("c = %d , x = %d, y = %d\n", *c, x, game->collec[*c].y);
 		*c = *c-1;
 	}
 }

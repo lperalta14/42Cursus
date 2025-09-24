@@ -29,9 +29,7 @@ static void	ft_so_long(t_long *game)
 	ft_drawmap(game);
 	ft_init_hooks(game);
 	mlx_loop(game->mlx);
-	ft_printf("caca32\n");
 	ft_freemem(game);
-	ft_printf("caca33\n");
 	mlx_terminate(game->mlx);
 }
 

@@ -17,7 +17,6 @@ int32_t	ft_findid(t_long *game, int x, int y)
 	int		i;
 
 	i = 0;
-	ft_printf("beforewhile , x = %d, y = %d\n", x, y);
 	while (i < game->cindex)
 	{
 
@@ -25,7 +24,6 @@ int32_t	ft_findid(t_long *game, int x, int y)
 			&& game->collec[i].iscol == 0)
 		{
 			game->collec[i].iscol = 1;
-			ft_printf("c = %d , x = %d, y = %d\n", i, x, y);
 			return (game->collec[i].instance_id);
 		}
 		i++;
