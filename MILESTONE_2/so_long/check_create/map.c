@@ -26,6 +26,7 @@ void	ft_readmapsone(t_long *game, int fd)
 			ft_errors(NULL, "invalid maps. read error", 0);
 		ft_validchars(buffer, game);
 	}
+	game->cindex = game->ccount;
 }
 void	ft_get_pos1(t_long *game, int x, int y, char c)
 {
@@ -52,22 +53,6 @@ void	ft_get_pos1(t_long *game, int x, int y, char c)
 		}
 	}
 }
-
-/*void	ft_get_pos1(t_long *game, int x, int y, char c)
-{
-	if (c == 'P' || c == 'E')
-	{
-		ft_get_pos2(game, x, y, c);
-	}
-	else
-	{
-		{
-			game->col[game->cindex].x = x;
-			game->col[game->cindex].y = y;
-			game->cindex ++;
-		}
-	}
-}*/
 
 void	ft_mapscreate(t_long *game, int fd)
 {

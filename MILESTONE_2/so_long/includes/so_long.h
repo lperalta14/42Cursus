@@ -22,6 +22,7 @@ typedef struct s_collec
 {
 	int		x;
 	int		y;
+	int		iscol;
 	int32_t	instance_id;
 }	t_collec;
 
@@ -37,7 +38,7 @@ typedef struct s_textures
 	mlx_texture_t	*floor;
 	mlx_texture_t	*player;
 	mlx_texture_t	*exit;
-	mlx_texture_t	*collectible;
+	mlx_texture_t	*col;
 }	t_textures;
 
 typedef struct s_images
@@ -46,7 +47,7 @@ typedef struct s_images
 	mlx_image_t	*floor;
 	mlx_image_t	*player;
 	mlx_image_t	*exit;
-	mlx_image_t	*collectible;
+	mlx_image_t	*col;
 }	t_images;
 
 typedef struct s_long
