@@ -32,39 +32,36 @@ static char	**ft_dup_map(t_long *game)
 	return (copy);
 }
 
-static void	ft_floodfill(char **map, int y, int x, t_long *game, int *found_c, int *found_e)
+static void	ft_floodfill(char **map, int y, int x, t_long *game)
 {
 	if (y < 0 || x < 0 || y >= game->map_lines || x >= game->line_size)
 		return ;
 	if (map[y][x] == '1' || map[y][x] == 'V')
 		return ;
 	if (map[y][x] == 'C')
-		(*found_c)++;
+		game->found_c += 1;
 	if (map[y][x] == 'E')
-		(*found_e)++;
+		game->found_e += 1;
 	map[y][x] = 'V';
-	ft_floodfill(map, y + 1, x, game, found_c, found_e);
-	ft_floodfill(map, y - 1, x, game, found_c, found_e);
-	ft_floodfill(map, y, x + 1, game, found_c, found_e);
-	ft_floodfill(map, y, x - 1, game, found_c, found_e);
+	ft_floodfill(map, y + 1, x, game);
+	ft_floodfill(map, y - 1, x, game);
+	ft_floodfill(map, y, x + 1, game);
+	ft_floodfill(map, y, x - 1, game);
 }
 
 void	ft_check_path(t_long *game)
 {
 	char	**map_copy;
-	int		found_c;
-	int		found_e;
 
 	map_copy = ft_dup_map(game);
 	if (!map_copy)
 		ft_errors(game, "FAILED TO DUP MAP\n", 0);
-	found_c = 0;
-	found_e = 0;
-	ft_floodfill(map_copy, game->pos_p.y, game->pos_p.x,
-		game, &found_c, &found_e);
+	game->found_c = 0;
+	game->found_e = 0;
+	ft_floodfill(map_copy, game->pos_p.y, game->pos_p.x, game);
 	ft_freemap(map_copy);
-	if (found_c != game->ccount)
+	if (game->found_c != game->ccount)
 		ft_errors(game, "NOT ALL COLLECTIBLES ARE REACHABLE! FOOL\n", 1);
-	if (found_e == 0)
+	if (game->found_e == 0)
 		ft_errors(game, "YOU CAN´T EXIT, TWIT!\n", 1);
 }

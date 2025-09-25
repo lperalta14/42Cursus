@@ -29,8 +29,8 @@ typedef struct s_collec
 typedef struct s_point
 {
 	int	x;
-	int y;
-}t_point;
+	int	y;
+}	t_point;
 
 typedef struct s_textures
 {
@@ -61,14 +61,15 @@ typedef struct s_long
 	int			pcount;
 	int			ecount;
 	int			move;
+	int			found_c;
+	int			found_e;
 	t_collec	*collec;
 	t_textures	text;
 	t_images	images;
 	t_point		pos_p;
 	t_point		pos_e;
 	mlx_image_t	*player_inst;
-	//t_point *col;
-} t_long ;
+}	t_long;
 
 // Parseo
 void	ft_check_extension(char *file);
