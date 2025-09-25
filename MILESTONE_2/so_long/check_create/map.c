@@ -28,6 +28,7 @@ void	ft_readmapsone(t_long *game, int fd)
 	}
 	game->cindex = game->ccount;
 }
+
 void	ft_get_pos1(t_long *game, int x, int y, char c)
 {
 	if (c == 'P')
@@ -62,7 +63,7 @@ void	ft_mapscreate(t_long *game, int fd)
 	y = 0;
 	line = get_next_line(fd);
 	game->line_size = ft_strlen(line) - 1;
-	while(line && y < game->map_lines)
+	while (line && y < game->map_lines)
 	{
 		ft_replacechar(line, '\n', '\0');
 		game->map[y] = line;

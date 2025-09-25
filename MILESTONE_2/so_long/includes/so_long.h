@@ -23,7 +23,7 @@ typedef struct s_collec
 	int		x;
 	int		y;
 	int		iscol;
-	int32_t	instance_id;
+	int32_t	inst_id;
 }	t_collec;
 
 typedef struct s_point
@@ -62,7 +62,7 @@ typedef struct s_long
 	int			ecount;
 	int			move;
 	t_collec	*collec;
-	t_textures	textures;
+	t_textures	text;
 	t_images	images;
 	t_point		pos_p;
 	t_point		pos_e;
@@ -70,21 +70,13 @@ typedef struct s_long
 	//t_point *col;
 } t_long ;
 
-/*typedef struct mlx_key_data
-{
-	keys_t		key;
-	action_t	action;
-	int32_t		os_key;
-	modifier_key_t	modifier;
-}	mlx_key_data_t;*/
-
 // Parseo
 void	ft_check_extension(char *file);
 void	ft_validchars(char buffer, t_long *game);
 void	ft_validmaps(t_long *game, int y);
 void	ft_check_walls(t_long *game);
 
-// Map
+//// Map
 void	ft_readmapsone(t_long *game, int fd);
 void	ft_get_pos1(t_long *game, int x, int y, char c);
 void	ft_mapscreate(t_long *game, int fd);
@@ -92,6 +84,8 @@ void	ft_check_path(t_long *game);
 
 // Win
 void	ft_init_win(t_long *game);
+void	ft_texture_init(t_long *game);
+void	ft_images_init(t_long *game);
 void	ft_drawmap(t_long *game);
 
 // Hooks

@@ -11,18 +11,7 @@
 /* ************************************************************************** */
 
 #include "./includes/so_long.h"
-/*
-	incializar ventana
-	cargar texturas
-	pintar mapa suelo y muros ft_base_map(game)
-	pintar mapa dinamico ft_dinamic_map(game)
-	hooks
-	loop principal
-	{
-		mover jugador, comprobar colisiones.
-		animaciones, actualizar score.
-	}
-*/
+
 static void	ft_so_long(t_long *game)
 {
 	ft_init_win(game);
@@ -41,7 +30,7 @@ static void	ft_readmaps(t_long *game, int fd, char *file)
 	fd = open(file, O_RDONLY);
 	game->map = malloc(sizeof(char *) * (game->map_lines + 1));
 	if (!game->map)
-		ft_errors(game,"NO MEMORY, DUMMY", 0);
+		ft_errors(game, "NO MEMORY, DUMMY", 0);
 	game->map[game->map_lines] = NULL;
 	ft_mapscreate(game, fd);
 	ft_check_walls(game);
@@ -61,6 +50,5 @@ int	main(int argc, char **argv)
 	ft_bzero(&game, (sizeof (t_long) * 1));
 	ft_readmaps(&game, fd, argv[1]);
 	ft_so_long(&game);
-	printf("lines: %d\nline_size: %d\nCollectables: %d\n", game.map_lines, game.line_size, game.ccount);
-	return(0);
+	return (0);
 }

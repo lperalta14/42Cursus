@@ -19,7 +19,7 @@ void	ft_freemap(char **map)
 	if (!map)
 		return ;
 	i = 0;
-	while(map && map[i])
+	while (map && map[i])
 	{
 		free(map[i]);
 		i++;
@@ -47,15 +47,15 @@ void	ft_free_textures(t_textures *textures)
 void	ft_free_images(t_long *game)
 {
 	if (game->images.wall)
-		mlx_delete_image(game->mlx , game->images.wall);
+		mlx_delete_image(game->mlx, game->images.wall);
 	if (game->images.floor)
-		mlx_delete_image(game->mlx , game->images.floor);;
+		mlx_delete_image(game->mlx, game->images.floor);
 	if (game->images.player)
-		mlx_delete_image(game->mlx , game->images.player);
+		mlx_delete_image(game->mlx, game->images.player);
 	if (game->images.exit)
-		mlx_delete_image(game->mlx , game->images.exit);
+		mlx_delete_image(game->mlx, game->images.exit);
 	if (game->images.col)
-		mlx_delete_image(game->mlx , game->images.col);
+		mlx_delete_image(game->mlx, game->images.col);
 }
 
 void	ft_errors(t_long *game, char *msg, int mod)
@@ -63,7 +63,9 @@ void	ft_errors(t_long *game, char *msg, int mod)
 	if (game && game->map)
 		ft_freemap(game->map);
 	if (game)
-		ft_free_textures(&game->textures);
+		ft_free_textures(&game->text);
+	if (game && game->collec)
+		free(game->collec);
 	if (game)
 		ft_free_images(game);
 	if (game && game->mlx)
@@ -71,7 +73,7 @@ void	ft_errors(t_long *game, char *msg, int mod)
 		mlx_close_window(game->mlx);
 		mlx_terminate(game->mlx);
 	}
-	if(mod)
+	if (mod)
 		ft_putstr_fd(msg, 1);
 	else
 		perror(msg);
@@ -83,7 +85,9 @@ void	ft_freemem(t_long *game)
 	if (game && game->map)
 		ft_freemap(game->map);
 	if (game)
-		ft_free_textures(&game->textures);
+		ft_free_textures(&game->text);
+	if (game && game->collec)
+		free(game->collec);
 	if (game)
 		ft_free_images(game);
 }
