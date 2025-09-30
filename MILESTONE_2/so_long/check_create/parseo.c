@@ -47,6 +47,8 @@ void	ft_check_extension(char *file)
 	char	*ber;
 
 	ber = ft_strrchr(file, '.');
+	if (!ber)
+		ft_errors(NULL, "WRONG EXTENSION, IDIOT\n", 1);
 	if (ft_strlen(ber) != 4 || ft_strncmp(ber, ".ber", 4))
 		ft_errors(NULL, "WRONG EXTENSION, IDIOT\n", 1);
 }

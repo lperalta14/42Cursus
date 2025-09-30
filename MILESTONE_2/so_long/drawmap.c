@@ -41,8 +41,8 @@ static void	ft_drawplayc(t_long *game, int *c, int x, int y)
 	{
 		mlx_image_to_window(game->mlx, game->images.player,
 			(x * 64), (y * 64));
-		game->pos_p.x = x;
-		game->pos_p.y = y;
+		//game->pos_p.x = x;
+		//game->pos_p.y = y;
 	}
 	else if (game->map[y][x] == 'C')
 	{

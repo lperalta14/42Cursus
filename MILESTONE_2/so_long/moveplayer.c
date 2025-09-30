@@ -56,5 +56,5 @@ void	ft_move_player(t_long *game, int dx, int dy)
 	game->pos_p.x = new_x;
 	game->pos_p.y = new_y;
 	game->move++;
-	printf("moves; %d\n", game->move);
+	printf("moves: %d\n", game->move);
 }

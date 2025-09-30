@@ -1,0 +1,69 @@
+# Library name
+NAME = pipex
+
+# Header
+HEADER = pipex.h
+
+# Sources
+SRCS = main.c errors.c inits.c paths.c pipex.c
+
+# Objects directory
+OBJ_DIR = obj
+
+#INCLUDE = -I include/ 
+
+# Object files
+OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
+
+# Libft linked
+LIBFT_DIR = my_lib
+LIBFT_LIB = $(LIBFT_DIR)/libft.a
+LIBFT_INC = -I$(LIBFT_DIR)
+
+# Compiler and flags
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -g $(LIBFT_INC)
+
+# Utils
+AR = @ar rcs
+RM = @rm -rf
+
+# Colors
+RED=\033[0;31m
+GREEN=\033[0;32m
+YELLOW=\033[1;33m
+BLUE=\033[0;34m
+PINK=\033[0;35m
+NC=\033[0m  # (reset)
+
+# Rules
+all: $(LIBFT_LIB) $(NAME)
+
+$(NAME): $(OBJS)
+	@echo "$(PINK)🔗Link🔗$...$(NC)"
+	@$(CC) $(CFLAGS) $(OBJS) $(LIBFT_LIB) -o $(NAME)
+	@echo "   $(GREEN) OK $(NAME!)$(NC)"
+
+$(OBJ_DIR)/%.o: %.c
+	@mkdir -p $(dir $@)
+	@echo "$(PINK) $< ⌛⌛⌛$(NC)"
+	@$(CC) $(CFLAGS) -c $< -o $@
+
+$(LIBFT_LIB):
+	@echo "$(PINK)$(NAME)...$(NC)"
+	@$(MAKE) -s -C $(LIBFT_DIR)
+	@echo "   $(GREEN) OK$(NC)"
+
+clean:
+	@echo "$(BLUE)🧽🫧 Cleaning $(NAME) objects... 🫧🧽$(NC)"
+	@$(MAKE) -C $(LIBFT_DIR) clean
+	@$(RM) $(OBJ_DIR) $(BONUS_OBJ_DIR)
+
+fclean: clean
+	@echo "$(BLUE) 🧽🫧🧼🫧 Full clean $(NAME) and libft... 🫧🧼🫧🧽$(NC)"
+	@$(MAKE) -C $(LIBFT_DIR) fclean
+	@$(RM) $(NAME) $(BONUS)
+
+re: fclean all
+
+.PHONY: all clean fclean re bonus

@@ -23,7 +23,7 @@ void	ft_readmapsone(t_long *game, int fd)
 	{
 		bytes_read = read(fd, &buffer, 1);
 		if (bytes_read < 0)
-			ft_errors(NULL, "invalid maps. read error", 0);
+			ft_errors(NULL, "INVALID MAP, DUMMY", 0);
 		ft_validchars(buffer, game);
 	}
 	game->cindex = game->ccount;

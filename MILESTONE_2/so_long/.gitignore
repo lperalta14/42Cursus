@@ -1,0 +1,6 @@
+#objects
+*.o
+
+#VSCODE
+.vscode
+
