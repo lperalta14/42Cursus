@@ -40,7 +40,7 @@ void	ft_validpaths(t_pipex *pipex, char *command)
 	char	**params;
 
 	i = 0;
-	params = ft_splitq(command, ' ');
+	params = ft_splitq(command, ' ', 0);
 	ft_get_paths(pipex);
 	while (pipex->paths[i])
 	{

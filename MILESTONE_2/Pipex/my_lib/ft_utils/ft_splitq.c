@@ -82,9 +82,9 @@ int	splitaux1(const char *s, int c, int *wcnt, char **split)
 	(*wcnt) ++;
 	return(1);
 }
-char	**ft_splitq(char const *s, char c)
+
+char	**ft_splitq(char const *s, char c, int wcnt)
 {
-	int		wcnt;
 	int		ccnt;
 	char	**split;
 	int		quote;
@@ -92,7 +92,6 @@ char	**ft_splitq(char const *s, char c)
 	split = mok(ft_wordcount(s, c));
 	if (!split)
 		return (NULL);
-	wcnt = 0;
 	while (*s)
 	{
 		if (*s != c)
@@ -101,12 +100,12 @@ char	**ft_splitq(char const *s, char c)
 			quote = 0;
 			while (s[ccnt] && (quote || s[ccnt] != c))
 			{
-				//ccnt = countquote(&quote, ccnt, s);
-				if (!quote && s[ccnt] == '\'')
+				ccnt = countquote(&quote, ccnt, s);
+				/*if (!quote && s[ccnt] == '\'')
 					quote = s[ccnt];
 				else if (quote && (s[ccnt] == '\''))
 					quote = 0;
-				ccnt ++;
+				ccnt ++;*/
 			}
 			split[wcnt] = ft_substr(s, 0, ccnt);
 			if (!split[wcnt])
