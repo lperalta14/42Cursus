@@ -30,18 +30,14 @@ void	ft_freepointers(char **str)
 
 void	ft_closesfd(t_pipex *pipex)
 {
-	if (pipex->fdchild2[1] != -1)
-		close(pipex->fdchild2[1]);
-	if (pipex->fdchild2[0] != -1)
-		close(pipex->fdchild2[0]);
-	if (pipex->fdchild1[1] != -1)
-		close(pipex->fdchild2[1]);
-	if (pipex->fdchild1[0] != -1)
-		close(pipex->fdchild2[0]);
-	if (pipex->fddad[1] != -1)
-		close(pipex->fddad[1]);
-	if (pipex->fddad[0] != -1)
-		close(pipex->fddad[0]);
+	if (pipex->fdinfile && pipex->fdinfile != -1)
+		close(pipex->fdinfile);
+	if (pipex->fdoutfile && pipex->fdoutfile != -1)
+		close(pipex->fdoutfile);
+	if (pipex->fdpipe[0] && pipex->fdpipe[0] >= 0)
+		close(pipex->fdpipe[0]);
+	if (pipex->fdpipe[1] && pipex->fdpipe[1] >= 0)
+		close(pipex->fdpipe[1]);
 }
 
 void	ft_errors(t_pipex *pipex, char *context)

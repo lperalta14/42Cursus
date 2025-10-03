@@ -22,15 +22,15 @@
 
 typedef struct s_pipex
 {
-	int		fddad[2];
-	int		fdchild1[2];
-	int		fdchild2[2];
+	int		fdinfile;
+	int		fdoutfile;
+	int		fdpipe[2];
 	char	**envp;
 	char	*path;
 	char	**paths;
 }	t_pipex ;
 
-void	ft_init_pipex(t_pipex *pipex, char **envp);
+void	ft_init_pipex(t_pipex *pipex, char **argv, char **envp);
 char	**ft_get_paths(t_pipex *pipex);
 void	ft_validpaths(t_pipex *pipex, char *command);
 

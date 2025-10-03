@@ -16,13 +16,9 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_pipex	pipex;
 
+	ft_init_pipex(&pipex, argv, envp);
 	if (argc != 5)
-	{
 		ft_errors(&pipex, "Usage: ./pipex [file1] [command1] [command2] [file2]");
-		return (1);
-	}
-	// parsear
-	ft_init_pipex(&pipex, envp);
 	ft_validpaths(&pipex, argv[2]);
 	// hacer pipex
 	ft_freepointers(pipex.paths);

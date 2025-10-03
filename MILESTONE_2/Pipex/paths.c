@@ -48,11 +48,12 @@ void	ft_validpaths(t_pipex *pipex, char *command)
 	char	**params;
 
 	i = 0;
-	params = ft_split(command, ' ');
+	params = ft_splitq(command, ' ', '\'');
 	ft_get_paths(pipex);
-	while (pipex->paths[i])
+	while (pipex->paths && pipex->paths[i])
 	{
-		binpath = ft_strjoindelimit(pipex->paths[i], '/', command);
+		ft_printf("paths: %s\n", pipex->paths[i]);
+		binpath = ft_strjoindelimit(pipex->paths[i], "/", command);
 		if (access(binpath, X_OK) == 0)
 			execve(binpath, params, pipex->envp);
 		ft_printf("binpath: %s\n", binpath);

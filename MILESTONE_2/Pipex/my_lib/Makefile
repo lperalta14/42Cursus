@@ -10,7 +10,8 @@ OBJ_DIR = obj
 # Sources
 PRINTF_SRCS = ft_printf/ft_printf.c ft_printf/nbrs.c ft_printf/writers.c
 GNL_SRCS = GNL/get_next_line_utils.c GNL/get_next_line.c
-UTILS_SRCS = ft_utils/ft_atoibase.c ft_utils/ft_atolints.c ft_utils/ft_putnbr.c ft_utils/ft_strcmp.c ft_utils/ft_strjoindelimit.c
+UTILS_SRCS = ft_utils/ft_atoibase.c ft_utils/ft_atolints.c ft_utils/ft_putnbr.c ft_utils/ft_strcmp.c ft_utils/ft_strjoindelimit.c \
+ft_utils/ft_splitq.c
 
 
 SRCS = ft_lib/ft_isalpha.c ft_lib/ft_isdigit.c ft_lib/ft_isalnum.c ft_lib/ft_isascii.c ft_lib/ft_isprint.c \
