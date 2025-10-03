@@ -58,7 +58,7 @@ void	ft_init_win(t_long *game)
 	int	size_y;
 
 	game->mlx = mlx_init((game->line_size * 64), (game->map_lines * 64),
-			"RUN4YOURLIFE", true);
+			"RUN4YOURLIFE", false);
 	if (!game->mlx)
 		ft_errors(game, "WINDOWS TO JUMP", 1);
 	mlx_get_monitor_size(0, &size_x, &size_y);

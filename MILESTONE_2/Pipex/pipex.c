@@ -41,7 +41,7 @@ static void ft_child1(t_pipex *pipex, char **argv)
 	ft_validpaths(pipex, argv[2]);
 }
 
-void    ft_pipex(t_pipex *pipex, char **argv)
+void	ft_pipex(t_pipex *pipex, char **argv)
 {
 	pid_t	pid1;
 	pid_t	pid2;

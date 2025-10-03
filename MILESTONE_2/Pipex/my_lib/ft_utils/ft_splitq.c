@@ -12,29 +12,110 @@
 
 #include "../libft.h"
 
-static int	counterquote(char const *s, char d)
+static int	ft_wordcount(char const *s, char c)
 {
-	int	i;
+	int	words;
 	int	quote;
 
-	i = 0;
 	quote = 0;
-	while (s[i])
+	words = 0;
+	while (*s)
 	{
-		if (s[i] == d)
-			quote++;
-		i++;
+		if (quote && *s == '\'')
+			quote = 0;
+		else if (!quote && *s == '\'')
+			quote = 1;
+		if (*s != c && ((!s[1] || s[1] == c) && !quote))
+			words ++;
+		s++;
 	}
-	return (quote);
+	return (words);
 }
 
-char	**ft_splitq(char const *s, char c, char d)
+static char	**mok(int words)
 {
+	char	**split;
+
+	split = malloc(sizeof(char *) * (words + 1));
+	if (!split)
+		return (NULL);
+	split[words] = NULL;
+	return (split);
+}
+
+static char	**freemem(char **split, int x)
+{
+	while (x --)
+		free(split[x]);
+	free(split);
+	return (NULL);
+}
+int	countquote(int *quote, int ccnt, char const *s)
+{
+	if (!*quote && s[ccnt] == '\'')
+		*quote = s[ccnt];
+	else if (*quote && (s[ccnt] == '\''))
+		*quote = 0;
+	ccnt ++;
+	return(ccnt);
+}
+int	splitaux1(const char *s, int c, int *wcnt, char **split)
+{
+	int	ccnt;
 	int	quote;
 
-	quote = counterquote(s, d);
-	if (quote > 0 && quote % 2 == 0)
-		return (ft_split(s, d));
-	else
-		return (ft_split(s, c));
+	ccnt = 0;
+	quote = 0;
+	while (s[ccnt] && (quote || s[ccnt] != c))
+	{
+		//ccnt = countquote(&quote, ccnt, s);
+		if (!quote && s[ccnt] == '\'')
+			quote = s[ccnt];
+		else if (quote && (s[ccnt] == '\''))
+			quote = 0;
+		ccnt ++;
+	}
+	split[*wcnt] = ft_substr(s, 0, ccnt);
+	if (!split[*wcnt])
+		return (0);
+	s += ccnt;
+	(*wcnt) ++;
+	return(1);
+}
+char	**ft_splitq(char const *s, char c)
+{
+	int		wcnt;
+	int		ccnt;
+	char	**split;
+	int		quote;
+
+	split = mok(ft_wordcount(s, c));
+	if (!split)
+		return (NULL);
+	wcnt = 0;
+	while (*s)
+	{
+		if (*s != c)
+		{
+			ccnt = 0;
+			quote = 0;
+			while (s[ccnt] && (quote || s[ccnt] != c))
+			{
+				//ccnt = countquote(&quote, ccnt, s);
+				if (!quote && s[ccnt] == '\'')
+					quote = s[ccnt];
+				else if (quote && (s[ccnt] == '\''))
+					quote = 0;
+				ccnt ++;
+			}
+			split[wcnt] = ft_substr(s, 0, ccnt);
+			if (!split[wcnt])
+				return (freemem(split, wcnt));
+			s += ccnt;
+			wcnt ++;
+		}
+		else
+			s ++;
+	}
+	return (split);
 }
