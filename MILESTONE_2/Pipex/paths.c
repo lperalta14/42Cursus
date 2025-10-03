@@ -28,16 +28,8 @@ char	*ft_get_path(t_pipex *pipex)
 
 char	**ft_get_paths(t_pipex *pipex)
 {
-	int	i;
-
-	i = 0;
-	//pipex->path = malloc(sizeof(char *) * (ft_strlen(ft_get_path(pipex))));
-	//if (!pipex->path)
-		//return (NULL);
 	pipex->path = ft_get_path(pipex);
 	pipex->paths = ft_split(pipex->path, ':');
-	if(!pipex->paths)
-		free(pipex->path);
 	return(pipex->paths);
 }
 
@@ -48,15 +40,13 @@ void	ft_validpaths(t_pipex *pipex, char *command)
 	char	**params;
 
 	i = 0;
-	params = ft_splitq(command, ' ', '\'');
+	params = ft_split(command, ' ');
 	ft_get_paths(pipex);
-	while (pipex->paths && pipex->paths[i])
+	while (pipex->paths[i])
 	{
-		ft_printf("paths: %s\n", pipex->paths[i]);
-		binpath = ft_strjoindelimit(pipex->paths[i], "/", command);
+		binpath = ft_strjoindelimit(pipex->paths[i], "/", params[0]);
 		if (access(binpath, X_OK) == 0)
 			execve(binpath, params, pipex->envp);
-		ft_printf("binpath: %s\n", binpath);
 		free(binpath);
 		i++;
 	}

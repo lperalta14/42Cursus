@@ -30,13 +30,13 @@ void	ft_freepointers(char **str)
 
 void	ft_closesfd(t_pipex *pipex)
 {
-	if (pipex->fdinfile && pipex->fdinfile != -1)
+	if (pipex->fdinfile >= 0)
 		close(pipex->fdinfile);
-	if (pipex->fdoutfile && pipex->fdoutfile != -1)
+	if (pipex->fdoutfile >= 0)
 		close(pipex->fdoutfile);
-	if (pipex->fdpipe[0] && pipex->fdpipe[0] >= 0)
+	if (pipex->fdpipe[0] >= 0)
 		close(pipex->fdpipe[0]);
-	if (pipex->fdpipe[1] && pipex->fdpipe[1] >= 0)
+	if (pipex->fdpipe[1] >= 0)
 		close(pipex->fdpipe[1]);
 }
 
@@ -46,8 +46,8 @@ void	ft_errors(t_pipex *pipex, char *context)
 	{
 		ft_closesfd(pipex);
 		ft_freepointers(pipex->paths);
-		if (pipex->path)
-			free(pipex->path);
+		//if (pipex->path)
+		//	free(pipex->path);
 	}
 	perror(context);
 	exit(1);

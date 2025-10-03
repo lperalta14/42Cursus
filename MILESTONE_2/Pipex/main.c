@@ -16,11 +16,15 @@ int	main(int argc, char **argv, char **envp)
 {
 	t_pipex	pipex;
 
-	ft_init_pipex(&pipex, argv, envp);
 	if (argc != 5)
-		ft_errors(&pipex, "Usage: ./pipex [file1] [command1] [command2] [file2]");
-	ft_validpaths(&pipex, argv[2]);
-	// hacer pipex
+		ft_errors(NULL, "Usage: ./pipex [file1] [command1] [command2] [file2]");
+	ft_init_pipex(&pipex, argv, envp);
+	if (pipe(pipex.fdpipe) == -1)
+		ft_errors(&pipex, "Pipe error");
+	ft_pipex(&pipex, argv); // funcion donde mandar la pipe, crear los forks y ver si se ejecutan
+
+	//ft_validpaths(&pipex, argv[2]); // meter esta llamada a funcion en el fork 1
+	//ft_validpaths(&pipex, argv[4]); // meter esta llamada a funcion en el fork 2
 	ft_freepointers(pipex.paths);
 	return (0);
 }

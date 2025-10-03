@@ -15,10 +15,10 @@
 char	*ft_strjoindelimit(char const *s1, char *delimit, char const *s2)
 {
 	char	*temp;
-	char	*dest;
+	char	*strdest;
 
 	temp = ft_strjoin(s1, delimit);
-	dest = ft_strjoin(temp, s2);
+	strdest = ft_strjoin(temp, s2);
 	free(temp);
-	return(dest);
+	return (strdest);
 }

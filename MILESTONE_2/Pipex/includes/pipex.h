@@ -33,6 +33,7 @@ typedef struct s_pipex
 void	ft_init_pipex(t_pipex *pipex, char **argv, char **envp);
 char	**ft_get_paths(t_pipex *pipex);
 void	ft_validpaths(t_pipex *pipex, char *command);
+void    ft_pipex(t_pipex *pipex, char **argv);
 
 //Errors
 void	ft_freepointers(char **str);
