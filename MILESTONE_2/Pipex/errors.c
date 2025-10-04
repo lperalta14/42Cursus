@@ -46,9 +46,7 @@ void	ft_errors(t_pipex *pipex, char *context)
 	{
 		ft_closesfd(pipex);
 		ft_freepointers(pipex->paths);
-		//if (pipex->path)
-		//	free(pipex->path);
 	}
 	perror(context);
-	exit(1);
+	exit(errno);
 }

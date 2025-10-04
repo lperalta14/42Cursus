@@ -17,10 +17,10 @@ char	*ft_get_path(t_pipex *pipex)
 	int	i;
 
 	i = 0;
-	while(pipex->envp[i])
+	while (pipex->envp[i])
 	{
 		if (ft_strncmp(pipex->envp[i], "PATH=", 5) == 0)
-			return(pipex->envp[i] + 5);
+			return (pipex->envp[i] + 5);
 		i++;
 	}
 	return (NULL);
@@ -30,7 +30,7 @@ char	**ft_get_paths(t_pipex *pipex)
 {
 	pipex->path = ft_get_path(pipex);
 	pipex->paths = ft_split(pipex->path, ':');
-	return(pipex->paths);
+	return (pipex->paths);
 }
 
 void	ft_validpaths(t_pipex *pipex, char *command)
@@ -50,5 +50,8 @@ void	ft_validpaths(t_pipex *pipex, char *command)
 		free(binpath);
 		i++;
 	}
-	ft_freepointers(params);
+	ft_putstr_fd("command not found\n", 2);
+	ft_freepointers (params);
+	ft_freepointers (pipex->paths);
+	exit(127);
 }

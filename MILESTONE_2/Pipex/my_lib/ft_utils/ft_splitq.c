@@ -50,6 +50,7 @@ static char	**freemem(char **split, int x)
 	free(split);
 	return (NULL);
 }
+
 int	countquote(int *quote, int ccnt, char const *s)
 {
 	if (!*quote && s[ccnt] == '\'')
@@ -57,30 +58,7 @@ int	countquote(int *quote, int ccnt, char const *s)
 	else if (*quote && (s[ccnt] == '\''))
 		*quote = 0;
 	ccnt ++;
-	return(ccnt);
-}
-int	splitaux1(const char *s, int c, int *wcnt, char **split)
-{
-	int	ccnt;
-	int	quote;
-
-	ccnt = 0;
-	quote = 0;
-	while (s[ccnt] && (quote || s[ccnt] != c))
-	{
-		//ccnt = countquote(&quote, ccnt, s);
-		if (!quote && s[ccnt] == '\'')
-			quote = s[ccnt];
-		else if (quote && (s[ccnt] == '\''))
-			quote = 0;
-		ccnt ++;
-	}
-	split[*wcnt] = ft_substr(s, 0, ccnt);
-	if (!split[*wcnt])
-		return (0);
-	s += ccnt;
-	(*wcnt) ++;
-	return(1);
+	return (ccnt);
 }
 
 char	**ft_splitq(char const *s, char c, int wcnt)
@@ -99,14 +77,7 @@ char	**ft_splitq(char const *s, char c, int wcnt)
 			ccnt = 0;
 			quote = 0;
 			while (s[ccnt] && (quote || s[ccnt] != c))
-			{
 				ccnt = countquote(&quote, ccnt, s);
-				/*if (!quote && s[ccnt] == '\'')
-					quote = s[ccnt];
-				else if (quote && (s[ccnt] == '\''))
-					quote = 0;
-				ccnt ++;*/
-			}
 			split[wcnt] = ft_substr(s, 0, ccnt);
 			if (!split[wcnt])
 				return (freemem(split, wcnt));
