@@ -42,8 +42,10 @@ long	ft_atolints(const char *nptr)
 	}
 	else if (*nptr == 43)
 		nptr ++;
-	while ((*nptr) && ft_isdigit(*nptr))
+	while ((*nptr))
 	{
+		if(!ft_isdigit(*nptr))
+			return (-1);
 		result *= 10;
 		result += (*nptr++ - '0');
 		if ((result * sign) < INT_MIN || (result * sign) > INT_MAX)

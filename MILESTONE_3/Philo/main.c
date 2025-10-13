@@ -24,12 +24,12 @@ int	parse(int argc, char **argv)
 	while (argv[i])
 	{
 		j = 0;
-		while (argv[i][j])
+		/*while (argv[i][j])
 		{
 			if ((!ft_isdigit(argv[i][j]) && !ft_isspace(argv[i][j])))
 				return (0);
 			j++;
-		}
+		}*/
 		if (ft_atolints(argv[i]) <= 0 || ft_atolints(argv[i]) > INT_MAX)
 			return (0);
 		i++;
