@@ -12,13 +12,16 @@ Cada proyecto está organizado por **Milestones**, y dentro de cada Milestone en
 
 🧱 Milestone00/
 └── libft/ (./Milestone00/libft/README.md)
+
 🔧 Milestone01/
 ├── get_next_line/(./Milestone01/get_next_line/README.md)
 └── ft_printf/(./Milestone01/ft_printf/README.md)
+
 🧠 Milestone02/
 ├── pipex/(./Milestone02/pipex/README.md)
 ├── so_long/(./Milestone02/so_long/README.md)
 └── push_swap/(./Milestone02/push_swap/README.md)
+
 🚀 Milestone03/
 └── philosopher (philo)/
 
