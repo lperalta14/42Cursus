@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_arguments.c                                    :+:      :+:    :+:   */
+/*   get_arguments_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lperalta <lperalta@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-08-07 17:26:41 by lperalta          #+#    #+#             */
-/*   Updated: 2025-08-07 17:26:41 by lperalta         ###   ########.fr       */
+/*   Created: 2025-10-11 14:11:05 by lperalta          #+#    #+#             */
+/*   Updated: 2025-10-11 14:11:05 by lperalta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
-#include "../my_lib/libft.h"
 
 static t_node	*ft_new_node(int num)
 {
@@ -21,40 +20,31 @@ static t_node	*ft_new_node(int num)
 	if (!new)
 		return (NULL);
 	new->value = num;
-	//new->index = -1;
-	//new->pos = -1;
-	//new->target = -1;
-	//new->cost_a = 0;
-	//new->cost_b = 0;
+	new->index = -1;
+	new->pos = -1;
+	new->target = -1;
+	new->cost_a = 0;
+	new->cost_b = 0;
 	new->next = NULL;
 	return (new);
 }
 
-static void	ft_add_back_node(t_node *stack, t_node *new)
+static void	ft_add_back_node(t_node **stack, t_node *new)
 {
 	t_node	*tmp;
 
-	if (!stack)
+	if (!*stack)
 	{
-		stack = new;
+		*stack = new;
 		return ;
 	}
-	tmp = stack;
+	tmp = *stack;
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = new;
 }
 
-t_node	*ft_lstlast_node(t_node *lst)
-{
-	if (!lst)
-		return (NULL);
-	while (lst->next)
-		lst = lst->next;
-	return (lst);
-}
-
-void	ft_getnode(t_stack *stack, char **split)
+void	ft_getnode_bonus(t_stack *stack_a, char **split, t_stack *stack_b)
 {
 	int		j;
 	long	num;
@@ -63,40 +53,36 @@ void	ft_getnode(t_stack *stack, char **split)
 	j = 0;
 	while (split[j])
 	{
-		if (!ft_valid_digit(split[j]))
-			ft_error(split, stack, NULL);
+		if (!ft_valid_digit_bonus(split[j]))
+			ft_error_bonus(split, stack_a, stack_b);
 		num = ft_atolints(split[j]);
 		if (num > INT_MAX || num < INT_MIN)
-			ft_error(split, stack, NULL);
+			ft_error_bonus(split, stack_a, stack_b);
 		new_node = ft_new_node((int)num);
-		if (!stack->stack)
-			ft_error(split, stack, NULL);
-		ft_add_back_node(stack->stack, new_node);
-		stack->size++;
+		if (!stack_a->stack)
+			ft_error_bonus(split, stack_a, stack_b);
+		ft_add_back_node(stack_a->stack, new_node);
+		stack_a->size++;
 		j++;
 	}
-	ft_free_split(split);
+	ft_free_split_bonus(split);
 }
 
-void	ft_get_arguments(int argc, char **argv, t_stack *stack)
+void	ft_get_arg_bonus(int argc, char **argv, t_stack *a, t_stack *b)
 {
-	int		i;
 	char	**split;
-	int		j;
+	int		i;
 
 	split = NULL;
 	i = 1;
 	while (i < argc)
 	{
-		j = 0;
-		while (ft_isspace(argv[i][j]))
-			j++;
-		if (!argv[i][j])
-			ft_error(NULL, stack, NULL);
+		if (!argv[i][0])
+			ft_error_bonus(NULL, a, b);
 		split = ft_split(argv[i], ' ');
 		if (!split)
-			ft_error(split, stack, NULL);
-		ft_getnode(stack, split);
+			ft_error_bonus(split, a, b);
+		ft_getnode_bonus(a, split, b);
 		i++;
 	}
 }

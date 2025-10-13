@@ -44,6 +44,14 @@ static void	ft_drawplayc(t_long *game, int *c, int x, int y)
 		//game->pos_p.x = x;
 		//game->pos_p.y = y;
 	}
+	/*	else if (game->map[y][x] == 'C')
+	{
+		game->images.col->instances->z = mlx_image_to_window(game->mlx,
+				game->images.col, (x * 64), (y * 64));
+		game->images.col->instances->x = x;
+		game->images.col->instances->y = y;
+		*c = *c - 1;
+	}*/
 	else if (game->map[y][x] == 'C')
 	{
 		game->collec[*c].inst_id = mlx_image_to_window(game->mlx,

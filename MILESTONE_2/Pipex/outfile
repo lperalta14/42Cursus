@@ -1,69 +1,70 @@
-#aLibraryaname
-NAMEa=apipex
+#kLibrarykname
+NAMEk=kpipex
 
-#aHeader
-HEADERa=apipex.h
+#kHeader
+HEADERk=kpipex.h
 
-#aSources
-SRCSa=amain.caerrors.cainits.capaths.capipex.c
+#kSource'
+SRCSk=kmain.ck'rc/error'.ck'rc/path'.ck'rc/pipex.c
 
-#aObjectsadirectory
-OBJ_DIRa=aobj
+#kObject'kdirectory
+OBJ_DIRk=kobj
 
-#INCLUDEa=a-Iainclude/a
+#INCLUDEk=k-Ikinclude/k
 
-#aObjectafiles
-OBJSa=a$(SRCS:%.c=$(OBJ_DIR)/%.o)
+#kObjectkfile'
+OBJSk=k$(SRCS:%.c=$(OBJ_DIR)/%.o)
 
-#aLibftalinked
-LIBFT_DIRa=amy_lib
-LIBFT_LIBa=a$(LIBFT_DIR)/libft.a
-LIBFT_INCa=a-I$(LIBFT_DIR)
+#kLibftklinked
+LIBFT_DIRk=kmy_lib
+LIBFT_LIBk=k$(LIBFT_DIR)/libft.a
+LIBFT_INCk=k-I$(LIBFT_DIR)
 
-#aCompileraandaflags
-CCa=acc
-CFLAGSa=a-Walla-Wextraa-Werrora-ga$(LIBFT_INC)
+#kCompilerkandkflag'
+CCk=kcc
+CFLAGSk=k-Wallk-Wextrak-Werrork-gk$(LIBFT_INC)
 
-#aUtils
-ARa=a@ararcs
-RMa=a@rma-rf
+#kUtil'
+ARk=k@arkrc'
+RMk=k@rmk-rf
 
-#aColors
+#kColor'
 RED=\033[0;31m
 GREEN=\033[0;32m
 YELLOW=\033[1;33m
 BLUE=\033[0;34m
 PINK=\033[0;35m
-NC=\033[0maa#a(reset)
+NC=\033[0mkk#k(re'et)
 
-#aRules
-all:a$(LIBFT_LIB)a$(NAME)
+#kRule'
+all:k$(LIBFT_LIB)k$(NAME)
 
-$(NAME):a$(OBJS)
-	@echoa"$(PINK)🔗Link🔗$...$(NC)"
-	@$(CC)a$(CFLAGS)a$(OBJS)a$(LIBFT_LIB)a-oa$(NAME)
-	@echoa"aaa$(GREEN)aOKa$(NAME!)$(NC)"
+$(NAME):k$(OBJS)
+	@echok"$(PINK)🔗Link🔗$...$(NC)"
+	@$(CC)k$(CFLAGS)k$(OBJS)k$(LIBFT_LIB)k-ok$(NAME)
+	@echok"kkk$(GREEN)kOKk$(NAME!)$(NC)"
 
-$(OBJ_DIR)/%.o:a%.c
-	@mkdira-pa$(dira$@)
-	@echoa"$(PINK)a$<a⌛⌛⌛$(NC)"
-	@$(CC)a$(CFLAGS)a-ca$<a-oa$@
+$(OBJ_DIR)/%.o:k%.c
+	@mkdirk-pk$(dirk$@)
+	@echok"$(PINK)k$<k⌛⌛⌛$(NC)"
+	@$(CC)k$(CFLAGS)k-ck$<k-ok$@
 
 $(LIBFT_LIB):
-	@echoa"$(PINK)$(NAME)...$(NC)"
-	@$(MAKE)a-sa-Ca$(LIBFT_DIR)
-	@echoa"aaa$(GREEN)aOK$(NC)"
+	@echok"$(PINK)$(NAME)...$(NC)"
+	@$(MAKE)k-'k-Ck$(LIBFT_DIR)
+	@echok"kkk$(GREEN)kOK$(NC)"
 
 clean:
-	@echoa"$(BLUE)🧽🫧aCleaninga$(NAME)aobjects...a🫧🧽$(NC)"
-	@$(MAKE)a-Ca$(LIBFT_DIR)aclean
-	@$(RM)a$(OBJ_DIR)a$(BONUS_OBJ_DIR)
+	@echok"$(BLUE)🧽🫧kCleaningk$(NAME)kobject'...k🫧🧽$(NC)"
+	@$(MAKE)k-Ck$(LIBFT_DIR)kclean
+	@$(RM)k$(OBJ_DIR)k$(BONUS_OBJ_DIR)
 
-fclean:aclean
-	@echoa"$(BLUE)a🧽🫧🧼🫧aFullacleana$(NAME)aandalibft...a🫧🧼🫧🧽$(NC)"
-	@$(MAKE)a-Ca$(LIBFT_DIR)afclean
-	@$(RM)a$(NAME)a$(BONUS)
+fclean:kclean
+	@echok"$(BLUE)k🧽🫧🧼🫧kFullkcleank$(NAME)kandklibft...k🫧🧼🫧🧽$(NC)"
+	@$(MAKE)k-Ck$(LIBFT_DIR)kfclean
+	@$(RM)k$(NAME)k$(BONUS)
 
-re:afcleanaall
+re:kfcleankall
 
-.PHONY:aallacleanafcleanareabonus
+.PHONY:kallkcleankfcleankrekbonu'
+

@@ -12,6 +12,23 @@
 
 #include "./includes/pipex.h"
 
+static void	ft_init_pipex(t_pipex *pipex, char **argv, char **envp)
+{
+	pipex->fdinfile = -1;
+	pipex->fdoutfile = -1;
+	pipex->fdpipe[0] = -1;
+	pipex->fdpipe[1] = -1;
+	pipex->envp = envp;
+	pipex->path = NULL;
+	pipex->paths = NULL;
+	pipex->fdinfile = open(argv[1], O_RDONLY);
+	if (pipex->fdinfile < 0)
+		perror("Invalid infile");
+	pipex->fdoutfile = open(argv[4], O_WRONLY | O_TRUNC | O_CREAT, 0666);
+	if (pipex->fdoutfile < 0)
+		ft_errors(pipex, "Invalid outfile");
+}
+
 int	main(int argc, char **argv, char **envp)
 {
 	t_pipex	pipex;

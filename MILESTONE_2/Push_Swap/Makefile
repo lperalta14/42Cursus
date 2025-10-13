@@ -12,8 +12,8 @@ moves/movesrot.c moves/push.c moves/rotate.c moves/reverserotate.c moves/swap.c 
 moves/targets.c moves/utils_movements.c
 
 BONUS_SRCS = BONUS/arg_check_bonus.c BONUS/checkers_bonus.c BONUS/errors_bonus.c \
-BONUS/get_arguments_bonus.c BONUS/push_bonus.c BONUS/reverserotate_bonus.c \
-BONUS/rotate_bonus.c BONUS/swap_bonus.c
+BONUS/get_arguments_bonus.c BONUS/push_bonus.c BONUS/moves_bonus.c \
+BONUS/utils_bonus.c
 
 # Objects directory
 OBJ_DIR = obj

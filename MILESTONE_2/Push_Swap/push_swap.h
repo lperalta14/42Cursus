@@ -56,6 +56,7 @@ void	ft_pa(t_stack *stack_a, t_stack *stack_b);
 void	ft_pb(t_stack *stack_a, t_stack *stack_b);
 
 //void	ft_rotate(t_node **stack);
+
 void	ft_ra(t_node **stack_a);
 void	ft_rb(t_node **stack_b);
 void	ft_rr(t_node **stack_a, t_node **stack_b);

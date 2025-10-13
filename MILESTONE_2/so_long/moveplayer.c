@@ -43,10 +43,11 @@ void	ft_move_player(t_long *game, int dx, int dy)
 		return ;
 	else if (game->map[new_y][new_x] == 'C' && id >= 0)
 	{
-		game->ccount--;
-		mlx_set_instance_depth(&game->images.col->instances[id], -1000);
+		game->images.col->count -= 1;
+		game->images.col->instances[id].enabled = 0;
+		//mlx_set_instance_depth(&game->images.col->instances[id], -1000);
 		game->map[new_y][new_x] = '0';
-		if (game->ccount == 0)
+		if (game->images.col->count == 0)
 			game->images.exit->enabled = 1;
 	}
 	else if (game->map[new_y][new_x] == 'E' && game->images.exit->enabled != 0)
