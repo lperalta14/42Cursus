@@ -26,6 +26,18 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
+/**
+ * @brief Converts a string to a long integer.
+ *
+ * This function parses the string `nptr` and converts it to a `long` integer.
+ * It handles optional leading whitespaces, an optional '+' or '-' sign, 
+ * and stops conversion if a non-digit character is found.
+ * 
+ * @param nptr A pointer to the null-terminated string to convert.
+ * @return The converted `long` value on success.
+ *         Returns -1 if the string contains a non-digit character.
+ *         Returns the value if it overflows beyond `INT_MIN` or `INT_MAX`.
+ */
 long	ft_atolints(const char *nptr)
 {
 	long	sign;

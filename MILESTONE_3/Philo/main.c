@@ -15,7 +15,6 @@
 int	parse(int argc, char **argv)
 {
 	int	i;
-	int j;
 
 	if (argc < 5 || argc > 6)
 		return(0);
@@ -23,13 +22,6 @@ int	parse(int argc, char **argv)
 	i = 1;
 	while (argv[i])
 	{
-		j = 0;
-		/*while (argv[i][j])
-		{
-			if ((!ft_isdigit(argv[i][j]) && !ft_isspace(argv[i][j])))
-				return (0);
-			j++;
-		}*/
 		if (ft_atolints(argv[i]) <= 0 || ft_atolints(argv[i]) > INT_MAX)
 			return (0);
 		i++;

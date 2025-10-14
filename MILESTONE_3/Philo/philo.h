@@ -15,6 +15,24 @@
 
 # include <limits.h>
 # include <stdio.h>
+# include <pthread.h>
+# include <unistd.h>
+# include <sys/time.h>
+
+typedef struct s_philo
+{
+	int		numer;
+	int		lunch;
+	int		nap;
+	int		think;
+	int		alive;
+}	t_philo;
+
+typedef struct s_table
+{
+	t_philo		*philo;
+	
+}	t_table;
 
 
 /************************************************/
