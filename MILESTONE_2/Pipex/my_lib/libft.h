@@ -113,5 +113,7 @@ int		ft_strcmp(const char *s1, const char *s2);
 char	*ft_replacechar(char *s, char a, char b);
 char	*ft_strjoindelimit(char const *s1, char *delimit, char const *s2);
 char	**ft_splitq(char const *s, char c, int wcnt);
+void	ft_putmatrix(char **str, int fd);
+void	ft_freematrix(char **str);
 
 #endif
