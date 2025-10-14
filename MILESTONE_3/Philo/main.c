@@ -29,10 +29,22 @@ int	parse(int argc, char **argv)
 	return (1);
 }
 
+int	ft_init_stuct(char **argv, t_data *table)
+{
+	table->philo = malloc(sizeof(t_philo));
+	
+
+}
+
 int	main(int argc, char **argv)
 {
+	t_data	*table;
+
 	if (!parse(argc, argv))
-		return(perror("error"), 1);
+	return(perror("error"), 1);
+	table = malloc(sizeof(t_data));
+	if (!table)
+		return(1);
 	//inicializar
 	//crear hilos
 	//comprobar

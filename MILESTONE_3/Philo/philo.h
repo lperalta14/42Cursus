@@ -26,13 +26,14 @@ typedef struct s_philo
 	int		nap;
 	int		think;
 	int		alive;
+	t_data	*table
 }	t_philo;
 
-typedef struct s_table
+typedef struct s_data
 {
 	t_philo		*philo;
 	
-}	t_table;
+}	t_data;
 
 
 /************************************************/
