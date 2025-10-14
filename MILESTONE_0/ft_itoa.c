@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	ft_len(int n)
+int	ft_lendigit(int n)
 {
 	int	i;
 
@@ -34,7 +34,7 @@ char	*ft_itoa(int n)
 
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
-	len = ft_len(n);
+	len = ft_lendigit(n);
 	str = (char *) malloc(sizeof(char) * len + 1);
 	if (!str)
 		return (NULL);

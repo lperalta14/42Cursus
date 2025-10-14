@@ -1,0 +1,38 @@
+# Doxyfile 1.9.7
+
+# Proyecto
+PROJECT_NAME           = Libft - Luis Peralta
+PROJECT_BRIEF          = Librería personal del Cursus 42, funciones de manejo de strings, memoria y utilidades.
+OUTPUT_DIRECTORY       = docs
+CREATE_SUBDIRS         = NO
+OUTPUT_LANGUAGE        = English
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = YES
+EXTRACT_STATIC         = YES
+
+# Archivos
+INPUT                  = ./libft.h
+RECURSIVE              = NO
+FILE_PATTERNS          = *.h *.c
+
+# Formato de salida
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
+HTML_FILE_EXTENSION    = .html
+GENERATE_LATEX         = NO
+GENERATE_MAN           = NO
+GENERATE_RTF           = NO
+GENERATE_XML           = NO
+
+# Configuración de diagramas
+HAVE_DOT               = YES
+CALL_GRAPH             = YES
+CALLER_GRAPH           = YES
+DOT_IMAGE_FORMAT       = svg
+DOT_PATH               =
+
+# Otros
+QUIET                  = NO
+WARNINGS               = YES
+INPUT_ENCODING         = UTF-8
+

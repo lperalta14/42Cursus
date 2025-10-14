@@ -13,6 +13,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/**
+ * @brief Comprueba si un carácter es un espacio en blanco.
+ *
+ * Determina si el carácter dado corresponde a alguno de los caracteres
+ * de espacio en blanco reconocidos por la librería estándar de C:
+ * espacio (' '), tabuladores, salto de línea, retorno de carro,
+ * avance de página o tabulación vertical.
+ *
+ * @param c Carácter a evaluar (representado como un entero).
+ *
+ * @return 1 si el carácter es un espacio en blanco, 0 en caso contrario.
+ */
 int	ft_isspace(int c)
 {
 	if ((c > 8 && c < 14) || (c == 32))
@@ -20,6 +32,21 @@ int	ft_isspace(int c)
 	return (0);
 }
 
+/**
+ * @brief Convierte una cadena de caracteres numérica en un valor entero.
+ *
+ * La función analiza la cadena apuntada por `nptr` e interpreta su contenido
+ * como un número entero decimal, manejando los posibles espacios iniciales
+ * y los signos '+' o '-'.
+ *
+ * @param nptr Puntero a la cadena que se desea convertir a entero.
+ *             Debe terminar con el carácter nulo '\0'.
+ *
+ * @return El valor entero resultante de la conversión. Si la cadena comienza
+ *         con un signo '-', el resultado será negativo.
+ *
+ * @note Esta función no gestiona desbordamientos (overflow o underflow).
+ */
 int	ft_atoi(const char *nptr)
 {
 	int	sign;

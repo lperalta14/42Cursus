@@ -12,6 +12,20 @@
 
 #include "libft.h"
 
+/**
+ * @brief Busca un byte específico dentro de un bloque de memoria.
+ *
+ * Examina los primeros `n` bytes del área de memoria apuntada por `s`
+ * en busca de la primera aparición del valor `c` (interpretado como un
+ * unsigned char). Si se encuentra, devuelve un puntero al byte correspondiente.
+ *
+ * @param s Puntero al bloque de memoria donde realizar la búsqueda.
+ * @param c Valor del byte a buscar (se interpreta como unsigned char).
+ * @param n Número máximo de bytes a examinar.
+ *
+ * @return Un puntero al primer byte coincidente si se encuentra,
+ *         o `NULL` si el valor no aparece en los primeros `n` bytes.
+ */
 void	*ft_memchr(const void *s, int c, size_t n)
 {
 	unsigned char	x;
