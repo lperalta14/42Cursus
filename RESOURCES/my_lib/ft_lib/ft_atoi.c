@@ -9,9 +9,8 @@
 /*   Updated: 2025/05/15 19:35:20 by lperalta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../libft.h"
-#include <stdio.h>
-#include <stdlib.h>
+
+#include "../includes/libft.h"
 
 int	ft_isspace(int c)
 {

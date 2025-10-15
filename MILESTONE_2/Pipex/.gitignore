@@ -3,3 +3,6 @@
 
 #OBJECTS
 *.o
+
+#MY_LIB
+/my_lib

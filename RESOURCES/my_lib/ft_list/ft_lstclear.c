@@ -10,22 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "libft.h"
+#include "../includes/ft_list.h"
 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*temp;
-	
-	temp = (t_list*)malloc(sizeof(tlist));
-		if (!temp)
-			return(NULL);
+	t_list	*next;
+
+	if (!lst || !del)
+		return ;
 	temp = *lst;
-	lst = NULL;
-	while ((lst || del) && (lst->next))
+	while (temp)
 	{
-		temp = temp->next;
+		next = temp->next;
 		del(temp->content);
-		free(temp)
+		free(temp);
+		temp = next;
 	}
+	*lst = NULL;
 }
