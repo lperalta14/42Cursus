@@ -79,10 +79,45 @@ int	parse(int argc, char **argv)
 	while (argv[i])
 	{
 		if (ft_atolints(argv[i]) <= 0 || ft_atolints(argv[i]) > INT_MAX)
-			return (0);
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	free_mutex_forks(t_data *table)
+{
+	int	i;
+
+	i = 0;
+	while (i < table->philos->fork_index)
+	{
+		pthread_mutex_destroy(&table->forks[i]);
 		i++;
 	}
 	return (1);
+}
+void	free_mutex(t_data *table, int n)
+{
+	if (n > 0)
+		free_mutex_forks(table);
+	if (n > 1)	
+		pthread_mutex_destroy(&table->print_mutex);
+	if (n > 2)
+		pthread_mutex_destroy(&table->meal_mutex);
+	if (n > 3)	
+		pthread_mutex_destroy(&table->stop_mutex);
+}
+
+int	ft_error(t_data	*table, char *msg, int n)
+{
+	if (!table)
+		return(1);
+	free_mutex(table, n);
+	free(table->philos);
+	free(table);
+	printf("\033[0;31mERROR; %s\033[0m", msg);
+	return(1);	
 }
 
 int	ft_init_struct(char **argv, t_data *table)
@@ -96,14 +131,32 @@ int	ft_init_struct(char **argv, t_data *table)
 	table->not_dead_yet = 1;
 	table->philos = malloc(sizeof(t_philo) * table->num_philos);
 	if (!table->philos)
-		return (0);
-	return (1);
+		return (ft_error(table, "failed init struct", 0));
+	return (0);
 }
 
-/*int	ft_init_mutex()
+int	ft_init_mutex(t_data *table)
 {
+	int	i;
 
-}*/
+	i = 0;
+	while (i < table->num_philos)
+	{
+		if (pthread_mutex_init(&table->forks[i], NULL))
+			return (free_mutex_forks(table));
+		table->philos->fork_index = i;
+		i++;
+	}
+	table->philos->fork_index = 0;
+	if (pthread_mutex_init(&(table->print_mutex), NULL))
+		return (ft_error(table, "mutex init failed", 1));
+	if (pthread_mutex_init(&(table->meal_mutex), NULL))
+		return (ft_error(table, "mutex init failed", 2));
+	if (pthread_mutex_init(&(table->stop_mutex), NULL))
+		return (ft_error(table, "mutex init failed", 3));
+	return (0);
+}
+
 /*******************************************************************
 *pthread_mutex_t mutex;
 *
@@ -130,14 +183,14 @@ int	main(int argc, char **argv)
 {
 	t_data	*table;
 
-	if (!parse(argc, argv))
+	if (parse(argc, argv))
 	return(perror("error"), 1);
 	table = malloc(sizeof(t_data));
 	if (!table)
-		return(1);
+		return (1);
 	//init data : init data y init mutex (mutex deben existir antes de crear los hilos)
-	if (!ft_init_struct(argv, table))
-		return(free(table), 1);
+	if (ft_init_struct(argv, table) || (ft_init_mutex(table)))
+		return (1);
 	//init filos (crear filosofos y asignar tenedores)
 	//start simulation (rutina)
 	//comprobar (monitor)
