@@ -14,27 +14,40 @@
 # define PHILO_H
 
 # include <limits.h>
+# include <stdlib.h>
 # include <stdio.h>
 # include <pthread.h>
 # include <unistd.h>
 # include <sys/time.h>
 
+typedef struct s_data	t_data;
+
 typedef struct s_philo
 {
-	int		numer;
-	int		lunch;
-	int		nap;
-	int		think;
-	int		alive;
-	t_data	*table
+	int				dni;
+	int				lunched;
+	long long		last_meal_time;
+	pthread_t		thread;
+	//pthread_mutex_t	*left_fork;
+	int				fork_index;
+	t_data			*table;
 }	t_philo;
 
 typedef struct s_data
 {
-	t_philo		*philo;
-	
+	int				num_philos;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				must_eat_count;
+	int				not_dead_yet;
+	long long		start_time;
+	pthread_mutex_t	*forks;
+	pthread_mutex_t	print_mutex;
+	pthread_mutex_t	meal_mutex;
+	pthread_mutex_t	stop_mutex;
+	t_philo			*philos;
 }	t_data;
-
 
 /************************************************/
 /*					UTILS						*/
