@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../includes/ft_utils.h"
 
 char	*ft_strjoindelimit(char const *s1, char *delimit, char const *s2)
 {

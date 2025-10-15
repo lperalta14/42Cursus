@@ -9,9 +9,10 @@
 /*   Updated: 2025-08-26 17:30:14 by lperalta         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "../libft.h"
 
-char	ft_checkbase(int str_base)
+#include "../includes/ft_utils.h"
+
+static char	ft_checkbase(int str_base)
 {
 	char	base;
 

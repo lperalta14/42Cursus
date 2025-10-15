@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../includes/GNL.h"
 
 char	*ft_read_loop(int fd, char **res, char *buffer)
 {

@@ -10,17 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
-
-int	ft_slen(char *s)
-{
-	int		i;
-
-	i = 0;
-	while (*s++)
-		i++;
-	return (i);
-}
+#include "../includes/ft_printsft.h"
 
 int	ft_putchar(char c)
 {
@@ -32,6 +22,6 @@ int	ft_putstr(char *s)
 {
 	if (!s)
 		return (ft_putstr("(null)"));
-	write(1, s, ft_slen(s));
-	return (ft_slen(s));
+	write(1, s, ft_strlen(s));
+	return (ft_strlen(s));
 }

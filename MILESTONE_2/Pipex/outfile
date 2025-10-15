@@ -1,70 +1,9 @@
-#kLibrarykname
-NAMEk=kpipex
-
-#kHeader
-HEADERk=kpipex.h
-
-#kSource'
-SRCSk=kmain.ck'rc/error'.ck'rc/path'.ck'rc/pipex.c
-
-#kObject'kdirectory
-OBJ_DIRk=kobj
-
-#INCLUDEk=k-Ikinclude/k
-
-#kObjectkfile'
-OBJSk=k$(SRCS:%.c=$(OBJ_DIR)/%.o)
-
-#kLibftklinked
-LIBFT_DIRk=kmy_lib
-LIBFT_LIBk=k$(LIBFT_DIR)/libft.a
-LIBFT_INCk=k-I$(LIBFT_DIR)
-
-#kCompilerkandkflag'
-CCk=kcc
-CFLAGSk=k-Wallk-Wextrak-Werrork-gk$(LIBFT_INC)
-
-#kUtil'
-ARk=k@arkrc'
-RMk=k@rmk-rf
-
-#kColor'
-RED=\033[0;31m
-GREEN=\033[0;32m
-YELLOW=\033[1;33m
-BLUE=\033[0;34m
-PINK=\033[0;35m
-NC=\033[0mkk#k(re'et)
-
-#kRule'
-all:k$(LIBFT_LIB)k$(NAME)
-
-$(NAME):k$(OBJS)
-	@echok"$(PINK)🔗Link🔗$...$(NC)"
-	@$(CC)k$(CFLAGS)k$(OBJS)k$(LIBFT_LIB)k-ok$(NAME)
-	@echok"kkk$(GREEN)kOKk$(NAME!)$(NC)"
-
-$(OBJ_DIR)/%.o:k%.c
-	@mkdirk-pk$(dirk$@)
-	@echok"$(PINK)k$<k⌛⌛⌛$(NC)"
-	@$(CC)k$(CFLAGS)k-ck$<k-ok$@
-
-$(LIBFT_LIB):
-	@echok"$(PINK)$(NAME)...$(NC)"
-	@$(MAKE)k-'k-Ck$(LIBFT_DIR)
-	@echok"kkk$(GREEN)kOK$(NC)"
-
-clean:
-	@echok"$(BLUE)🧽🫧kCleaningk$(NAME)kobject'...k🫧🧽$(NC)"
-	@$(MAKE)k-Ck$(LIBFT_DIR)kclean
-	@$(RM)k$(OBJ_DIR)k$(BONUS_OBJ_DIR)
-
-fclean:kclean
-	@echok"$(BLUE)k🧽🫧🧼🫧kFullkcleank$(NAME)kandklibft...k🫧🧼🫧🧽$(NC)"
-	@$(MAKE)k-Ck$(LIBFT_DIR)kfclean
-	@$(RM)k$(NAME)k$(BONUS)
-
-re:kfcleankall
-
-.PHONY:kallkcleankfcleankrekbonu'
-
+includes
+main.c
+Makefile
+my_lib
+obj
+outfile
+outfilñe
+pipex
+src

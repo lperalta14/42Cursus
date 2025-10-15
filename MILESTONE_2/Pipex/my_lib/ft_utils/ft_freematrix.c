@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../includes/ft_utils.h"
 
 void	ft_freematrix(char **str)
 {

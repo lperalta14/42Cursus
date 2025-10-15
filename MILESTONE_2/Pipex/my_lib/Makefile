@@ -2,7 +2,12 @@
 NAME = libft.a
 
 # Header
-HEADER = libft.h
+INCLUDES_DIR = includes
+INCLUDES = $(INCLUDES_DIR)/libft.h \
+	$(INCLUDES_DIR)/ft_list.h \
+	$(INCLUDES_DIR)/ft_printf.h \
+	$(INCLUDES_DIR)/get_next_line.h \
+	$(INCLUDES_DIR)/ft_utils.h
 
 # Objects directory
 OBJ_DIR = obj
@@ -21,16 +26,12 @@ ft_lib/ft_putendl_fd.c ft_lib/ft_putstr_fd.c ft_lib/ft_putchar_fd.c ft_lib/ft_pu
 ft_lib/ft_strmapi.c ft_lib/ft_strrchr.c ft_lib/ft_striteri.c ft_lib/ft_strnstr.c ft_lib/ft_substr.c ft_lib/ft_strtrim.c \
 ft_lib/ft_split.c $(PRINTF_SRCS) $(GNL_SRCS) $(UTILS_SRCS) $(BONUS_SRC)
 
-BONUS_SRC = ft_list/ft_lstnew.c ft_list/ft_lstadd_back.c ft_list/ft_lstadd_front.c ft_list/ft_lstclear.c \
-ft_list/ft_lstdelone.c ft_list/ft_lstlast.c ft_list/ft_lstmap.c ft_list/ft_lstsize.c ft_list/ft_lstiter.c\
-ft_utils/ft_replacechar.c
-
 # Object files
 OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 # Compiler and flags
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I$(INCLUDES_DIR)
 
 # Utils
 AR = ar rcs
@@ -58,7 +59,7 @@ $(OBJ_DIR):
 	@echo "$(PINK) OBJ DIR created...$(NC)"
 
   ## Obj creating into objects directory
-$(OBJ_DIR)/%.o: %.c $(HEADER) | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -c $< -o $@
 

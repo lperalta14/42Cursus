@@ -12,7 +12,7 @@
 
 #ifndef PIPEX_H
 # define PIPEX_H
-# include "../my_lib/libft.h"
+# include "../my_lib/includes/libft.h"
 # include <unistd.h>
 # include <errno.h>
 # include <string.h>

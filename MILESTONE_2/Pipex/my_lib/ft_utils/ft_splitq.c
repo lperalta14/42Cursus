@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../includes/ft_utils.h"
 
 static int	ft_wordcount(char const *s, char c)
 {
@@ -51,7 +51,7 @@ static char	**freemem(char **split, int x)
 	return (NULL);
 }
 
-int	countquote(int *quote, int ccnt, char const *s)
+static int	countquote(int *quote, int ccnt, char const *s)
 {
 	if (!*quote && s[ccnt] == '\'')
 		*quote = s[ccnt];

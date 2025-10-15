@@ -10,17 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
-
-int	ft_strlen_gnl(const char *s)
-{
-	int	len;
-
-	len = 0;
-	while (s && s[len])
-		len++;
-	return (len);
-}
+#include "../includes/GNL.h"
 
 char	*ft_strchr_gnl(char *str)
 {
@@ -46,7 +36,7 @@ char	*ft_strjoin_gnl(char *s1, char *s2)
 		return (NULL);
 	if (!s1)
 		return (ft_strdup_gnl(s2));
-	len = ft_strlen_gnl(s1) + ft_strlen_gnl(s2);
+	len = ft_strlen(s1) + ft_strlen(s2);
 	dest = (char *) malloc ((len +1) * sizeof (char));
 	if (!dest)
 		return (NULL);
@@ -83,7 +73,7 @@ char	*ft_strdup_gnl(const char *s)
 	char	*str;
 	int		len;
 
-	len = ft_strlen_gnl(s);
+	len = ft_strlen(s);
 	str = (char *) malloc (len * sizeof(char) + 1);
 	if (!str)
 		return (NULL);
