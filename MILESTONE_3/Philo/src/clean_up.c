@@ -34,21 +34,30 @@ void	destroy_mutex(t_data *table)
 	int	n;
 
 	n = table->count_mutext;
-	if (n > 0)
-		destroy_mutex_forks(table);
-	if (n > 1)	
-		pthread_mutex_destroy(&table->print_mutex);
+	if (n > 3)
+		pthread_mutex_destroy(&table->stop_mutex);
 	if (n > 2)
 		pthread_mutex_destroy(&table->meal_mutex);
-	if (n > 3)	
-		pthread_mutex_destroy(&table->stop_mutex);
+	if (n > 1)
+		pthread_mutex_destroy(&table->print_mutex);
+	if (n > 0)
+		destroy_mutex_forks(table);
 }
 
-void	clean_up(t_data *table)
+int	clean_up(t_data *table)
 {
 	if (!table)
-		return ;
+		return (1);
 	if (table->forks)
+	{
 		destroy_mutex(table);
+		free(table->forks);
+	}
+	if (table->philos)
+	{
+		free (table->philos);
+		table->philos = NULL;
+	}
 	free(table);
+	return (1);
 }

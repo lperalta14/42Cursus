@@ -12,6 +12,16 @@
 
 #include "../philo.h"
 
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i])
+		i++;
+	return (i);
+}
+
 int	ft_isspace(int c)
 {
 	if ((c > 8 && c < 14) || (c == 32))
@@ -56,7 +66,7 @@ long	ft_atolints(const char *nptr)
 		nptr ++;
 	while ((*nptr))
 	{
-		if(!ft_isdigit(*nptr))
+		if (!ft_isdigit(*nptr))
 			return (-1);
 		result *= 10;
 		result += (*nptr++ - '0');

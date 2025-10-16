@@ -62,15 +62,24 @@ typedef struct s_data
 /************************************************/
 /*					UTILS						*/
 /************************************************/
+int		ft_strlen(char *str);
 int		ft_isspace(int c);
 int		ft_isdigit(int c);
 long	ft_atolints(const char *nptr);
+int		ft_error(char *msg);
 
 /************************************************/
 /*					CLEAN						*/
 /************************************************/
-int	destroy_mutex_forks(t_data *table);
+int		destroy_mutex_forks(t_data *table);
 void	destroy_mutex(t_data *table);
-void	clean_up(t_data *table);
+int		clean_up(t_data *table);
+
+/************************************************/
+/*					INITS						*/
+/************************************************/
+int		ft_init_struct(char **argv, t_data *table);
+int		ft_init_mutex(t_data *table);
+int		ft_init_philos(t_data *table);
 
 #endif
