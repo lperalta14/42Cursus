@@ -20,7 +20,13 @@
 # include <unistd.h>
 # include <sys/time.h>
 
-
+// COLORS
+# define RED	"\033[0;31m"
+# define GREEN	"\033[0;32m"
+# define YELLOW	"\033[1;33m"
+# define BLUE	"\033[0;34m"
+# define PINK	"\033[0;35m"
+# define NC		"\033[0m"
 
 typedef struct s_data	t_data;
 
@@ -60,5 +66,11 @@ int		ft_isspace(int c);
 int		ft_isdigit(int c);
 long	ft_atolints(const char *nptr);
 
+/************************************************/
+/*					CLEAN						*/
+/************************************************/
+int	destroy_mutex_forks(t_data *table);
+void	destroy_mutex(t_data *table);
+void	clean_up(t_data *table);
 
 #endif

@@ -56,17 +56,7 @@ forks[i]			Cada tenedor					Al comer (lock 2 tenedores)
 print_mutex			printf()						Cada vez que imprimes status
 meal_mutex			last_meal_time, lunched			Al comer y al comprobar muerte
 stop_mutex			not_dead_yet					Al comprobar si seguir la simulación
-
-
-//# COLORS
-RED=\033[0;31m;
-GREEN=\033[0;32m;
-YELLOW=\033[1;33m;
-BLUE=\033[0;34m;
-PINK=\033[0;35m;
-NC=\033[0m;
 */
-
 #include "philo.h"
 
 int	parse(int argc, char **argv)
@@ -74,7 +64,7 @@ int	parse(int argc, char **argv)
 	int	i;
 
 	if (argc < 5 || argc > 6)
-		return(0);
+		return(1);
 	i = 1;
 	while (argv[i])
 	{
@@ -85,41 +75,9 @@ int	parse(int argc, char **argv)
 	return (0);
 }
 
-int	free_mutex_forks(t_data *table)
-{
-	int	i;
-
-	if (table->forks)
-		return (1);
-	i = 0;
-	while (i < table->count_mutext_forks)
-	{
-		pthread_mutex_destroy(&table->forks[i]);
-		i++;
-	}
-	free(table->forks);
-	table->forks = NULL;
-	return (1);
-}
-
-void	free_mutex(t_data *table)
-{
-	int	n;
-
-	n = table->count_mutext;
-	if (n > 0)
-		free_mutex_forks(table);
-	if (n > 1)	
-		pthread_mutex_destroy(&table->print_mutex);
-	if (n > 2)
-		pthread_mutex_destroy(&table->meal_mutex);
-	if (n > 3)	
-		pthread_mutex_destroy(&table->stop_mutex);
-}
-
 int	ft_error(char *msg)
 {
-	printf("\033[0;31mERROR; %s\033[0m", msg);
+	printf(RED"ERROR; %s"NC, msg);
 	return(1);	
 }
 
@@ -154,7 +112,7 @@ int	ft_init_mutex(t_data *table)
 	{
 		table->count_mutext_forks = i;
 		if (pthread_mutex_init(&table->forks[i], NULL))
-			return (free_mutex_forks(table));
+			return (destroy_mutex_forks(table), 1);
 		i++;
 	}
 	table->count_mutext = 1;
@@ -197,7 +155,7 @@ int	main(int argc, char **argv)
 	t_data	*table;
 
 	if (parse(argc, argv))
-	return(perror("error"), 1);
+		return(perror("error"), 1);
 	table = malloc(sizeof(t_data));
 	if (!table)
 		return (1);
@@ -208,7 +166,7 @@ int	main(int argc, char **argv)
 	//start simulation (rutina)
 	//comprobar (monitor)
 	//esperar que terminen los hilos
-	free_mutex(table);
-	return(printf("\033[0;32mBIEN\033[0m\n"), 0);
+	clean_up(table);
+	return(printf(GREEN"BIEN"NCgit ), 0);
 	//estás muerto?; (flag para terminar todos los hilos si uno muere)
 }
