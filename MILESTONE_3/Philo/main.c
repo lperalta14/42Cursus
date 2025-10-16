@@ -99,7 +99,7 @@ int	main(int argc, char **argv)
 	if (ft_init_struct(argv, table) || ft_init_mutex(table)
 		|| ft_init_philos(table))
 		return (clean_up(table));
-	//init filos (crear filosofos ✓ y asignar tenedores)
+	//init filos (crear filosofos ✓ y asignar tenedores✓)
 	//start simulation (rutina)
 	//comprobar (monitor)
 	//esperar que terminen los hilos
