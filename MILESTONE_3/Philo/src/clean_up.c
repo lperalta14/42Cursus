@@ -24,8 +24,6 @@ int	destroy_mutex_forks(t_data *table)
 		pthread_mutex_destroy(&table->forks[i]);
 		i++;
 	}
-	free(table->forks);
-	table->forks = NULL;
 	return (1);
 }
 
@@ -52,6 +50,7 @@ int	clean_up(t_data *table)
 	{
 		destroy_mutex(table);
 		free(table->forks);
+		table->forks = NULL;
 	}
 	if (table->philos)
 	{

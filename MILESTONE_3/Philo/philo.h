@@ -67,6 +67,7 @@ int		ft_isspace(int c);
 int		ft_isdigit(int c);
 long	ft_atolints(const char *nptr);
 int		ft_error(char *msg);
+long	get_time(void);
 
 /************************************************/
 /*					CLEAN						*/

@@ -90,6 +90,7 @@ static int	parse(int argc, char **argv)
 int	main(int argc, char **argv)
 {
 	t_data	*table;
+	long time = 0;
 
 	if (parse(argc, argv))
 		return (1);
@@ -104,6 +105,8 @@ int	main(int argc, char **argv)
 	//comprobar (monitor)
 	//esperar que terminen los hilos
 	clean_up(table);
+	time = get_time();
+	printf(YELLOW"time: %ld\n", time);
 	return (printf(GREEN"BIEN\n"NC), 0);
 	//estás muerto?; (flag para terminar todos los hilos si uno muere)
 }

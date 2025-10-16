@@ -84,7 +84,7 @@ int	ft_init_philos(t_data *table)
 	int	i;
 
 	i = 0;
-	while (i <= table->num_philos)
+	while (i < table->num_philos)
 	{
 		table->philos[i].dni = i + 1;
 		table->philos[i].lunched = 0;
