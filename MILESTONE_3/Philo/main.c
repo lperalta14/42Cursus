@@ -59,27 +59,29 @@ stop_mutex			not_dead_yet					Al comprobar si seguir la simulación
 */
 #include "philo.h"
 
+
+int	ft_error(char *msg)
+{
+	printf(RED"ERROR: %s\n"NC, msg);
+	return(1);	
+}
+
 int	parse(int argc, char **argv)
 {
 	int	i;
 
 	if (argc < 5 || argc > 6)
-		return(1);
+		return(ft_error("./philos 'num_philos' 'die' 'eat' 'sleep' [number_of_eat]"));
 	i = 1;
 	while (argv[i])
 	{
 		if (ft_atolints(argv[i]) <= 0 || ft_atolints(argv[i]) > INT_MAX)
-			return (1);
+			return (ft_error("invalid argument"));
 		i++;
 	}
 	return (0);
 }
 
-int	ft_error(char *msg)
-{
-	printf(RED"ERROR; %s"NC, msg);
-	return(1);	
-}
 
 int	ft_init_struct(char **argv, t_data *table)
 {
@@ -112,7 +114,7 @@ int	ft_init_mutex(t_data *table)
 	{
 		table->count_mutext_forks = i;
 		if (pthread_mutex_init(&table->forks[i], NULL))
-			return (destroy_mutex_forks(table), 1);
+			return (destroy_mutex_forks(table));
 		i++;
 	}
 	table->count_mutext = 1;
@@ -155,7 +157,7 @@ int	main(int argc, char **argv)
 	t_data	*table;
 
 	if (parse(argc, argv))
-		return(perror("error"), 1);
+		return(1);
 	table = malloc(sizeof(t_data));
 	if (!table)
 		return (1);
@@ -167,6 +169,6 @@ int	main(int argc, char **argv)
 	//comprobar (monitor)
 	//esperar que terminen los hilos
 	clean_up(table);
-	return(printf(GREEN"BIEN"NCgit ), 0);
+	return(printf(GREEN"BIEN\n"NC), 0);
 	//estás muerto?; (flag para terminar todos los hilos si uno muere)
 }
