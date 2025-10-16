@@ -89,16 +89,24 @@ int	free_mutex_forks(t_data *table)
 {
 	int	i;
 
+	if (table->forks)
+		return (1);
 	i = 0;
-	while (i < table->philos->fork_index)
+	while (i < table->count_mutext_forks)
 	{
 		pthread_mutex_destroy(&table->forks[i]);
 		i++;
 	}
+	free(table->forks);
+	table->forks = NULL;
 	return (1);
 }
-void	free_mutex(t_data *table, int n)
+
+void	free_mutex(t_data *table)
 {
+	int	n;
+
+	n = table->count_mutext;
 	if (n > 0)
 		free_mutex_forks(table);
 	if (n > 1)	
@@ -109,13 +117,8 @@ void	free_mutex(t_data *table, int n)
 		pthread_mutex_destroy(&table->stop_mutex);
 }
 
-int	ft_error(t_data	*table, char *msg, int n)
+int	ft_error(char *msg)
 {
-	if (!table)
-		return(1);
-	free_mutex(table, n);
-	free(table->philos);
-	free(table);
 	printf("\033[0;31mERROR; %s\033[0m", msg);
 	return(1);	
 }
@@ -126,12 +129,16 @@ int	ft_init_struct(char **argv, t_data *table)
 	table->time_to_die = ft_atolints(argv[2]);
 	table->time_to_eat = ft_atolints(argv[3]);
 	table->time_to_sleep = ft_atolints(argv[4]);
+	table->must_eat_count = -1;
 	if (argv[5])
 		table->must_eat_count = ft_atolints(argv[5]);
 	table->not_dead_yet = 1;
+	table->start_time = 0;
+	table->forks = NULL;
+	table->count_mutext = 1;
 	table->philos = malloc(sizeof(t_philo) * table->num_philos);
 	if (!table->philos)
-		return (ft_error(table, "failed init struct", 0));
+		return (ft_error("failed init struct"));
 	return (0);
 }
 
@@ -139,21 +146,27 @@ int	ft_init_mutex(t_data *table)
 {
 	int	i;
 
+	table->forks = malloc(sizeof(pthread_mutex_t) * table->num_philos);
+	if (!table->forks)
+		return (ft_error("failed amlloc forks"));
 	i = 0;
 	while (i < table->num_philos)
 	{
+		table->count_mutext_forks = i;
 		if (pthread_mutex_init(&table->forks[i], NULL))
 			return (free_mutex_forks(table));
-		table->philos->fork_index = i;
 		i++;
 	}
-	table->philos->fork_index = 0;
+	table->count_mutext = 1;
 	if (pthread_mutex_init(&(table->print_mutex), NULL))
-		return (ft_error(table, "mutex init failed", 1));
+		return (ft_error("mutex init failed"));
+	table->count_mutext = 2;
 	if (pthread_mutex_init(&(table->meal_mutex), NULL))
-		return (ft_error(table, "mutex init failed", 2));
+		return (ft_error("mutex init failed"));
+	table->count_mutext = 3;
 	if (pthread_mutex_init(&(table->stop_mutex), NULL))
-		return (ft_error(table, "mutex init failed", 3));
+		return (ft_error("mutex init failed"));
+	table->count_mutext = 4;
 	return (0);
 }
 
@@ -195,7 +208,7 @@ int	main(int argc, char **argv)
 	//start simulation (rutina)
 	//comprobar (monitor)
 	//esperar que terminen los hilos
-	//liberar
+	free_mutex(table);
 	return(printf("\033[0;32mBIEN\033[0m\n"), 0);
 	//estás muerto?; (flag para terminar todos los hilos si uno muere)
 }

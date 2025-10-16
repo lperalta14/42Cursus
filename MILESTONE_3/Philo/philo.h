@@ -20,6 +20,8 @@
 # include <unistd.h>
 # include <sys/time.h>
 
+
+
 typedef struct s_data	t_data;
 
 typedef struct s_philo
@@ -41,6 +43,8 @@ typedef struct s_data
 	int				time_to_sleep;
 	int				must_eat_count;
 	int				not_dead_yet;
+	int				count_mutext;
+	int				count_mutext_forks;
 	long long		start_time;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_mutex;
