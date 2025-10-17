@@ -30,26 +30,6 @@ int	ft_init_struct(char **argv, t_data *table)
 		return (ft_error("failed init struct"));
 	return (0);
 }
-/*******************************************************************
-*pthread_mutex_t mutex;
-*
-*  // INICIALIZAR (al principio del programa)
-*pthread_mutex_init(&mutex, NULL);
-*
-*  // BLOQUEAR (pedir la llave)
-*pthread_mutex_lock(&mutex);      // Si está ocupado, ESPERA aquí
-*
-*  // DESBLOQUEAR (devolver la llave)
-*pthread_mutex_unlock(&mutex);
-*
-*  // DESTRUIR (al final del programa)
-*pthread_mutex_destroy(&mutex);
-
-Siempre init antes de create: Los mutex deben existir antes de que los threads intenten usarlos.
-Join antes de destroy: Espera a que los threads terminen antes de destruir los mutex.
-Libera en orden inverso: Lo último que creaste, primero que destruyes.
-Comprueba errores: pthread_create, pthread_mutex_init, etc. devuelven 0 si todo OK.
-*******************************************************************/
 
 int	ft_init_mutex(t_data *table)
 {

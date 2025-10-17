@@ -49,10 +49,33 @@ LIMPIEZA:
 │    └─ free(philos)                  │
 └─────────────────────────────────────┘
 */
-/*¿Por qué necesitas cada mutex?
+
+/*******************************************************************
+*pthread_mutex_t mutex;
+*
+*  // INICIALIZAR (al principio del programa)
+*pthread_mutex_init(&mutex, NULL);
+*
+*  // BLOQUEAR (pedir la llave)
+*pthread_mutex_lock(&mutex);      // Si está ocupado, ESPERA aquí
+*
+*  // DESBLOQUEAR (devolver la llave)
+*pthread_mutex_unlock(&mutex);
+*
+*  // DESTRUIR (al final del programa)
+*pthread_mutex_destroy(&mutex);
+
+Siempre init antes de create: Los mutex deben existir antes de que los threads intenten usarlos.
+Join antes de destroy: Espera a que los threads terminen antes de destruir los mutex.
+Libera en orden inverso: Lo último que creaste, primero que destruyes.
+Comprueba errores: pthread_create, pthread_mutex_init, etc. devuelven 0 si todo OK.
+*******************************************************************/
+
+
+/*¿Por qué cada mutex?
 
 Mutex				Protege							¿Cuándo se usa?
-forks[i]			Cada tenedor					Al comer (lock 2 tenedores)
+forks[i]			Cada tenedor					Al comer (lock 2 tenedores, n y n+1)
 print_mutex			printf()						Cada vez que imprimes status
 meal_mutex			last_meal_time, lunched			Al comer y al comprobar muerte
 stop_mutex			not_dead_yet					Al comprobar si seguir la simulación
@@ -103,7 +126,7 @@ int	main(int argc, char **argv)
 	//init filos (crear filosofos ✓ y asignar tenedores✓)
 	//start simulation (rutina)
 	//comprobar (monitor)
-	//esperar que terminen los hilos
+	//esperar que terminen los hilos pthread_join()
 	clean_up(table);
 	time = get_time();
 	printf(YELLOW"time: %ld\n", time);
