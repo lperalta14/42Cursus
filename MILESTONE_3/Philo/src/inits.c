@@ -75,3 +75,8 @@ int	ft_init_philos(t_data *table)
 	}
 	return (0);
 }
+
+int	ft_init_threads(t_data table)
+{
+	
+}

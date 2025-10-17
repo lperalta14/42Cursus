@@ -32,6 +32,14 @@ función routine(argumento):
         c. COMER (coger tenedores → comer → soltar tenedores)
         d. DORMIR
 */
+void ft_usleep(long long time_ms)
+{
+	long long start;
+
+	start = get_time();
+	while (get_time() - start < time_ms)
+		usleep(100);
+}
 
 int	liveornot(t_data	*table)
 {
@@ -45,43 +53,46 @@ int	liveornot(t_data	*table)
 	return (0);
 }
 
-void	print_status(t_philo *philo, char *msg)
+void	print_status(t_philo *philo, char *msg, char *color)
 {
 	long	time;
 	if (liveornot(philo->table))
 		return ;
 	pthread_mutex_lock(&philo->table->print_mutex);
 	time = get_time() - philo->table->start_time;
-		printf(GREEN"%lld %d %s\n"NC, time, philo->dni, msg);
+		printf("%s%lld %d %s%s\n",color, time, philo->dni, msg, NC);
 	pthread_mutex_unlock(&philo->table->print_mutex);
 }
 
-int	take_forks(t_philo *philo)
+void	take_forks(t_philo *philo)
 {
 	pthread_mutex_lock(&philo->table->forks[philo->fork_index]);
-	print_status(philo, "🔒 has taken first fucking fork");
+	print_status(philo, "🔒 has taken first fucking fork", GREEN);
 	pthread_mutex_lock(&philo->table->forks[(philo->fork_index+1)
 		% philo->table->num_philos]);
-	print_status(philo, "🔒 has taken second fucking fork");
-	return (1);
+	print_status(philo, "🔒 has taken second fucking fork", GREEN);
 }
-int	lunching(t_philo *philo)
+void	lunching(t_philo *philo)
 {
 	take_forks(philo);
-	print_status(philo, "🍝 is eating");
+	print_status(philo, "🍝 is eating", GREEN);
 	pthread_mutex_lock(&philo->table->meal_mutex);
 	philo->last_meal_time = get_time();
 	philo->lunched += 1;
 	pthread_mutex_unlock(&philo->table->meal_mutex);
-	//funcionusleep(esperar tiempo de comer);
+	ft_usleep(philo->table->time_to_eat);
 	pthread_mutex_unlock(&philo->table->forks[(philo->fork_index+1)
 		% philo->table->num_philos]);
 	pthread_mutex_unlock(&philo->table->forks[philo->fork_index]);
-	return (1);
+
 }
 
 int	snaps(t_philo *philo)
-{}
+{
+	print_status(philo, "😴 is sleeping", PINK);
+	ft_usleep(philo->table->time_to_snap);
+}
+
 void	*routine(void *arg)
 {
 	t_philo *philo;
@@ -97,6 +108,7 @@ void	*routine(void *arg)
 			break ;
 		lunching(philo);
 		//snaps(philo);
-		//thinking(philo);
+		//thinking(philo)🤔;
+
 	}
 }
