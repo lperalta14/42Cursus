@@ -17,7 +17,7 @@ int	ft_init_struct(char **argv, t_data *table)
 	table->num_philos = ft_atolints(argv[1]);
 	table->time_to_die = ft_atolints(argv[2]);
 	table->time_to_eat = ft_atolints(argv[3]);
-	table->time_to_sleep = ft_atolints(argv[4]);
+	table->time_to_snap = ft_atolints(argv[4]);
 	table->must_eat_count = -1;
 	if (argv[5])
 		table->must_eat_count = ft_atolints(argv[5]);
