@@ -66,17 +66,18 @@ int	ft_init_philos(t_data *table)
 	i = 0;
 	while (i < table->num_philos)
 	{
-		table->philos[i].dni = i + 1;
+		table->philos[i].dni = i + 1 ;
 		table->philos[i].lunched = 0;
 		table->philos[i].last_meal_time = 0;
-		table->philos[i].fork_index = i + 1;
+		table->philos[i].fork_index = i;
 		table->philos[i].table = table;
 		i++;
 	}
 	return (0);
 }
 
+/*
 int	ft_init_threads(t_data table)
 {
 	
-}
+}*/

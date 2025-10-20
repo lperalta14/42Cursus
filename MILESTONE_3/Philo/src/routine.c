@@ -32,6 +32,7 @@ función routine(argumento):
         c. COMER (coger tenedores → comer → soltar tenedores)
         d. DORMIR
 */
+
 void ft_usleep(long long time_ms)
 {
 	long long start;
@@ -64,19 +65,33 @@ void	print_status(t_philo *philo, char *msg, char *color)
 	pthread_mutex_unlock(&philo->table->print_mutex);
 }
 
-void	take_forks(t_philo *philo)
+int	take_forks(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->table->forks[philo->fork_index]);
+	if (pthread_mutex_lock(&philo->table->forks[philo->fork_index]))
+		return (1);
 	print_status(philo, "🔒 has taken first fucking fork", GREEN);
-	pthread_mutex_lock(&philo->table->forks[(philo->fork_index+1)
-		% philo->table->num_philos]);
+	if (pthread_mutex_lock(&philo->table->forks[(philo->fork_index+1)
+		% philo->table->num_philos]))
+		return (1);
 	print_status(philo, "🔒 has taken second fucking fork", GREEN);
+	return (0);
 }
-void	lunching(t_philo *philo)
+
+void	muere(t_philo *philo)
 {
-	take_forks(philo);
+	pthread_mutex_lock(&philo->table->stop_mutex);
+	philo->table->not_dead_yet = 0;
+	pthread_mutex_unlock(&philo->table->stop_mutex);
+}
+
+int	lunching(t_philo *philo)
+{
+	if (take_forks(philo))
+		//muere(philo);
+		return (1);
 	print_status(philo, "🍝 is eating", GREEN);
-	pthread_mutex_lock(&philo->table->meal_mutex);
+	if (pthread_mutex_lock(&philo->table->meal_mutex))
+		return (1);
 	philo->last_meal_time = get_time();
 	philo->lunched += 1;
 	pthread_mutex_unlock(&philo->table->meal_mutex);
@@ -87,10 +102,11 @@ void	lunching(t_philo *philo)
 
 }
 
-int	snaps(t_philo *philo)
+void	snaps_think(t_philo *philo)
 {
 	print_status(philo, "😴 is sleeping", PINK);
 	ft_usleep(philo->table->time_to_snap);
+	print_status(philo, "🤔 is thinkink", YELLOW);
 }
 
 void	*routine(void *arg)
@@ -106,9 +122,9 @@ void	*routine(void *arg)
 	{
 		if (liveornot(philo->table))
 			break ;
-		lunching(philo);
-		//snaps(philo);
-		//thinking(philo)🤔;
-
+		if (lunching(philo))
+			return (NULL);
+		snaps_think(philo);
 	}
+	return (NULL);
 }

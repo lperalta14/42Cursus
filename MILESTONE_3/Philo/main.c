@@ -124,7 +124,8 @@ int	main(int argc, char **argv)
 		|| ft_init_philos(table))
 		return (clean_up(table));
 	//init filos (crear filosofos ✓ y asignar tenedores✓)
-	//start simulation (rutina)
+	//if (start simulation) (rutina✓)
+	//		return (clean_up(table));
 	//comprobar (monitor)
 	//esperar que terminen los hilos pthread_join()
 	clean_up(table);
