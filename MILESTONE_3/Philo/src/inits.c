@@ -76,8 +76,18 @@ int	ft_init_philos(t_data *table)
 	return (0);
 }
 
-/*
-int	ft_init_threads(t_data table)
+
+int	ft_init_threads(t_data *table)
 {
-	
-}*/
+	int	i;
+
+	i = 0;
+	table->start_time = get_time();
+	while (i < table->num_philos)
+	{
+		if (pthread_create(&(table->philos[i].thread), NULL, routine, (void *)&table->philos[i]))
+			return (ft_error("create thread"));
+		i ++;
+	}
+	return (0);
+}

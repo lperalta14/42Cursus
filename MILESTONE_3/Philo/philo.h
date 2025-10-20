@@ -82,5 +82,11 @@ int		clean_up(t_data *table);
 int		ft_init_struct(char **argv, t_data *table);
 int		ft_init_mutex(t_data *table);
 int		ft_init_philos(t_data *table);
+int		ft_init_threads(t_data *table);
+
+/************************************************/
+/*					ROUTINE						*/
+/************************************************/
+void	*routine(void *arg);
 
 #endif
