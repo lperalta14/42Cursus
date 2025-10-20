@@ -17,7 +17,7 @@ static void	ft_key_hook(mlx_key_data_t keydata, void *param)
 	t_long	*game;
 
 	game = (t_long *)param;
-	if (keydata.action == MLX_PRESS)
+	if (keydata.action == MLX_PRESS || keydata.action == MLX_REPEAT)
 	{
 		if (keydata.key == MLX_KEY_ESCAPE)
 			mlx_close_window(game->mlx);
