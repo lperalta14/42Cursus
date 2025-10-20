@@ -33,15 +33,6 @@ función routine(argumento):
         d. DORMIR
 */
 
-void ft_usleep(long long time_ms)
-{
-	long long start;
-
-	start = get_time();
-	while (get_time() - start < time_ms)
-		usleep(100);
-}
-
 int	liveornot(t_data	*table)
 {
 	pthread_mutex_lock(&table->stop_mutex);
@@ -123,7 +114,7 @@ void	*routine(void *arg)
 		if (liveornot(philo->table))
 			break ;
 		if (lunching(philo))
-			return (NULL);
+			break ;
 		snaps_think(philo);
 	}
 	return (NULL);

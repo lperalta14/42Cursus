@@ -117,6 +117,8 @@ int	philos_join(t_data *table)
 	return (0);
 }
 
+
+
 // ./philos "num_philos" "die" "eat" "sleep" [number_of_eat]
 int	main(int argc, char **argv)
 {
@@ -130,14 +132,10 @@ int	main(int argc, char **argv)
 	if (ft_init_struct(argv, table) || ft_init_mutex(table)
 		|| ft_init_philos(table))
 		return (clean_up(table));
-	//init filos (crear filosofos ✓ y asignar tenedores✓)
 	if (ft_init_threads(table))
-	//if (start simulation) (rutina✓)
 		return (clean_up(table));
 	//comprobar (monitor)
 	philos_join(table);
-	//esperar que terminen los hilos pthread_join()
 	clean_up(table);
 	return (printf(GREEN"BIEN\n"NC), 0);
-	//estás muerto?; (flag para terminar todos los hilos si uno muere)
 }

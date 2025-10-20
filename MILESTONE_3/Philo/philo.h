@@ -68,6 +68,7 @@ int		ft_isdigit(int c);
 long	ft_atolints(const char *nptr);
 int		ft_error(char *msg);
 long	get_time(void);
+void	ft_usleep(long long time_ms);
 
 /************************************************/
 /*					CLEAN						*/
