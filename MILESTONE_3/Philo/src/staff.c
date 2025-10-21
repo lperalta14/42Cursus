@@ -1,30 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   staff.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lperalta <lperalta@student.42.fr>          #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-10-21 16:59:54 by lperalta          #+#    #+#             */
+/*   Updated: 2025-10-21 16:59:54 by lperalta         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../philo.h"
 
 void	printdead(t_data *table, int id)
 {
 	long	current;
+
 	pthread_mutex_lock(&table->print_mutex);
 	current = get_time() - table->start_time;
-	printf("%s%ld %d 💀died%s\n",RED, current, table->philos[id].dni, NC);
+	printf("%s%ld %d 💀died%s\n", RED, current, table->philos[id].dni, NC);
 	pthread_mutex_unlock(&table->print_mutex);
 }
 
-int check_death(t_data  *table)
+int	check_death(t_data *table)
 {
-	int	i;
-	t_philo *philo;
+	int		i;
+	t_philo	*philo;
 	long	hungry;
 
 	i = 0;
 	philo = table->philos;
 	while (i < table->num_philos)
 	{
-		
 		pthread_mutex_lock(&table->meal_mutex);
 		hungry = get_time() - philo[i].last_meal_time;
 		pthread_mutex_unlock(&table->meal_mutex);
-		if (hungry > table->time_to_die)
+		if (hungry > table->time_to_die
+			&& (table->must_eat_count > philo[i].lunched
+				|| table->must_eat_count == -1))
 		{
 			printdead(table, i);
 			pthread_mutex_lock(&table->stop_mutex);
@@ -39,13 +52,19 @@ int check_death(t_data  *table)
 
 void	*staff(void *arg)
 {
-	t_data  *table;
+	t_data	*table;
+	t_philo	*philo;
+	int		i;
 
 	table = (t_data *)arg;
-	while(42)
+	philo = table->philos;
+	i = 0;
+	while (table->must_eat_count > philo[i].lunched
+		|| table->must_eat_count == -1)
 	{
 		if (check_death(table))
 			return (NULL);
-		usleep(1000);
+		usleep(10000);
 	}
+	return (NULL);
 }

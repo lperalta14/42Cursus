@@ -69,6 +69,7 @@ long	ft_atolints(const char *nptr);
 int		ft_error(char *msg);
 long	get_time(void);
 void	ft_usleep(long long time_ms);
+void	print_status(t_philo *philo, char *msg, char *color);
 
 /************************************************/
 /*					CLEAN						*/
@@ -88,6 +89,7 @@ int		ft_init_threads(t_data *table);
 /************************************************/
 /*					ROUTINE						*/
 /************************************************/
+int	liveornot(t_data	*table);
 void	*routine(void *arg);
 
 /************************************************/

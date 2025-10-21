@@ -10,76 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
-INICIALIZACIÓN:
-┌─────────────────────────────────────┐
-│ 1. parse()                          │ ← Validar argumentos ✓
-├─────────────────────────────────────┤
-│ 2. ft_init_struct()                 │ ← Guardar datos básicos ✓
-│    - malloc(philos)                 │   y reservar array de philos ✓
-├─────────────────────────────────────┤
-│ 3. init_mutex()                     │ ← Crear TODOS los mutex: ✓
-│    ├─ init_forks()                  │   • forks[n] ✓
-│    ├─ pthread_mutex_init(print)     │   • print_mutex ✓
-│    ├─ pthread_mutex_init(meal)      │   • meal_mutex ✓
-│    └─ pthread_mutex_init(stop)      │   • stop_mutex ✓
-├─────────────────────────────────────┤
-│ 4. init_philos()                    │ ← Llenar datos de cada philo
-├─────────────────────────────────────┤
-│ 5. start_simulation()               │ ← Crear threads (pthread_create)
-│    └─ monitor thread                │   y lanzar monitor
-└─────────────────────────────────────┘
-
-EJECUCIÓN:
-┌─────────────────────────────────────┐
-│ Los threads ejecutan su rutina      │
-│ El monitor vigila muertes           │
-└─────────────────────────────────────┘
-
-LIMPIEZA:
-┌─────────────────────────────────────┐
-│ 6. wait_threads()                   │ ← pthread_join() para cada uno
-├─────────────────────────────────────┤
-│ 7. cleanup()                        │ ← Destruir y liberar:
-│    ├─ destroy_mutex()               │   • pthread_mutex_destroy()
-│    │  ├─ stop_mutex                 │     para cada mutex
-│    │  ├─ meal_mutex                 │   • free(forks)
-│    │  ├─ print_mutex                │   • free(philos)
-│    │  └─ destroy_forks()            │
-│    └─ free(philos)                  │
-└─────────────────────────────────────┘
-*/
-
-/*******************************************************************
-*pthread_mutex_t mutex;
-*
-*  // INICIALIZAR (al principio del programa)
-*pthread_mutex_init(&mutex, NULL);
-*
-*  // BLOQUEAR (pedir la llave)
-*pthread_mutex_lock(&mutex);      // Si está ocupado, ESPERA aquí
-*
-*  // DESBLOQUEAR (devolver la llave)
-*pthread_mutex_unlock(&mutex);
-*
-*  // DESTRUIR (al final del programa)
-*pthread_mutex_destroy(&mutex);
-
-Siempre init antes de create: Los mutex deben existir antes de que los threads intenten usarlos.
-Join antes de destroy: Espera a que los threads terminen antes de destruir los mutex.
-Libera en orden inverso: Lo último que creaste, primero que destruyes.
-Comprueba errores: pthread_create, pthread_mutex_init, etc. devuelven 0 si todo OK.
-*******************************************************************/
-
-
-/*¿Por qué cada mutex?
-
-Mutex				Protege							¿Cuándo se usa?
-forks[i]			Cada tenedor					Al comer (lock 2 tenedores, n y n+1)
-print_mutex			printf()						Cada vez que imprimes status
-meal_mutex			last_meal_time, lunched			Al comer y al comprobar muerte
-stop_mutex			not_dead_yet					Al comprobar si seguir la simulación
-*/
 #include "philo.h"
 
 static int	parse(int argc, char **argv)
@@ -111,9 +41,7 @@ int	philos_join(t_data *table)
 	return (0);
 }
 
-
-
-// ./philos "num_philos" "die" "eat" "sleep" [number_of_eat]
+/*./philos "num_philos" "die" "eat" "sleep" [number_of_eat]*/
 int	main(int argc, char **argv)
 {
 	t_data	*table;
@@ -128,7 +56,6 @@ int	main(int argc, char **argv)
 		return (clean_up(table));
 	if (ft_init_threads(table))
 		return (clean_up(table));
-	//comprobar (monitor)
 	staff(table);
 	philos_join(table);
 	clean_up(table);

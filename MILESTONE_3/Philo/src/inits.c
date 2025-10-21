@@ -76,7 +76,6 @@ int	ft_init_philos(t_data *table)
 	return (0);
 }
 
-
 int	ft_init_threads(t_data *table)
 {
 	int	i;
@@ -87,7 +86,7 @@ int	ft_init_threads(t_data *table)
 	{
 		table->philos[i].last_meal_time = table->start_time;
 		if (pthread_create(&(table->philos[i].thread), NULL, routine,
-			(void *)&table->philos[i]))
+				(void *)&table->philos[i]))
 			return (ft_error("create thread"));
 		i ++;
 	}

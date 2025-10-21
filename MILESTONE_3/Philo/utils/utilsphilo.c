@@ -28,9 +28,21 @@ long	get_time(void)
 
 void	ft_usleep(long long time_ms)
 {
-	long long start;
+	long long	start;
 
 	start = get_time();
 	while (get_time() - start < time_ms)
 		usleep(100);
+}
+
+void	print_status(t_philo *philo, char *msg, char *color)
+{
+	long	time;
+
+	if (liveornot(philo->table))
+		return ;
+	pthread_mutex_lock(&philo->table->print_mutex);
+	time = get_time() - philo->table->start_time;
+	printf("%s%ld %d %s%s\n", color, time, philo->dni, msg, NC);
+	pthread_mutex_unlock(&philo->table->print_mutex);
 }

@@ -13,7 +13,7 @@ OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
 # COMPILER & FLAGS
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror -g #-fsanitize=thread
 
 AR = @ar rcs
 RM = @rm -rf
