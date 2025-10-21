@@ -82,12 +82,6 @@ stop_mutex			not_dead_yet					Al comprobar si seguir la simulación
 */
 #include "philo.h"
 
-int	ft_error(char *msg)
-{
-	printf(RED"ERROR: %s\n"NC, msg);
-	return (1);
-}
-
 static int	parse(int argc, char **argv)
 {
 	int	i;
@@ -135,6 +129,7 @@ int	main(int argc, char **argv)
 	if (ft_init_threads(table))
 		return (clean_up(table));
 	//comprobar (monitor)
+	staff(table);
 	philos_join(table);
 	clean_up(table);
 	return (printf(GREEN"BIEN\n"NC), 0);

@@ -4,7 +4,8 @@ NAME = philo
 HEADER = philo.h
 
 # PATH SRCS & UTILS
-SRCS = main.c utils/utilslib.c src/clean_up.c src/inits.c src/routine.c
+SRCS = main.c utils/utilsphilo.c utils/utilslib.c src/clean_up.c src/inits.c src/routine.c \
+src/staff.c
 
 # OBJECTS
 OBJ_DIR = obj
