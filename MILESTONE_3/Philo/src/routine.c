@@ -103,13 +103,15 @@ void	snaps_think(t_philo *philo)
 void	*routine(void *arg)
 {
 	t_philo *philo;
+	int		maxlunch;
 
 	if (!arg)
 		return (NULL);
 	philo = (t_philo*) arg;
+		maxlunch = philo->table->must_eat_count;
 	if (philo->dni % 2 == 0)
 		usleep(100);
-	while (1)
+	while (philo->lunched < maxlunch || maxlunch == -1)
 	{
 		if (liveornot(philo->table))
 			break ;

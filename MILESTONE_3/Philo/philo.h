@@ -93,6 +93,6 @@ void	*routine(void *arg);
 /************************************************/
 /*					STAFF						*/
 /************************************************/
-void    *staff(void *arg);
+void	*staff(void *arg);
 
 #endif

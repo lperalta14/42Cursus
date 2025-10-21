@@ -132,5 +132,5 @@ int	main(int argc, char **argv)
 	staff(table);
 	philos_join(table);
 	clean_up(table);
-	return (printf(GREEN"BIEN\n"NC), 0);
+	return (0);
 }
