@@ -31,8 +31,7 @@ void	ft_usleep(long long time_ms)
 	long long	start;
 
 	start = get_time();
-	while (get_time() - start < time_ms)
-		usleep(100);
+	usleep(time_ms * 1000);
 }
 
 void	print_status(t_philo *philo, char *msg, char *color)

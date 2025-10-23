@@ -18,7 +18,7 @@ void	printdead(t_data *table, int id)
 
 	pthread_mutex_lock(&table->print_mutex);
 	current = get_time() - table->start_time;
-	printf("%s%ld %d 💀died%s\n", RED, current, table->philos[id].dni, NC);
+	printf("%s%ld %d died%s\n", RED, current, table->philos[id].dni, NC);
 	pthread_mutex_unlock(&table->print_mutex);
 }
 
@@ -30,64 +30,57 @@ int	check_death(t_data *table)
 
 	i = 0;
 	philo = table->philos;
-	if (liveornot(table))
-		return (1);
 	while (i < table->num_philos)
 	{
 		pthread_mutex_lock(&table->meal_mutex);
 		hungry = get_time() - philo[i].last_meal_time;
 		pthread_mutex_unlock(&table->meal_mutex);
-		if (hungry > table->time_to_die && (table->must_eat_count 
-			> philo[i].lunched || table->must_eat_count == -1))
+		if (hungry > table->time_to_die)
 		{
-			printdead(table, i);
 			pthread_mutex_lock(&table->stop_mutex);
 			table->not_dead_yet = 0;
 			pthread_mutex_unlock(&table->stop_mutex);
+			usleep(80);
+			printdead(table, i);
 			return (1);
 		}
 		i++;
 	}
 	return (0);
 }
-/*
+
+int	philo_buffet(t_philo *philo)
+{
+	int	i;
+
+	i = 0;
+	while (i < philo->table->num_philos)
+	{
+		if (philo->table->must_eat_count > philo[i].lunched
+			&& philo->table->must_eat_count != -1)
+			return (0);
+		i ++;
+	}
+	return (1);
+}
+
 void	*staff(void *arg)
 {
 	t_data	*table;
 	t_philo	*philo;
-	int		i;
 
 	table = (t_data *)arg;
 	philo = table->philos;
-	i = 0;
-	while (table->must_eat_count > philo[i].lunched
-		|| table->must_eat_count == -1)
-	{
-		if (check_death(table))
-			return (NULL);
-		usleep(10000);
-	}
-	return (NULL);
-}*/
-
-void	*staff(void *arg)
-{
-	t_data	*table;
-
-	table = (t_data *)arg;
 	while (1)
 	{
-		pthread_mutex_lock(&table->stop_mutex);
-		if (!table->not_dead_yet)
-		{
-			pthread_mutex_unlock(&table->stop_mutex);
-			break;
-		}
-		pthread_mutex_unlock(&table->stop_mutex);
-		
+		if (liveornot(table))
+			break ;
 		if (check_death(table))
-			break;
-		usleep(10);
+			break ;
+		if (liveornot(table)
+			|| (table->must_eat_count != -1 && philo_buffet(philo) == 1))
+			break ;
+		usleep(100);
 	}
 	return (NULL);
 }

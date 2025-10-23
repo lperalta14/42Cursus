@@ -26,52 +26,38 @@ int	liveornot(t_data	*table)
 
 int	take_forks(t_philo *philo)
 {
-	int	left = philo->fork_index;
-	int right = (philo->fork_index +1) % philo->table->num_philos;
+	int	left;
+	int	right;
 
-	pthread_mutex_lock(&philo->table->forks[right]);
-	print_status(philo, "🔒 has take a fork", GREEN);
-	if (left == right)
-    {
-        ft_usleep(philo->table->time_to_die);
-        pthread_mutex_unlock(&philo->table->forks[right]);
-        return (1);
-    }
-	pthread_mutex_lock(&philo->table->forks[left]);
-	print_status(philo, "🔒 has take a fork", GREEN);
+	left = philo->fork_index;
+	right = (philo->fork_index + 1) % philo->table->num_philos;
+	if (pthread_mutex_lock(&philo->table->forks[left]))
+		return (1);
+	print_status(philo, "has taken a fork", GREEN);
+	if (left == right || pthread_mutex_lock(&philo->table->forks[right]))
+	{
+		ft_usleep(philo->table->time_to_die);
+		pthread_mutex_unlock(&philo->table->forks[left]);
+		return (1);
+	}
+	print_status(philo, "has taken a fork", GREEN);
 	return (0);
 }
-/*int	take_forks(t_philo *philo)
-{
-	int	left = philo->fork_index;
-	int right = (philo->fork_index +1) % philo->table->num_philos;
-
-	if (philo->dni % 2 == 0)
-	{
-		pthread_mutex_lock(&philo->table->forks[right]);
-		print_status(philo, "🔒 has take a fork", GREEN);
-		pthread_mutex_lock(&philo->table->forks[left]);
-		print_status(philo, "🔒 has take a fork", GREEN);
-	}
-	else
-	{
-		pthread_mutex_lock(&philo->table->forks[left]);
-		print_status(philo, "🔒 has take a fork", GREEN);
-		pthread_mutex_lock(&philo->table->forks[right]);
-		print_status(philo, "🔒 has take a fork", GREEN);
-	}
-	return (0);
-}*/
 
 int	lunching(t_philo *philo)
 {
 	if (take_forks(philo))
 		return (1);
-	print_status(philo, "🍝 is eating", GREEN);
+	print_status(philo, "is eating", GREEN);
 	if (pthread_mutex_lock(&philo->table->meal_mutex))
+	{
+		pthread_mutex_unlock(&philo->table->forks[(philo->fork_index + 1)
+			% philo->table->num_philos]);
+		pthread_mutex_unlock(&philo->table->forks[philo->fork_index]);
 		return (1);
-	philo->last_meal_time = get_time();
+	}
 	philo->lunched += 1;
+	philo->last_meal_time = get_time();
 	pthread_mutex_unlock(&philo->table->meal_mutex);
 	ft_usleep(philo->table->time_to_eat);
 	pthread_mutex_unlock(&philo->table->forks[(philo->fork_index + 1)
@@ -82,9 +68,13 @@ int	lunching(t_philo *philo)
 
 void	snaps_think(t_philo *philo)
 {
-	print_status(philo, "😴 is sleeping", PINK);
+	if (liveornot(philo->table))
+		return ;
+	print_status(philo, "is sleeping", PINK);
 	ft_usleep(philo->table->time_to_snap);
-	print_status(philo, "🤔 is thinkink", YELLOW);
+	if (liveornot(philo->table))
+		return ;
+	print_status(philo, "is thinking", YELLOW);
 }
 
 void	*routine(void *arg)
@@ -102,11 +92,13 @@ void	*routine(void *arg)
 	{
 		if (liveornot(philo->table))
 			break ;
-		if (philo->lunched >= maxlunch && maxlunch != -1)
+		if ((liveornot(philo->table))
+			|| (philo->lunched >= maxlunch && maxlunch != -1))
 			break ;
-		if (lunching(philo))
+		if (liveornot(philo->table) || lunching(philo))
 			break ;
-		if (philo->lunched >= maxlunch && maxlunch != -1)
+		if (liveornot(philo->table)
+			|| (philo->lunched >= maxlunch && maxlunch != -1))
 			break ;
 		snaps_think(philo);
 	}

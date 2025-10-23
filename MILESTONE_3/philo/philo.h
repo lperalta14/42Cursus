@@ -36,7 +36,6 @@ typedef struct s_philo
 	int				lunched;
 	long long		last_meal_time;
 	pthread_t		thread;
-	//pthread_mutex_t	*left_fork;
 	int				fork_index;
 	t_data			*table;
 }	t_philo;
@@ -51,6 +50,7 @@ typedef struct s_data
 	int				not_dead_yet;
 	int				count_mutext;
 	int				count_mutext_forks;
+	int				start;
 	long long		start_time;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	print_mutex;
@@ -89,7 +89,7 @@ int		ft_init_threads(t_data *table);
 /************************************************/
 /*					ROUTINE						*/
 /************************************************/
-int	liveornot(t_data	*table);
+int		liveornot(t_data	*table);
 void	*routine(void *arg);
 
 /************************************************/
