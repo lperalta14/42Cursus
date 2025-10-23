@@ -26,15 +26,42 @@ int	liveornot(t_data	*table)
 
 int	take_forks(t_philo *philo)
 {
-	if (pthread_mutex_lock(&philo->table->forks[philo->fork_index]))
-		return (1);
-	if (pthread_mutex_lock(&philo->table->forks[(philo->fork_index + 1)
-				% philo->table->num_philos]))
-		return (1);
-	print_status(philo, "🔒 has taken first fucking fork", GREEN);
-	print_status(philo, "🔒 has taken second fucking fork", GREEN);
+	int	left = philo->fork_index;
+	int right = (philo->fork_index +1) % philo->table->num_philos;
+
+	pthread_mutex_lock(&philo->table->forks[right]);
+	print_status(philo, "🔒 has take a fork", GREEN);
+	if (left == right)
+    {
+        ft_usleep(philo->table->time_to_die);
+        pthread_mutex_unlock(&philo->table->forks[right]);
+        return (1);
+    }
+	pthread_mutex_lock(&philo->table->forks[left]);
+	print_status(philo, "🔒 has take a fork", GREEN);
 	return (0);
 }
+/*int	take_forks(t_philo *philo)
+{
+	int	left = philo->fork_index;
+	int right = (philo->fork_index +1) % philo->table->num_philos;
+
+	if (philo->dni % 2 == 0)
+	{
+		pthread_mutex_lock(&philo->table->forks[right]);
+		print_status(philo, "🔒 has take a fork", GREEN);
+		pthread_mutex_lock(&philo->table->forks[left]);
+		print_status(philo, "🔒 has take a fork", GREEN);
+	}
+	else
+	{
+		pthread_mutex_lock(&philo->table->forks[left]);
+		print_status(philo, "🔒 has take a fork", GREEN);
+		pthread_mutex_lock(&philo->table->forks[right]);
+		print_status(philo, "🔒 has take a fork", GREEN);
+	}
+	return (0);
+}*/
 
 int	lunching(t_philo *philo)
 {
