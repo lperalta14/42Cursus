@@ -17,7 +17,6 @@ Cada proyecto está organizado por **Milestones**, y dentro de cada Milestone en
 🔧 Milestone01/
 
 ├── [get_next_line](https://github.com/lperalta14/lperalta14/tree/main/MILESTONE_1/GNL#readme)
-
 └── [ft_printf](https://github.com/lperalta14/lperalta14/tree/main/MILESTONE_1/printfrepo#readme)
 
 🧠 Milestone02/
