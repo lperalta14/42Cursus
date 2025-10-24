@@ -27,7 +27,7 @@ Cada proyecto está organizado por **Milestones**, y dentro de cada Milestone en
 
 ├── [so_long](https://github.com/lperalta14/lperalta14/blob/main/MILESTONE_2/so_long#README.md)
 
-└── [push_swap](https://github.com/lperalta14/lperalta14/blob/main/MILESTONE_2/Push_swap#README.md)
+└── [push_swap](https://github.com/lperalta14/lperalta14/blob/main/MILESTONE_2/Push_Swap#README.md)
 
 🚀 Milestone03/
 
