@@ -1,11 +1,11 @@
-# 42 Cursus — Luis Peralta
+# — Luis Peralta
 
 ¡Bienvenido a mi repositorio! 👋
 
 Este repositorio reúne mi progreso y proyectos del **cursus de 42**. Aquí plasmo los desafíos que he superado, los errores que me han hecho crecer y las soluciones que he logrado afinar. Mi objetivo es que cualquier persona pueda ver de forma clara mis primeros pasos y cómo evoluciono como programador.
 
 ---
-
+# — 42 Cursus
 ## 🧱 Estructura del repositorio
 
 Cada proyecto está organizado por **Milestones**, y dentro de cada Milestone encontrarás carpetas individuales para cada ejercicio o proyecto:
@@ -37,6 +37,8 @@ Cada proyecto está organizado por **Milestones**, y dentro de cada Milestone en
 Cada carpeta de proyecto contiene su propio  con instrucciones, criterios, ejemplos y detalles específicos.
 
 ---
+# — Mi Librería 📚
+└──[librería/ ](https://github.com/lperalta14/My_library#readme)
 
 ## 🎯 Qué encontrarás aquí
 
