@@ -23,15 +23,15 @@ Cada proyecto está organizado por **Milestones**, y dentro de cada Milestone en
 
 🧠 Milestone02/
 
-├── pipex/(./Milestone02/pipex/README.md)
+├── [pipex](https://github.com/lperalta14/lperalta14/blob/main/MILESTONE_2/Pipex#README.md)
 
-├── so_long/(./Milestone02/so_long/README.md)
+├── [so_long](https://github.com/lperalta14/lperalta14/blob/main/MILESTONE_2/so_long#README.md)
 
-└── push_swap/(./Milestone02/push_swap/README.md)
+└── [push_swap](https://github.com/lperalta14/lperalta14/blob/main/MILESTONE_2/Push_swap/README.md)
 
 🚀 Milestone03/
 
-└── philosopher (philo)/
+└── [philosopher](https://github.com/lperalta14/lperalta14/blob/main/MILESTONE_3/philo/README.md)
 
 ...
 Cada carpeta de proyecto contiene su propio  con instrucciones, criterios, ejemplos y detalles específicos.
