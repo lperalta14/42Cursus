@@ -83,14 +83,14 @@ $(LIBFT_LIB):
 	@echo "    $(GREEN)✅ ✅ ✅ MYLIB ✅ ✅ ✅$(NC)"
 
 clean:
-	@echo "$(BLUE)🗑️ DELETING push_swap objects... 🗑️$(NC)"
+	@echo "$(RED)🗑️ DELETING push_swap objects... 🗑️$(NC)"
 	@if [ -d "$(LIBFT_DIR)" ]; then \
 		$(MAKE) -C $(LIBFT_DIR) clean; \
 	fi
 	@$(RM) $(OBJ_DIR) $(BONUS_OBJ_DIR)
 
 fclean: clean
-	@echo "$(RED) 🗑️ DELETING push_swap and MyLib... 🗑️$(NC)"
+	@echo "$(RED) 🗑️ DELETING all... 🗑️$(NC)"
 	@if [ -d "$(LIBFT_DIR)" ]; then \
 		$(MAKE) -C $(LIBFT_DIR) fclean; \
 		$(RM) $(LIBFT_DIR); \

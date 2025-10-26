@@ -18,6 +18,7 @@ OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 LIBFT_DIR = my_lib
 LIBFT_LIB = $(LIBFT_DIR)/libft.a
 LIBFT_INC = -I$(LIBFT_DIR)
+LIBFT_REPO = https://github.com/lperalta14/My_library.git
 
 # MLX42 linked
 MLX42_DIR = MLX42
@@ -31,7 +32,7 @@ MLX42_FLAGS = -ldl -lglfw -pthread -lm
 
 # Utils
 AR = @ar rcs
-RM = @rm -rf
+RM = rm -rf
 
 # Colors
 RED=\033[0;31m
@@ -45,14 +46,18 @@ NC=\033[0m  # (reset)
 all: $(LIBFT_LIB) $(MLX42_LIB) $(NAME)
 
 $(MLX42_LIB):
-	@echo "$(PINK)MLX42...🫦$(NC)"
+	@echo "$(PINK)MLX42...$(NC)"
 	@mkdir -p $(MLX42_DIR)/build
 	@cd $(MLX42_DIR)/build && cmake .. && make
 
 $(LIBFT_LIB):
-	@echo "$(PINK)$(NAME)...🫦$(NC)"
+	@if [ ! -d "$(LIBFT_DIR)" ]; then \
+		echo "$(YELLOW)📥 Download MyLib...$(NC)"; \
+		git clone $(LIBFT_REPO) $(LIBFT_DIR); \
+	fi
+	@echo "$(PINK)$(NAME)...$(NC)"
 	@$(MAKE) -s -C $(LIBFT_DIR)
-	@echo "    $(GREEN)🫦   Sucsex 🫦$(NC)"
+	@echo "   $(GREEN) ✅ MYLIB ✅ $(NC)"
 
 $(NAME): $(OBJS)
 	@echo "$(PINK)🔗👅 Linking 👅🔗$...$(NC)"
@@ -61,20 +66,36 @@ $(NAME): $(OBJS)
 
 $(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(dir $@)
-	@echo "$(PINK)🫦 Cumpiling $< ⌛⌛⌛$(NC)"
+	@echo "$(PINK) $< ⌛⌛⌛$(NC)"
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@echo "$(BLUE)🧽🫧 Cleaning objects... 🫧🧽$(NC)"
-	@$(MAKE) -C $(LIBFT_DIR) clean
-	@$(RM) $(OBJ_DIR)
+	@echo "$(RED)🗑️ DELETING $(NAME) objects... 🗑️$(NC)"
+	@if [ -d "$(LIBFT_DIR)" ]; then \
+		$(MAKE) -C $(LIBFT_DIR) clean; \
+	fi
+	@$(RM) $(OBJ_DIR) $(BONUS_OBJ_DIR)
 	@$(RM) -r $(MLX42_DIR)/build
 
 fclean: clean
-	@echo "$(BLUE) 🧽🫧🧼🫧 Full clean... 🫧🧼🫧🧽$(NC)"
-	@$(MAKE) -C $(LIBFT_DIR) fclean
-	@$(RM) $(NAME)
+	@echo "$(RED) 🗑️ DELETING all... 🗑️$(NC)"
+	@if [ -d "$(LIBFT_DIR)" ]; then \
+		$(MAKE) -C $(LIBFT_DIR) fclean; \
+		$(RM) $(LIBFT_DIR); \
+	fi
+	@$(RM) $(NAME) $(BONUS)
+	@echo "$(BLUE)🧽🫧🧼🫧 ALL CLEAN 🫧🧼🫧🧽$(NC)"
 
 re: fclean all
+
+update_lib:
+	@if [ -d "$(LIBFT_DIR)" ]; then \
+		echo "$(YELLOW)🔄 UPDATE MyLib...$(NC)"; \
+		cd $(LIBFT_DIR) && git pull; \
+		$(MAKE) -C $(LIBFT_DIR) re; \
+		echo "$(GREEN)✅ UPDATE READY$(NC)"; \
+	else \
+		echo "$(RED)❌ Library not found $(NC)"; \
+	fi
 
 .PHONY: all clean fclean

@@ -12,7 +12,7 @@
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# include "../my_lib/libft.h"
+# include "../my_lib/includes/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
 # include <stdio.h>
 # include <limits.h>

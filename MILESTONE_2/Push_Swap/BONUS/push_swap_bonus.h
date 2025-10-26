@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
-# include "../my_lib/libft.h"
+# include "mylib/includes/libft.h"
 # include <limits.h>
 
 typedef struct s_node

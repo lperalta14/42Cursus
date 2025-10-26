@@ -19,6 +19,7 @@ OBJS = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 LIBFT_DIR = my_lib
 LIBFT_LIB = $(LIBFT_DIR)/libft.a
 LIBFT_INC = -I$(LIBFT_DIR)
+LIBFT_REPO = https://github.com/lperalta14/My_library.git
 
 # Compiler and flags
 CC = cc
@@ -26,7 +27,7 @@ CFLAGS = -Wall -Wextra -Werror -g $(LIBFT_INC)
 
 # Utils
 AR = @ar rcs
-RM = @rm -rf
+RM = rm -rf
 
 # Colors
 RED=\033[0;31m
@@ -50,21 +51,41 @@ $(OBJ_DIR)/%.o: %.c
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 $(LIBFT_LIB):
+	@if [ ! -d "$(LIBFT_DIR)" ]; then \
+		echo "$(YELLOW)📥 Download MyLib...$(NC)"; \
+		git clone $(LIBFT_REPO) $(LIBFT_DIR); \
+	fi
 	@echo "$(PINK)$(NAME)...$(NC)"
 	@$(MAKE) -s -C $(LIBFT_DIR)
-	@echo "   $(GREEN) OK$(NC)"
+	@echo "   $(GREEN) ✅ MYLIB ✅ $(NC)"
 
 clean:
-	@echo "$(BLUE)🧽🫧 Cleaning $(NAME) objects... 🫧🧽$(NC)"
-	@$(MAKE) -C $(LIBFT_DIR) clean
+	@echo "$(RED)🗑️ DELETING $(NAME) objects... 🗑️$(NC)"
+	@if [ -d "$(LIBFT_DIR)" ]; then \
+		$(MAKE) -C $(LIBFT_DIR) clean; \
+	fi
 	@$(RM) $(OBJ_DIR) $(BONUS_OBJ_DIR)
 
 fclean: clean
-	@echo "$(BLUE) 🧽🫧🧼🫧 Full clean $(NAME) and libft... 🫧🧼🫧🧽$(NC)"
-	@$(MAKE) -C $(LIBFT_DIR) fclean
+	@echo "$(RED) 🗑️ DELETING all... 🗑️$(NC)"
+	@if [ -d "$(LIBFT_DIR)" ]; then \
+		$(MAKE) -C $(LIBFT_DIR) fclean; \
+		$(RM) $(LIBFT_DIR); \
+	fi
 	@$(RM) $(NAME) $(BONUS)
+	@echo "$(BLUE)🧽🫧🧼🫧 ALL CLEAN 🫧🧼🫧🧽$(NC)"
 
 re: fclean all
+
+update_lib:
+	@if [ -d "$(LIBFT_DIR)" ]; then \
+		echo "$(YELLOW)🔄 UPDATE MyLib...$(NC)"; \
+		cd $(LIBFT_DIR) && git pull; \
+		$(MAKE) -C $(LIBFT_DIR) re; \
+		echo "$(GREEN)✅ UPDATE READY$(NC)"; \
+	else \
+		echo "$(RED)❌ Library not found $(NC)"; \
+	fi
 
 .PHONY: all clean fclean re bonus
 
