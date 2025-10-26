@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include "my_lib/libft.h"
 
 static t_node	*ft_new_node(int num)
 {

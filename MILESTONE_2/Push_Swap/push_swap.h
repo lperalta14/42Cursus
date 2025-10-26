@@ -13,7 +13,7 @@
 # define PUSH_SWAP_H
 # include <stdarg.h>
 # include <stdlib.h>
-# include "my_lib/libft.h"
+# include "mylib/includes/libft.h"
 # include <limits.h>
 
 typedef struct s_node
