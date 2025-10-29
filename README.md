@@ -12,7 +12,7 @@ Cada proyecto está organizado por **Milestones**, y dentro de cada Milestone en
 
 📚 Milestone00/
 
-└──[libft](https://github.com/lperalta14/lperalta14/tree/main/MILESTONE_0#readme) //Librería personalizada en C.
+└──| [libft] | (https://github.com/lperalta14/lperalta14/tree/main/MILESTONE_0#readme) //Librería personalizada en C.
 
 
 🔧 Milestone01/
