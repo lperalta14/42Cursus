@@ -12,13 +12,13 @@ Cada proyecto está organizado por **Milestones**, y dentro de cada Milestone en
 
 📚 Milestone00/
 
-└──| [libft](https://github.com/lperalta14/lperalta14/tree/main/MILESTONE_0#readme)| //Librería personalizada en C.
+└── [libft](https://github.com/lperalta14/lperalta14/tree/main/MILESTONE_0#readme) //Librería personalizada en C.
 
 
 🔧 Milestone01/
-
+├
 ├── [get_next_line](https://github.com/lperalta14/lperalta14/tree/main/MILESTONE_1/GNL#readme) //Función que devuelve línea por línea de un archivo.
-
+├
 └── [ft_printf](https://github.com/lperalta14/lperalta14/tree/main/MILESTONE_1/printfrepo#readme) //Implementación propia de printf.
 
 🧠 Milestone02/
