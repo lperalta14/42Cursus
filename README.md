@@ -11,7 +11,7 @@ Este repositorio reúne mi progreso y proyectos del **cursus de 42**. Aquí plas
 Cada proyecto está organizado por **Milestones**, y dentro de cada Milestone encontrarás carpetas individuales para cada ejercicio o proyecto:
 
 📚 Milestone00/
-|
+
 └── [libft](https://github.com/lperalta14/lperalta14/tree/main/MILESTONE_0#readme) //Librería personalizada en C.
 
 
