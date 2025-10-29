@@ -32,6 +32,7 @@ Cada proyecto está organizado por **Milestones**, y dentro de cada Milestone en
 🚀 Milestone03/
 
 └── [philosopher](https://github.com/lperalta14/lperalta14/blob/main/MILESTONE_3/philo#README.md) // Concurrencia con threads y mutex.
+
 ...
 Cada carpeta de proyecto contiene su propio  con instrucciones, criterios, ejemplos y detalles específicos.
 
