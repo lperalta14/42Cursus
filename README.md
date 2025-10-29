@@ -9,7 +9,7 @@ Este repositorio reúne mi progreso y proyectos del **cursus de 42**. Aquí plas
 ## 🧱 Estructura del repositorio
 
 Cada proyecto está organizado por **Milestones**, y dentro de cada Milestone encontrarás carpetas individuales para cada ejercicio o proyecto:
-
+```
 📚 Milestone00/
 
 └── [libft](https://github.com/lperalta14/lperalta14/tree/main/MILESTONE_0#readme) //Librería personalizada en C.
@@ -32,7 +32,7 @@ Cada proyecto está organizado por **Milestones**, y dentro de cada Milestone en
 🚀 Milestone03/
 
 └── [philosopher](https://github.com/lperalta14/lperalta14/blob/main/MILESTONE_3/philo#README.md) // Concurrencia con threads y mutex.
-
+```
 ...
 Cada carpeta de proyecto contiene su propio  con instrucciones, criterios, ejemplos y detalles específicos.
 
