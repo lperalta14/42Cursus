@@ -76,8 +76,8 @@ cd Milestone02/so_long
 ## 📬 Contacto
 
 - [**GitHub:**](https://github.com/lperalta14)  
-- [**Email:**] (luisperaltamunoz@gmail.com) 
-- [**LinkedIn:**] (https://www.linkedin.com/in/lperaltamu%C3%B1oz/)
+- [**Email:**](luisperaltamunoz@gmail.com) 
+- [**LinkedIn:**](https://www.linkedin.com/in/lperaltamu%C3%B1oz/)
 
 Si tienes dudas, comentarios o quieres colaborar en algún proyecto, estaré encantado de conectar.
 
