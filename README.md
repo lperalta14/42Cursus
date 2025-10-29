@@ -50,12 +50,11 @@ Cada carpeta de proyecto contiene su propio  con instrucciones, criterios, ejemp
 
 ## 🚀 Cómo revisar o probar un proyecto
 
-1. Clona este repositorio:
+1. Clona este repositorio o ir al readme del proyecto y seguir las instrucciones:
   ```
   git clone https://github.com/lperalta14/lperalta14.git
   cd lperalta14
   ```
-   O ir al readme del proyecto y seguir las instrucciones.
 
 2. Entra al proyecto que deseas ver o ejecutar, por ejemplo:
    ```
