@@ -38,7 +38,7 @@ Cada carpeta de proyecto contiene su propio  con instrucciones, criterios, ejemp
 
 ---
 # — Mi Librería 📚
-└──[librería/ ](https://github.com/lperalta14/My_library#readme)
+└──[librería/ ](https://github.com/lperalta14/My_library#readme) //Libft mejorado y aumentado, en constante avance.
 
 ## 🎯 Qué encontrarás aquí
 
