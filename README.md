@@ -57,9 +57,9 @@ Cada carpeta de proyecto contiene su propio  con instrucciones, criterios, ejemp
   ```
 
 2. Entra al proyecto que deseas ver o ejecutar, por ejemplo:
-   ```
-   cd Milestone02/so_long
-   ```
+```
+cd Milestone02/so_long
+```
 
 3. Sigue las instrucciones del README.md dentro de esa carpeta: cómo compilar, cómo ejecutarlo, ejemplos de uso.
 
