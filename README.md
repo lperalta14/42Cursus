@@ -52,12 +52,15 @@ Cada carpeta de proyecto contiene su propio  con instrucciones, criterios, ejemp
 
 1. Clona este repositorio:
   ```
-   git clone https://github.com/lperalta14/lperalta14/MILESTONE_2/Push_Swap.git
-
-   ```
+  git clone https://github.com/lperalta14/lperalta14.git
+  cd lperalta14
+  ```
+  O ir al readme del proyecto y seguir las instrucciones.
 
 2. Entra al proyecto que deseas ver o ejecutar, por ejemplo:
+   ```
    cd Milestone02/so_long
+   ```
 
 3. Sigue las instrucciones del README.md dentro de esa carpeta: cómo compilar, cómo ejecutarlo, ejemplos de uso.
 
@@ -73,9 +76,9 @@ Cada carpeta de proyecto contiene su propio  con instrucciones, criterios, ejemp
 
 ## 📬 Contacto
 
-- **GitHub:** [lperalta14](https://github.com/lperalta14)  
-- **Email:** luisperaltamunoz@gmail.com  
-- **LinkedIn:** https://www.linkedin.com/in/lperaltamu%C3%B1oz/
+- [**GitHub:**](https://github.com/lperalta14)  
+- [**Email:**] (luisperaltamunoz@gmail.com) 
+- [**LinkedIn:**] (https://www.linkedin.com/in/lperaltamu%C3%B1oz/)
 
 Si tienes dudas, comentarios o quieres colaborar en algún proyecto, estaré encantado de conectar.
 
