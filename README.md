@@ -12,26 +12,26 @@ Cada proyecto está organizado por **Milestones**, y dentro de cada Milestone en
 
 📚 Milestone00/
 
-└──[libft/ ](https://github.com/lperalta14/lperalta14/tree/main/MILESTONE_0#readme)
+└──[libft](https://github.com/lperalta14/lperalta14/tree/main/MILESTONE_0#readme) //Librería personalizada en C.
 
 
 🔧 Milestone01/
 
-├── [get_next_line](https://github.com/lperalta14/lperalta14/tree/main/MILESTONE_1/GNL#readme)
+├── [get_next_line](https://github.com/lperalta14/lperalta14/tree/main/MILESTONE_1/GNL#readme) //Función que devuelve línea por línea de un archivo.
 
-└── [ft_printf](https://github.com/lperalta14/lperalta14/tree/main/MILESTONE_1/printfrepo#readme)
+└── [ft_printf](https://github.com/lperalta14/lperalta14/tree/main/MILESTONE_1/printfrepo#readme) //Implementación propia de printf.
 
 🧠 Milestone02/
 
-├── [pipex](https://github.com/lperalta14/lperalta14/blob/main/MILESTONE_2/Pipex#README.md)
+├── [pipex](https://github.com/lperalta14/lperalta14/blob/main/MILESTONE_2/Pipex#README.md) //Sistema de pipes en C.
 
-├── [so_long](https://github.com/lperalta14/lperalta14/blob/main/MILESTONE_2/so_long#README.md)
+├── [so_long](https://github.com/lperalta14/lperalta14/blob/main/MILESTONE_2/so_long#README.md) //Videojugeo muy sencillo en 2D.
 
-└── [push_swap](https://github.com/lperalta14/lperalta14/blob/main/MILESTONE_2/Push_Swap#README.md)
+└── [push_swap](https://github.com/lperalta14/lperalta14/blob/main/MILESTONE_2/Push_Swap#README.md) //Algoritmo de ordenación.
 
 🚀 Milestone03/
 
-└── [philosopher](https://github.com/lperalta14/lperalta14/blob/main/MILESTONE_3/philo#README.md)
+└── [philosopher](https://github.com/lperalta14/lperalta14/blob/main/MILESTONE_3/philo#README.md) // Concurrencia con threads y mutex.
 
 ...
 Cada carpeta de proyecto contiene su propio  con instrucciones, criterios, ejemplos y detalles específicos.
