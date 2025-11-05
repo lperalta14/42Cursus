@@ -5,6 +5,7 @@
 Este repositorio reúne mi progreso y proyectos del **cursus de 42**. Aquí plasmo los desafíos que he superado, los errores que me han hecho crecer y las soluciones que he logrado afinar. Mi objetivo es que cualquier persona pueda ver de forma clara mis primeros pasos y cómo evoluciono como programador.
 
 ---
+´´´
 # — 42 Cursus
 ## 🧱 Estructura del repositorio
 
@@ -32,7 +33,7 @@ Cada proyecto está organizado por **Milestones**, y dentro de cada Milestone en
 🚀 Milestone03/
 
 └── [philosopher](https://github.com/lperalta14/lperalta14/blob/main/MILESTONE_3/philo#README.md) // Concurrencia con threads y mutex.
-
+´´´
 ...
 Cada carpeta de proyecto contiene su propio  con instrucciones, criterios, ejemplos y detalles específicos.
 
