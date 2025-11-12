@@ -85,10 +85,6 @@ cat result.txt
 ```bash
 valgrind --leak-check=full --track-fds=yes ./pipex infile "cat" "wc -l" outfile
 ```
-**Norminette** para verificar estilo:
-```bash
-norminette src/ includes/
-```
 **Comparación con shell:**
 ```bash
   # Crear archivo de prueba
