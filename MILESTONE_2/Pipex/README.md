@@ -5,6 +5,7 @@ Sistema de comunicación entre procesos mediante pipes y redirecciones.
 
 
 📘# Descripción general
+
 Este proyecto forma parte del Cursus de 42 Málaga y se incluye dentro del MILESTONE_2, enfocado en el desarrollo de competencias como:
 
 Gestión de procesos con fork() y execve().
