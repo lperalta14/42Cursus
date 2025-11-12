@@ -113,14 +113,14 @@ valgrind --leak-check=full --track-fds=yes ./pipex infile "cat" "wc -l" outfile
 ```
 # 🧠 Conceptos clave del proyecto
 
- - [ ]Gestión de procesos con fork()
- - [ ]Ejecución de comandos con execve()
- - [ ]Comunicación mediante pipes (pipe())
- - [ ]Redirección de file descriptors (dup2())
- - [ ]Búsqueda de comandos en variable PATH
- - [ ]Manejo de errores estilo shell
- - [ ]Gestión correcta de memoria sin leaks
- - [ ]Espera de procesos hijos con wait()/waitpid()
+ - [x]Gestión de procesos con fork()
+ - [x]Ejecución de comandos con execve()
+ - [x]Comunicación mediante pipes (pipe())
+ - [x]Redirección de file descriptors (dup2())
+ - [x]Búsqueda de comandos en variable PATH
+ - [x]Manejo de errores estilo shell
+ - [x]Gestión correcta de memoria sin leaks
+ - [x]Espera de procesos hijos con wait()/waitpid()
 
 
 # 📈 Retos y aprendizajes
