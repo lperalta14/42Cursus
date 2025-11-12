@@ -1,10 +1,10 @@
-🧠 Pipex
+#🧠 Pipex
 
 Recreación del comportamiento de pipes de shell en C.
 Sistema de comunicación entre procesos mediante pipes y redirecciones.
 
 
-📘 Descripción general
+#📘 Descripción general
 Este proyecto forma parte del Cursus de 42 Málaga y se incluye dentro del MILESTONE_2, enfocado en el desarrollo de competencias como:
 
 Gestión de procesos con fork() y execve().
@@ -14,19 +14,27 @@ Manejo robusto de errores y memory leaks.
 
 El objetivo principal es replicar el comportamiento del operador pipe (|) de Unix/Linux, permitiendo que la salida de un comando se convierta en la entrada del siguiente, tal como lo hace el shell.
 Equivalencia:
+```
 bash./pipex infile "cmd1" "cmd2" outfile
 # Es equivalente a:
 < infile cmd1 | cmd2 > outfile
+```
+# ⚙️ Tecnologías y herramientas
 
-⚙️ Tecnologías y herramientas
-CategoríaHerramienta / TecnologíaLenguajeCCompiladorGCC / ClangEstiloNorminetteDepuraciónValgrind / GDBControl de versionesGit + GitHubLibrería personalMy_library
+| Categoría | Herramienta / Tecnología |
+|------------|--------------------------|
+| Lenguaje | C |
+| Compilador | GCC / Clang |
+| Estilo | Norminette |
+| Depuración | Valgrind / GDB |
+| Control de versiones | Git + GitHub |
+| Librería personal | My_library |
 
-🧩 Estructura del proyecto
+#🧩 Estructura del proyecto
 bash📦 Pipex
 ├── src/
-│   ├── main.c              # Punto de entrada del programa
-│   ├── processes.c         # Gestión de fork y execve
-│   ├── pipes.c             # Creación y gestión de pipes
+│   ├── pipex.c             # Punto de entrada del programa y creación y gestión de pipes
+│   ├── errors.c            # Gestión de fork y execve
 │   ├── path.c              # Búsqueda de comandos en PATH
 │   └── utils.c             # Funciones auxiliares
 ├── includes/
@@ -35,42 +43,65 @@ bash📦 Pipex
 ├── Makefile                # Compilación automatizada
 └── README.md               # Esta documentación
 
-🚀 Compilación y ejecución
+#🚀 Compilación y ejecución
 🛠️ Compilar
-bash# El Makefile descarga automáticamente la librería personal
+```
+bash
+# El Makefile descarga automáticamente la librería personal
 make
+```
 ▶️ Ejecutar
-bash./pipex archivo_entrada "comando1" "comando2" archivo_salida
+```
+bash
+./pipex archivo_entrada "comando1" "comando2" archivo_salida
+```
 🧪 Ejemplos
 Ejemplo 1: Contar líneas
-bash./pipex infile "ls -l" "wc -l" outfile
+```
+bash
+./pipex infile "ls -l" "wc -l" outfile
+```
 Equivalente a:
-bash< infile ls -l | wc -l > outfile
+```
+bash
+< infile ls -l | wc -l > outfile
+```
 Ejemplo 2: Buscar y contar
-bash./pipex input.txt "cat" "grep error" output.txt
+```
+bash
+./pipex input.txt "cat" "grep error" output.txt
+```
 Equivalente a:
-bash< input.txt cat | grep error > output.txt
+```
+bash
+< input.txt cat | grep error > output.txt
+```
 Ejemplo 3: Con archivos reales
-bashecho "Hola mundo" > test.txt
+```
+bash
+echo "Hola mundo" > test.txt
 ./pipex test.txt "cat" "wc -w" result.txt
 cat result.txt
 # Output: 2
+```
+#🔍 Tests y validaciones
 
-🔍 Tests y validaciones
+**Valgrind** para comprobar fugas de memoria:
+```
+bash
+valgrind --leak-check=full --track-fds=yes ./pipex infile "cat" "wc -l" outfile
+```
+**Norminette** para verificar estilo:
+```
+bash
+norminette src/ includes/
+```
+**Comparación con shell:**
+```
+bash
+ # Crear archivo de prueba
+echo -e "line1\nline2\nline3" > test.txt
 
-Valgrind para comprobar fugas de memoria:
-
-bash  valgrind --leak-check=full --track-fds=yes ./pipex infile "cat" "wc -l" outfile
-
-Norminette para verificar estilo:
-
-bash  norminette src/ includes/
-
-Comparación con shell:
-
-bash  # Crear archivo de prueba
-  echo -e "line1\nline2\nline3" > test.txt
-  
   # Ejecutar pipex
   ./pipex test.txt "cat" "wc -l" out1.txt
   
@@ -79,9 +110,9 @@ bash  # Crear archivo de prueba
   
   # Comparar resultados
   diff out1.txt out2.txt
-
-Gestión de errores:
-
+```
+**Gestión de errores:**
+```
 bash  # Archivo inexistente
   ./pipex noexiste.txt "cat" "wc -l" out.txt
   
@@ -91,20 +122,20 @@ bash  # Archivo inexistente
   # Permisos denegados
   chmod 000 test.txt
   ./pipex test.txt "cat" "wc -l" out.txt
+```
+#🧠 Conceptos clave del proyecto
 
-🧠 Conceptos clave del proyecto
-
- Gestión de procesos con fork()
- Ejecución de comandos con execve()
- Comunicación mediante pipes (pipe())
- Redirección de file descriptors (dup2())
- Búsqueda de comandos en variable PATH
- Manejo de errores estilo shell
- Gestión correcta de memoria sin leaks
- Espera de procesos hijos con wait()/waitpid()
+ - [ ]Gestión de procesos con fork()
+ - [ ]Ejecución de comandos con execve()
+ - [ ]Comunicación mediante pipes (pipe())
+ - [ ]Redirección de file descriptors (dup2())
+ - [ ]Búsqueda de comandos en variable PATH
+ - [ ]Manejo de errores estilo shell
+ - [ ]Gestión correcta de memoria sin leaks
+ - [ ]Espera de procesos hijos con wait()/waitpid()
 
 
-📈 Retos y aprendizajes
+#📈 Retos y aprendizajes
 Lo más difícil:
 
 Entender el flujo de file descriptors y cuándo cerrar cada uno
