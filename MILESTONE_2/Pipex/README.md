@@ -160,8 +160,8 @@ valgrind --leak-check=full --track-fds=yes ./pipex infile "cat" "wc -l" outfile
 # 👤 Autor
 **Luis Peralta (lperalta14)**
 📍 42 Málaga
-💼 LinkedIn
-💻 GitHub
-📧 luisperaltamunoz@gmail.com
+💼 [LinkedIn](https://www.linkedin.com/feed/)
+💻 [GitHub](https://github.com/lperalta14/lperalta14)
+📧 [mail](luisperaltamunoz@gmail.com)
 
 💡 "Cada pipe es un puente entre procesos, cada fork es una oportunidad de aprender."
