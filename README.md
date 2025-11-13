@@ -34,4 +34,6 @@ Cada proyecto está organizado por Milestones, y dentro de cada Milestone encont
 ### 🚀 Milestone03
 
 └── [philosopher](https://github.com/lperalta14/42Cursus/blob/main/MILESTONE_3/philo#README.md) // Concurrencia con threads y mutex.
+
+---
 > Cada carpeta de proyecto contiene su propio README detallado con información sobre cómo **descargar**, **compilar** y las **dependencias necesarias**, además de una **descripción completa del proyecto** y ejemplos de **pruebas realizadas**.
