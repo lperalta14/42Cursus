@@ -13,7 +13,7 @@ El propósito de este proyecto es comprender a fondo cómo funcionan internament
 Esta librería servirá como herramienta de apoyo para proyectos posteriores, como*Push_swap*, *so_long* o *pipex*.
 
 ---
-📖 [Documentación completa de libft](https://lperalta14.github.io/lperalta14/)
+📖 [Documentación completa de libft](https://lperalta14.github.io/42Cursus/libft_8h.html)
 
 ## ⚙️ Compilación
 
