@@ -45,17 +45,38 @@ Equivalencia:
 ├── Makefile                # Compilación automatizada
 └── README.md               # Esta documentación
 ```
-# 🚀 Compilación y ejecución
-🛠️ Compilar
+---
+
+## 🚀 Compilación y ejecución
+
+### 📥 Clonar solo este proyecto
+
+**Opción 1: Con Git (recomendado)**
+```bash
+git clone --filter=blob:none --sparse https://github.com/lperalta14/lperalta14.git
+cd lperalta14
+git sparse-checkout set MILESTONE_2/Pipex
+cd MILESTONE_2/Pipex
+```
+
+**Opción 2: Con SVN (más rápido)**
+```bash
+svn export https://github.com/lperalta14/lperalta14/trunk/MILESTONE_2/Pipex
+cd Pipex
+```
+
+### 🛠️ Compilar
 ```bash
 # El Makefile descarga automáticamente la librería personal
 make
 ```
-▶️ Ejecutar
+
+### ▶️ Ejecutar
 ```bash
 ./pipex archivo_entrada "comando1" "comando2" archivo_salida
 ```
-🧪 Ejemplos
+
+### 🧪 Ejemplos
 **Ejemplo 1: Contar líneas**
 ```bash
 ./pipex infile "ls -l" "wc -l" outfile
