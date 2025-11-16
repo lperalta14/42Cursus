@@ -72,6 +72,21 @@ El objetivo principal es **ordenar una lista de números enteros** utilizando ú
 ---
 
 ## 🚀 Compilación y ejecución
+### 📥 Clonar solo este proyecto
+
+**Opción 1: Con Git (recomendado)**
+```bash
+git clone --filter=blob:none --sparse https://github.com/lperalta14/lperalta14.git
+cd lperalta14
+git sparse-checkout set MILESTONE_2/Push_Swap
+cd MILESTONE_2/Push_Swap
+```
+
+**Opción 2: Con SVN (más rápido)**
+```bash
+svn export https://github.com/lperalta14/lperalta14/trunk/MILESTONE_2/Push_Swap
+cd Push_Swap
+```
 
 ### 🛠️ Compilar
 ```bash
