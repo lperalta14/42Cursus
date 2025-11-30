@@ -58,5 +58,17 @@ Y asegúrate de incluir el header en tu código:
 
 ## 👤 Autor
 
-[Luis ](https://github.com/lperalta14)
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/lperalta14">
+        <img src="https://github.com/lperalta14.png" width="100px;" alt="Luis Peralta"/>
+        <br />
+        <sub><b>Luis Peralta</b></sub>
+      </a>
+      <br />
+      <sub>lperalta@student.42.fr</sub>
+    </td>
+  </tr>
+</table>
 
